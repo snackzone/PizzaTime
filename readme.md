@@ -1,5 +1,5 @@
-Yelp Clone
-==========
+PizzaTime! (Yelp Clone)
+=======================
 
 Minimum Viable Product
 ----------------------
@@ -19,6 +19,11 @@ PizzaTime! allows users to:
 - [ ] Create, read, edit, and delete restaurant reviews
 - [ ] Upload photos to their restaurant reviews
 - [ ] View other users' reviews
+
+##Heroku Link
+Forthcoming
+[Heroku][heroku]
+[heroku]: http://www.heroku.com
 
 ## Design Docs
 * [View Wireframes][view]
