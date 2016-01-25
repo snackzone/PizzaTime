@@ -1,10 +1,10 @@
-PizzaTime! (Yelp Clone)
+PizzaTime (Yelp Clone)
 =======================
 
 Minimum Viable Product
 ----------------------
 
-PizzaTime! is a web application inspired by Yelp built using
+PizzaTime is a web application inspired by Yelp built using
 Ruby on Rails and React.js. It focuses on helping New Yorkers
 find the perfect (or closest) slice.
 
