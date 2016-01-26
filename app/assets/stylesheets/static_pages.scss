@@ -2,7 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//RESET!
+
+main {
+  width: 1000px;
+  padding: 40px;
+}
+
 .map {
   width: 600px;
   height: 600px;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
 }

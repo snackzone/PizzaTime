@@ -10,9 +10,13 @@ RestaurantStore = require('./stores/restaurant_store');
 var App = React.createClass({
   render: function () {
     return(
-      <div id="App">
-        {this.props.children}
-      </div>
+      <body>
+        <header>
+        </header>
+        <main>
+          {this.props.children}
+        </main>
+      </body>
     );
   }
 });

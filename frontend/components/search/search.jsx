@@ -18,7 +18,6 @@ var Search = React.createClass({
 
   componentDidMount: function () {
     ApiUtil.fetchRestaurants(FilterStore.all());
-    ApiUtil.fetchRestaurants(FilterStore.all());
     this.restaurantListenerToken =
       RestaurantStore.addListener(this._changeRestaurants);
     this.filterListenerToken =
@@ -36,7 +35,7 @@ var Search = React.createClass({
 
   render: function () {
     return (
-      <div className="Search">
+      <div className="search">
         <Index restaurants={this.state.restaurants}/>
         <Map restaurants={this.state.restaurants}/>
       </div>
