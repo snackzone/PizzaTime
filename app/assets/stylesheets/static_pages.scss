@@ -3,15 +3,50 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //RESET!
+h1, h2, h3, h4, div, main, body, p, a, ul, li,
+main, header, body, footer, article, section, img, form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  font-size: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  color: inherit;
+  background: transparent;
+  vertical-align: inherit;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+}
 
 main {
-  width: 1000px;
+  width: 880px;
   padding: 40px;
+  margin: auto;
 }
 
 .map {
   width: 600px;
   height: 600px;
+  float: right;
+}
+
+.search-index {
+  float: left;
+}
+
+.search-nav {
+  display: block;
+  font-weight: 900;
+  background: #F5F5F1;
+  height: 130px;
 }
 
 .group:after {

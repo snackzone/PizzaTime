@@ -5,6 +5,7 @@ var RestaurantStore = require("../../stores/restaurant_store");
 var FilterStore = require("../../stores/filter_store");
 var ApiUtil = require('../../util/api_util');
 var ApiActions = require('../../actions/api_actions');
+var SearchNav = require('./search_nav');
 
 var Search = React.createClass({
   getInitialState: function () {
@@ -35,7 +36,8 @@ var Search = React.createClass({
 
   render: function () {
     return (
-      <div className="search">
+      <div className="search group">
+        <SearchNav/>
         <Index restaurants={this.state.restaurants}/>
         <Map restaurants={this.state.restaurants}/>
       </div>

@@ -12,8 +12,12 @@ var Map = React.createClass({
   componentDidMount: function () {
     this.createMap();
     this.map.addListener('idle', this._idleHandler);
-    this.restaurantListenerToken =
-      RestaurantStore.addListener(this.reconcileMarkers);
+    // this.restaurantListenerToken =
+    //   RestaurantStore.addListener(this.reconcileMarkers);
+  },
+
+  componentDidUpdate: function () {
+    this.reconcileMarkers();
   },
 
   createMap: function () {
