@@ -15,4 +15,6 @@
 #
 
 class Restaurant < ActiveRecord::Base
+  validates :name, :address, :lat, :lng, presence: true;
+  validates :price_range, inclusion: { in: 1..4 }
 end
