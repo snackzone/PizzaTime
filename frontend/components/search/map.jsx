@@ -12,13 +12,14 @@ var Map = React.createClass({
   componentDidMount: function () {
     this.createMap();
     this.map.addListener('idle', this._idleHandler);
-    // this.restaurantListenerToken =
-    //   RestaurantStore.addListener(this.reconcileMarkers);
+    this.restaurantListenerToken =
+      RestaurantStore.addListener(this.reconcileMarkers);
   },
 
-  componentDidUpdate: function () {
-    this.reconcileMarkers();
-  },
+  // not needed, can just add listener to rest store and call reconcile from that.
+  // componentDidUpdate: function () {
+  //   this.reconcileMarkers();
+  // },
 
   createMap: function () {
     var mapDOMNode = this.refs.map;
@@ -42,7 +43,6 @@ var Map = React.createClass({
   },
 
   reconcileMarkers: function () {
-    //this is weird. if we're getting from the store, then why does seach pass it down?
     var restaurants = RestaurantStore.all();
     var toAdd = [], toRemove = this.markers.slice(0);
     restaurants.forEach(function(restaurant, idx){
@@ -61,6 +61,22 @@ var Map = React.createClass({
     });
     toAdd.forEach(this.createMarkerFromRestaurant);
     toRemove.forEach(this.removeMarker);
+    this.updateFocus();
+  },
+
+  updateFocus: function() {
+    var focusedRestaurantIds =
+      RestaurantStore.focusedRestaurants().map(function (restaurant) {
+        return restaurant.id;
+    });
+
+    this.markers.forEach(function(marker) {
+      if (focusedRestaurantIds.indexOf(marker.restaurantId) === -1) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    });
   },
 
   createMarkerFromRestaurant: function (restaurant) {
