@@ -5,6 +5,7 @@ var Route = require('react-router').Route;
 var IndexRoute = require('react-router').IndexRoute;
 
 var Search = require('./components/search/search');
+RestaurantStore = require('./stores/restaurant_store');
 
 var App = React.createClass({
   render: function () {

@@ -1,14 +1,15 @@
 var ApiActions = require('../actions/api_actions');
 
 var ApiUtil = {
-  fetchRestaurants: function () {
+  fetchRestaurants: function (filters) {
     $.ajax({
       method: "GET",
       dataType: "json",
-      data: "",
+      data: {filters: filters},
       url: "api/restaurants",
-      success: function (data){
+      success: function (data) {
         ApiActions.receiveAllRestaurants(data);
+        console.log("success");
       },
       error: function () {
         console.log("failed to fetch restaurants from the db.");

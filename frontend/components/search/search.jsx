@@ -17,7 +17,7 @@ var Search = React.createClass({
   },
 
   componentDidMount: function () {
-    ApiUtil.fetchRestaurants();
+    ApiUtil.fetchRestaurants(FilterStore.all());
     this.restaurantListenerToken =
       RestaurantStore.addListener(this._changeRestaurants);
     this.filterListenerToken =
