@@ -10,7 +10,6 @@ var App = React.createClass({
   render: function () {
     return(
       <div id="App">
-        Hello from the app.
         {this.props.children}
       </div>
     );
