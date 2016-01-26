@@ -21,3 +21,5 @@ RestaurantStore.__onDispatch = function (payload) {
     break;
   }
 };
+
+module.exports = RestaurantStore;
