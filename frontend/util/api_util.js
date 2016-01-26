@@ -1,7 +1,7 @@
 var ApiActions = require('../actions/api_actions');
 
 var ApiUtil = {
-  fetchBenches: function () {
+  fetchRestaurants: function () {
     $.ajax({
       method: "GET",
       dataType: "json",
