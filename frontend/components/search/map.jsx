@@ -1,19 +1,22 @@
 var React = require('react');
 var ApiUtil = require('../../util/api_util');
 var FilterActions = require('../../actions/filter_actions');
+var RestaurantStore = require('../../stores/restaurant_store');
 
 var Map = React.createClass({
   getInitialState: function () {
-    this.mapMarkers = [];
+    this.markers = [];
     return null;
   },
 
   componentDidMount: function () {
-    this._createMap();
+    this.createMap();
     this.map.addListener('idle', this._idleHandler);
+    this.restaurantListenerToken =
+      RestaurantStore.addListener(this.reconcileMarkers);
   },
 
-  _createMap: function () {
+  createMap: function () {
     var mapDOMNode = this.refs.map;
     var mapOptions = {
       center: {lat: 40.7058316, lng: -74.2581844},
@@ -27,28 +30,53 @@ var Map = React.createClass({
     FilterActions.receiveFilter(this.bounds);
   },
 
-  _destroyAllMapMarkers: function () {
-    for(var i = 0; i < this.mapMarkers.length; i++) {
-      this.mapMarkers[i].setMap(null);
+  _destroyAllmarkers: function () {
+    for(var i = 0; i < this.markers.length; i++) {
+      this.markers[i].setMap(null);
     }
-    this.mapMarkers = [];
+    this.markers = [];
   },
 
-  _reconcileMapMarkers: function () {
-    var marker;
+  reconcileMarkers: function () {
+    //this is weird. if we're getting from the store, then why does seach pass it down?
+    var restaurants = RestaurantStore.all();
+    var toAdd = [], toRemove = this.markers.slice(0);
+    restaurants.forEach(function(restaurant, idx){
+      idx = -1;
+      for(var i = 0; i < toRemove.length; i++){
+        if(toRemove[i].restaurantId == restaurant.id){
+          idx = i;
+          break;
+        }
+      }
+      if(idx === -1){
+        toAdd.push(restaurant);
+      } else {
+        toRemove.splice(idx, 1);
+      }
+    });
+    toAdd.forEach(this.createMarkerFromRestaurant);
+    toRemove.forEach(this.removeMarker);
+  },
 
-    this._destroyAllMapMarkers();
-    this.props.restaurants.forEach(function(restaurant) {
-      marker = new google.maps.Marker({
-        position: {
-          lat: restaurant.lat,
-          lng: restaurant.lng
-        },
-        map: this.map
-      });
+  createMarkerFromRestaurant: function (restaurant) {
+    var pos = new google.maps.LatLng(restaurant.lat, restaurant.lng);
+    var marker = new google.maps.Marker({
+      position: pos,
+      map: this.map,
+      restaurantId: restaurant.id
+    });
+    this.markers.push(marker);
+  },
 
-      this.mapMarkers.push(marker);
-    }.bind(this));
+  removeMarker: function(marker){
+    for(var i = 0; i < this.markers.length; i++){
+      if (this.markers[i].restaurantId === marker.restaurantId){
+        this.markers[i].setMap(null);
+        this.markers.splice(i, 1);
+        break;
+      }
+    }
   },
 
   _updateBounds: function () {
@@ -57,8 +85,6 @@ var Map = React.createClass({
   },
 
   render: function () {
-    this._reconcileMapMarkers();
-
     return (
       <div className="map"
            ref="map">
