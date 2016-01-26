@@ -3,11 +3,14 @@ var IndexItem = require('./index_item');
 
 var Index = React.createClass({
   render: function () {
-    var restaurants = this.props.restaurants.map(function(restaurant) {
-      <IndexItem
+    var restaurants = this.props.restaurants.map(function(restaurant, index) {
+      return (
+        <IndexItem
         className="search-index-item"
         restaurant={restaurant}
-      />;
+        key={index}
+        />
+      );
     });
 
     return (
