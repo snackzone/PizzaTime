@@ -69,10 +69,15 @@ main {
   border-top: 1px solid #ccc;
 }
 
-.search-index-item > p {
+.search-index-item > article {
   display: block;
   float: left;
   margin: 0 0 0 15px;
+}
+
+.search-index-item-link {
+  color: blue;
+  text-decoration: underline;
 }
 
 .search-index-item:last-child {
