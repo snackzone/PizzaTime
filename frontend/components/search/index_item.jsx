@@ -7,12 +7,14 @@ var IndexItem = React.createClass({
     if (this.props.restaurant.focused) {
       klass += " focused";
     }
-    
+
     return(
       <li className={klass}
           id={this.props.restaurant.id}
           onMouseOver={RestaurantActions.focusRestaurant}
           onMouseLeave={RestaurantActions.unfocusAllRestaurants}>
+        <img src="#"
+             clasName></img>
         {this.props.restaurant.name}
       </li>
     );

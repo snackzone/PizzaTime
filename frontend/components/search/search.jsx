@@ -36,13 +36,13 @@ var Search = React.createClass({
 
   render: function () {
     return (
-      <div>
+      <section className="search-section">
         <SearchNav/>
         <div className="search group">
           <Index restaurants={this.state.restaurants}/>
           <Map restaurants={this.state.restaurants}/>
         </div>
-      </div>
+      </section>
     );
   }
 });
