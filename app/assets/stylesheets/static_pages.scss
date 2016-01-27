@@ -21,6 +21,7 @@ main, header, body, footer, article, section, img, form {
 body {
   font-family: sans-serif;
   background: #F5F5F1;
+  color: #333333;
 }
 
 header {
@@ -30,7 +31,13 @@ header {
   box-shadow: 0 0 5px black;
 }
 
-ol {
+img {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+ul {
   list-style: none;
 }
 
@@ -53,7 +60,6 @@ main {
 
 .search-index {
   float: left;
-  margin-right: 33px;
   display: block;
   width: 300px;
 }
@@ -63,11 +69,33 @@ main {
   border-top: 1px solid #ccc;
 }
 
+.search-index-item > p {
+  display: block;
+  float: left;
+  margin: 0 0 0 15px;
+}
+
+.search-index-item:last-child {
+  border-bottom: 1px solid #ccc;
+}
+
+.no-results {
+  font-weight: 900;
+  font-size: 24px;
+  text-align: center;
+}
+
+.restaurant-thumb {
+  width: 90px;
+  height: 90px;
+  border-radius: 7px;
+  float: left;
+}
+
 .search-nav {
   display: block;
   font-weight: 900;
   background: #F5F5F1;
-  color: 333333;
   border-bottom: 1px solid #ccc;
 }
 
@@ -79,7 +107,6 @@ main {
 }
 
 .search-nav-section > h2 {
-  color: #333333;
   font-size: 21px;
 }
 

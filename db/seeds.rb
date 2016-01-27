@@ -14,7 +14,8 @@ Restaurant.create!(
   lat: 40.725927,
   lng: -73.941851,
   price_range: 1,
-  url: "http://www.vinniesbrooklyn.com"
+  url: "http://www.vinniesbrooklyn.com",
+  photo_url: "http://i.imgur.com/jMuFvgC.jpg"
 )
 
 Restaurant.create!(
@@ -23,5 +24,6 @@ Restaurant.create!(
   lat: 40.721587,
   lng: -73.995533,
   price_range: 2,
-  url: "http://www.firstpizza.com"
+  url: "http://www.firstpizza.com",
+  photo_url: "http://i.imgur.com/klHb9CO.jpg"
 )
