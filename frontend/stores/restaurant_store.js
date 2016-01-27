@@ -23,6 +23,14 @@ RestaurantStore.focusRestaurantById = function(id) {
   }
 };
 
+RestaurantStore.findIndexById = function(id) {
+  for (var i = 0; i < _restaurants.length; i++) {
+    if (_restaurants[i].id === id) {
+      return i;
+    }
+  }
+};
+
 RestaurantStore.focusedRestaurants = function () {
   return _focusedRestaurants.slice();
 };

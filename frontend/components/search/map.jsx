@@ -86,8 +86,10 @@ var Map = React.createClass({
     type: 'poly'
     };
 
+    var labelContent = (RestaurantStore.findIndexById(restaurant.id) + 1).toString();
+
     var contentString = generateContentString(restaurant);
-    console.log(contentString);
+
     var infowindow = new google.maps.InfoWindow({
       content: contentString
     });
@@ -96,23 +98,36 @@ var Map = React.createClass({
       position: pos,
       map: this.map,
       restaurantId: restaurant.id,
-      animation: google.maps.Animation.DROP,
       icon: image,
       shape: shape,
-      infowindow: infowindow
+      infowindow: infowindow,
+      label: {
+        text: labelContent,
+        color: 'white'
+      }
     });
+
+    // this.addListenersToMarker(marker);
+    //Not sure why the above doesnt work when i just copy listeners into function.
+
+    var self = this;
+    var infowindowCallback = function () {
+      self.closeAllInfoWindows();
+      infowindow.open(this.map, marker);
+    };
 
     marker.addListener("mouseover", RestaurantActions.focusRestaurantFromMarker);
     marker.addListener("mouseout", RestaurantActions.unfocusAllRestaurants);
 
-    var self = this;
-    marker.addListener("click", function () {
-      self.closeAllInfoWindows();
-      infowindow.open(this.map, marker);
-    });
+    marker.addListener("mouseover", infowindowCallback);
+    marker.addListener("mouseout", this.closeAllInfoWindows);
 
     this.markers.push(marker);
   },
+
+  // addListenersToMarker: function (marker) {
+  //
+  // },
 
   closeAllInfoWindows: function () {
     this.markers.forEach(function(marker) {
