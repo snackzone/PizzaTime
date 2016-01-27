@@ -36,10 +36,12 @@ var Search = React.createClass({
 
   render: function () {
     return (
-      <div className="search group">
+      <div>
         <SearchNav/>
-        <Index restaurants={this.state.restaurants}/>
-        <Map restaurants={this.state.restaurants}/>
+        <div className="search group">
+          <Index restaurants={this.state.restaurants}/>
+          <Map restaurants={this.state.restaurants}/>
+        </div>
       </div>
     );
   }

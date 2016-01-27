@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //RESET!
-h1, h2, h3, h4, div, main, body, p, a, ul, li,
+h1, h2, h3, h4, div, main, body, p, a, ul, li, nav,
 main, header, body, footer, article, section, img, form {
   margin: 0;
   padding: 0;
@@ -20,6 +20,14 @@ main, header, body, footer, article, section, img, form {
 
 body {
   font-family: sans-serif;
+  background: #F5F5F1;
+}
+
+header {
+  background: #BD0E01;
+  height: 76px;
+  border-bottom: 1px solid #aaa;
+  box-shadow: 0 0 5px black;
 }
 
 ul {
@@ -27,26 +35,54 @@ ul {
 }
 
 main {
-  width: 880px;
-  padding: 40px;
-  margin: auto;
+  background: white;
 }
 
 .map {
   width: 600px;
   height: 600px;
   float: right;
+  display: block;
+  border: 1px solid #ccc;
 }
 
 .search-index {
   float: left;
+  margin-right: 33px;
+  display: block;
+  width: 300px;
+}
+
+.search-index-item {
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
 }
 
 .search-nav {
   display: block;
   font-weight: 900;
   background: #F5F5F1;
-  height: 130px;
+  color: 333333;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-nav-section {
+  height: 70px;
+  padding: 30px 0;
+  width: 960px;
+  margin: auto;
+}
+
+.search-nav-section > h2 {
+  color: #333333;
+  font-size: 21px;
+}
+
+.search {
+  padding-top: 10px;
+  width: 960px;
+  background: white;
+  margin: auto;
 }
 
 .focused {
