@@ -1,4 +1,5 @@
 var React = require('react');
+var PriceFilter = require('./price_filter');
 
 var SearchNav = React.createClass({
   render: function () {
@@ -6,6 +7,7 @@ var SearchNav = React.createClass({
       <nav className="search-nav">
         <section className="search-nav-section">
           <h2>Search Results</h2>
+          <PriceFilter/>
         </section>
       </nav>
     );

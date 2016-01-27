@@ -6,7 +6,6 @@ var Header = React.createClass({
       <header>
         <nav className="header-nav">
           <a href="#" className="logo">PizzaTime.</a>
-
         </nav>
       </header>
     );

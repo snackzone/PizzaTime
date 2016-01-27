@@ -151,6 +151,31 @@ main {
   font-size: 21px;
 }
 
+.price-filter-button-container {
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  display: inline-block;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.price-filter-button {
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid #ccc;
+  margin: 0;
+  padding: 2px 5px;
+}
+
+.price-filter-button:last-child {
+  border: 0;
+}
+
+.price-filter-button:hover {
+  background: #aaa;
+}
+
 .search {
   padding-top: 10px;
   width: 960px;
