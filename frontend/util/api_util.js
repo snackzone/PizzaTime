@@ -9,7 +9,6 @@ var ApiUtil = {
       url: "api/restaurants",
       success: function (data) {
         ApiActions.receiveAllRestaurants(data);
-        console.log("success");
       },
       error: function () {
         console.log("failed to fetch restaurants from the db.");

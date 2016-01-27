@@ -14,7 +14,7 @@ var IndexItem = React.createClass({
           onMouseOver={RestaurantActions.focusRestaurant}
           onMouseLeave={RestaurantActions.unfocusAllRestaurants}>
         <img src="#"
-             clasName></img>
+             className="restaurant-thumb"/>
         {this.props.restaurant.name}
       </li>
     );
