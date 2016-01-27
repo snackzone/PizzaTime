@@ -149,6 +149,12 @@ main {
 
 .search-nav-section > h2 {
   font-size: 21px;
+  margin-bottom: 20px;
+}
+
+.search-nav-section > h3 {
+  font-size: 14px;
+  font-weight: 900;
 }
 
 .price-filter-button-container {
@@ -156,7 +162,6 @@ main {
   border-radius: 7px;
   display: inline-block;
   overflow: hidden;
-  margin-top: 20px;
 }
 
 .price-filter-button {

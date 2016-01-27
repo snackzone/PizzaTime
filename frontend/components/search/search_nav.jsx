@@ -7,6 +7,7 @@ var SearchNav = React.createClass({
       <nav className="search-nav">
         <section className="search-nav-section">
           <h2>Search Results</h2>
+          <h3>Filters</h3>
           <PriceFilter/>
         </section>
       </nav>
