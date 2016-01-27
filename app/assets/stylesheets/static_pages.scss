@@ -166,11 +166,12 @@ main {
 
 .price-filter-button {
   border-radius: 0;
-  background: transparent;
+  background: white;
   border: 0;
   border-right: 1px solid #ccc;
   margin: 0;
-  padding: 2px 5px;
+  padding: 10px;
+  font-size: 12px;
 }
 
 .price-filter-button:last-child {
