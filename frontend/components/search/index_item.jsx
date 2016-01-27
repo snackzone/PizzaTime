@@ -1,5 +1,6 @@
 var React = require('react');
 var RestaurantActions = require('../../actions/restaurant_actions');
+var RestaurantStore = require('../../stores/restaurant_store');
 
 var IndexItem = React.createClass({
   render: function () {
@@ -7,29 +8,21 @@ var IndexItem = React.createClass({
     if (this.props.restaurant.focused) {
       klass += " focused";
     }
+    var restaurant = this.props.restaurant;
+
+    var labelContent = (RestaurantStore.findIndexById(restaurant.id) + 1).toString();
 
     return(
       <li className={klass}
-          id={this.props.restaurant.id}
+          id={restaurant.id}
           onMouseOver={RestaurantActions.focusRestaurant}
           onMouseLeave={RestaurantActions.unfocusAllRestaurants}>
         <img src="#"
              className="restaurant-thumb"/>
-        {this.props.restaurant.name}
+           {labelContent}: {restaurant.name}
       </li>
     );
   }
 });
-
-// var IndexItem = React.createClass({
-//   render: function () {
-//     return(
-//       <li className="search-index-item"
-//           id={this.props.restaurant.id}>
-//         {this.props.restaurant.name}
-//       </li>
-//     );
-//   }
-// });
 
 module.exports = IndexItem;

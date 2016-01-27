@@ -14,9 +14,9 @@ var Index = React.createClass({
     });
 
     return (
-      <ul className="search-index">
+      <ol className="search-index">
         {restaurants}
-      </ul>
+      </ol>
     );
   }
 });
