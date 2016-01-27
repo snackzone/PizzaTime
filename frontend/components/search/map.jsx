@@ -67,15 +67,7 @@ var Map = React.createClass({
         return restaurant.id;
     });
 
-    // this.markers.forEach(function(marker) {
-    //   if (focusedRestaurantIds.indexOf(marker.restaurantId) === -1) {
-    //     marker.setAnimation(null);
-    //   } else {
-    //     marker.setAnimation(google.maps.Animation.BOUNCE);
-    //   }
-    // });
     this.markers.forEach(function(marker) {
-      // debugger
       if (focusedRestaurantIds.indexOf(marker.restaurantId) === -1) {
         marker.setIcon(getIcon(marker.restaurantId, false));
       } else {
@@ -87,9 +79,7 @@ var Map = React.createClass({
   createMarkerFromRestaurant: function (restaurant) {
     var pos = new google.maps.LatLng(restaurant.lat, restaurant.lng);
 
-    //new hotness.
     var mapIcon = getIcon(restaurant.id, restaurant.focused);
-    // var image = window.PizzaTime.imageUrls.mapMarker;
 
     var shape = {
     coords: [1, 1, 1, 36, 30, 36, 30, 1],
@@ -130,10 +120,6 @@ var Map = React.createClass({
 
     this.markers.push(marker);
   },
-
-  // addListenersToMarker: function (marker) {
-  //
-  // },
 
   closeAllInfoWindows: function () {
     this.markers.forEach(function(marker) {
@@ -185,10 +171,13 @@ var _formatBounds = function (bounds) {
 };
 
 var generateContentString = function (restaurant) {
-  var htmlString = "<div class='map-detail'>";
+  var htmlString = "<div class='map-detail group'>";
+  htmlString += "<img src='" + restaurant.photo_url + "'/>";
+  htmlString += "<section>";
   htmlString += "<h1>" + restaurant.name + "</h1>";
   htmlString += "<p>" + restaurant.address + "</p>";
   htmlString += "<a href=" + restaurant.url + ">" + "Link" + "</a>";
+  htmlString += "</section>";
   htmlString += "</div>";
   return htmlString;
 };

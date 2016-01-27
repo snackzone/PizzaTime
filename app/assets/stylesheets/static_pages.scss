@@ -41,6 +41,12 @@ ul {
   list-style: none;
 }
 
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
 main {
   background: white;
 }
@@ -126,8 +132,24 @@ main {
   font-weight: 900;
 }
 
-.group:after {
-  content: "";
-  clear: both;
+.map-detail > img {
+  width: 60px;
+  border-radius: 5px;
+  float: left;
+}
+
+.map-detail > section {
+  margin-left: 10px;
+  float: right;
   display: block;
+  width: 150px;
+}
+
+.map-detail > section > h1 {
+  font-weight: 900;
+}
+
+.map-detail > section > a {
+  color: blue;
+  text-decoration: underline;
 }
