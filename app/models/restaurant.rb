@@ -20,8 +20,20 @@ class Restaurant < ActiveRecord::Base
 
   def self.filtered(restaurants, filters)
     if filters["bounds"]
-      Restaurant.in_bounds(restaurants, filters["bounds"])
+      restaurants = Restaurant.in_bounds(restaurants, filters["bounds"])
     end
+
+    if filters["max_price"]
+      restaurants = Restaurant.in_price_range(restaurants, filters["max_price"])
+    end
+
+    restaurants
+  end
+
+  def self.in_price_range(restaurants, max_price_string)
+    max_price = max_price_string.to_i
+
+    restaurants.where("price_range <= ?", max_price)
   end
 
   def self.in_bounds(restaurants, bounds)
