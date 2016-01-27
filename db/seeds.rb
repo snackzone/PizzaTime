@@ -16,3 +16,12 @@ Restaurant.create!(
   price_range: 1,
   url: "http://www.vinniesbrooklyn.com"
 )
+
+Restaurant.create!(
+  name: "Lombardi's Pizza",
+  address: "32 Spring St, New York, NY 10012",
+  lat: 40.721587,
+  lng: -73.995533,
+  price_range: 2,
+  url: "http://www.firstpizza.com"
+)
