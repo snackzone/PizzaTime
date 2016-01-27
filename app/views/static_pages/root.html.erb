@@ -2,7 +2,35 @@
 
 <script>
   window.PizzaTime = window.PizzaTime || {};
+  var mapMarkersRed = [
+    "<%= image_url("1_red.png") %>",
+    "<%= image_url("2_red.png") %>",
+    "<%= image_url("3_red.png") %>",
+    "<%= image_url("4_red.png") %>",
+    "<%= image_url("5_red.png") %>",
+    "<%= image_url("6_red.png") %>",
+    "<%= image_url("7_red.png") %>",
+    "<%= image_url("8_red.png") %>",
+    "<%= image_url("9_red.png") %>",
+    "<%= image_url("10_red.png") %>"
+  ];
+
+  var mapMarkersBlack = [
+    "<%= image_url("1_black.png") %>",
+    "<%= image_url("2_black.png") %>",
+    "<%= image_url("3_black.png") %>",
+    "<%= image_url("4_black.png") %>",
+    "<%= image_url("5_black.png") %>",
+    "<%= image_url("6_black.png") %>",
+    "<%= image_url("7_black.png") %>",
+    "<%= image_url("8_black.png") %>",
+    "<%= image_url("9_black.png") %>",
+    "<%= image_url("10_black.png") %>"
+  ];
+
   window.PizzaTime.imageUrls = {
-    mapMarker: "<%= image_url("map_marker_solid.png") %>"
+    mapMarker: "<%= image_url("map_marker_solid.png") %>",
+    mapMarkersRed: mapMarkersRed,
+    mapMarkersBlack: mapMarkersBlack
   };
 </script>
