@@ -67,11 +67,19 @@ var Map = React.createClass({
         return restaurant.id;
     });
 
+    // this.markers.forEach(function(marker) {
+    //   if (focusedRestaurantIds.indexOf(marker.restaurantId) === -1) {
+    //     marker.setAnimation(null);
+    //   } else {
+    //     marker.setAnimation(google.maps.Animation.BOUNCE);
+    //   }
+    // });
     this.markers.forEach(function(marker) {
+      // debugger
       if (focusedRestaurantIds.indexOf(marker.restaurantId) === -1) {
-        marker.setAnimation(null);
+        marker.setIcon(getIcon(marker.restaurantId, false));
       } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
+        marker.setIcon(getIcon(marker.restaurantId, true));
       }
     });
   },
@@ -79,7 +87,9 @@ var Map = React.createClass({
   createMarkerFromRestaurant: function (restaurant) {
     var pos = new google.maps.LatLng(restaurant.lat, restaurant.lng);
 
-    var image = window.PizzaTime.imageUrls.mapMarker;
+    //new hotness.
+    var mapIcon = getIcon(restaurant.id, restaurant.focused);
+    // var image = window.PizzaTime.imageUrls.mapMarker;
 
     var shape = {
     coords: [1, 1, 1, 36, 30, 36, 30, 1],
@@ -98,13 +108,9 @@ var Map = React.createClass({
       position: pos,
       map: this.map,
       restaurantId: restaurant.id,
-      icon: image,
+      icon: mapIcon,
       shape: shape,
-      infowindow: infowindow,
-      label: {
-        text: labelContent,
-        color: 'white'
-      }
+      infowindow: infowindow
     });
 
     // this.addListenersToMarker(marker);
@@ -187,41 +193,22 @@ var generateContentString = function (restaurant) {
   return htmlString;
 };
 
-// function setMarkers(map) {
-//   // Adds markers to the map.
-//
-//   // Marker sizes are expressed as a Size of X,Y where the origin of the image
-//   // (0,0) is located in the top left of the image.
-//
-//   // Origins, anchor positions and coordinates of the marker increase in the X
-//   // direction to the right and in the Y direction down.
-//   var image = {
-//     url: 'images/beachflag.png',
-//     // This marker is 20 pixels wide by 32 pixels high.
-//     size: new google.maps.Size(20, 32),
-//     // The origin for this image is (0, 0).
-//     origin: new google.maps.Point(0, 0),
-//     // The anchor for this image is the base of the flagpole at (0, 32).
-//     anchor: new google.maps.Point(0, 32)
-//   };
-//   // Shapes define the clickable region of the icon. The type defines an HTML
-//   // <area> element 'poly' which traces out a polygon as a series of X,Y points.
-//   // The final coordinate closes the poly by connecting to the first coordinate.
-//   var shape = {
-//     coords: [1, 1, 1, 20, 18, 20, 18, 1],
-//     type: 'poly'
-//   };
-//   for (var i = 0; i < beaches.length; i++) {
-//     var beach = beaches[i];
-//     var marker = new google.maps.Marker({
-//       position: {lat: beach[1], lng: beach[2]},
-//       map: map,
-//       icon: image,
-//       shape: shape,
-//       title: beach[0],
-//       zIndex: beach[3]
-//     });
-//   }
-// }
+var getIcon = function (id, focused) {
+  var index = RestaurantStore.findIndexById(id);
+
+  var image;
+
+  if (focused) {
+    image = window.PizzaTime.imageUrls.mapMarkersBlack[index];
+  } else {
+    image = window.PizzaTime.imageUrls.mapMarkersRed[index];
+  }
+
+  var mapIcon = new google.maps.MarkerImage(image);
+  mapIcon.scaledSize = new google.maps.Size(32, 41.333333333);
+  mapIcon.anchor = new google.maps.Point(0, 0);
+
+  return mapIcon;
+};
 
 module.exports = Map;
