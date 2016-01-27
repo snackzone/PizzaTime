@@ -9,9 +9,21 @@ var RestaurantActions = {
       restaurantId: id
     });
   },
+
   unfocusAllRestaurants: function() {
     Dispatcher.dispatch({
       actionType: RestaurantConstants.UNFOCUS_ALL_RESTAURANTS
+    });
+  },
+
+  focusRestaurantFromMarker: function (e) {
+    var id = this.restaurantId;
+    Dispatcher.dispatch({
+      actionType: RestaurantConstants.UNFOCUS_ALL_RESTAURANTS
+    });
+    Dispatcher.dispatch({
+      actionType: RestaurantConstants.FOCUS_RESTAURANT,
+      restaurantId: id
     });
   }
 };

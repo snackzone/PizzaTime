@@ -2,6 +2,7 @@ var React = require('react');
 var ApiUtil = require('../../util/api_util');
 var FilterActions = require('../../actions/filter_actions');
 var RestaurantStore = require('../../stores/restaurant_store');
+var RestaurantActions = require('../../actions/restaurant_actions');
 
 var Map = React.createClass({
   getInitialState: function () {
@@ -15,11 +16,6 @@ var Map = React.createClass({
     this.restaurantListenerToken =
       RestaurantStore.addListener(this.reconcileMarkers);
   },
-
-  // not needed, can just add listener to rest store and call reconcile from that.
-  // componentDidUpdate: function () {
-  //   this.reconcileMarkers();
-  // },
 
   createMap: function () {
     var mapDOMNode = this.refs.map;
@@ -44,7 +40,7 @@ var Map = React.createClass({
 
   reconcileMarkers: function () {
     var restaurants = RestaurantStore.all();
-    var toAdd = [], toRemove = this.markers.slice(0);
+    var toAdd = [], toRemove = this.markers.slice();
     restaurants.forEach(function(restaurant, idx){
       idx = -1;
       for(var i = 0; i < toRemove.length; i++){
@@ -59,6 +55,7 @@ var Map = React.createClass({
         toRemove.splice(idx, 1);
       }
     });
+
     toAdd.forEach(this.createMarkerFromRestaurant);
     toRemove.forEach(this.removeMarker);
     this.updateFocus();
@@ -84,8 +81,12 @@ var Map = React.createClass({
     var marker = new google.maps.Marker({
       position: pos,
       map: this.map,
-      restaurantId: restaurant.id
+      restaurantId: restaurant.id,
+      animation: google.maps.Animation.DROP
     });
+    marker.addListener("mouseover", RestaurantActions.focusRestaurantFromMarker);
+    marker.addListener("mouseout", RestaurantActions.unfocusAllRestaurants);
+    console.log('made a marker.');
     this.markers.push(marker);
   },
 

@@ -49,6 +49,10 @@ main {
   height: 130px;
 }
 
+.focused {
+  font-weight: 900;
+}
+
 .group:after {
   content: "";
   clear: both;

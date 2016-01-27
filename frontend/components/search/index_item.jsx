@@ -3,8 +3,13 @@ var RestaurantActions = require('../../actions/restaurant_actions');
 
 var IndexItem = React.createClass({
   render: function () {
+    var klass = "search-index-item";
+    if (this.props.restaurant.focused) {
+      klass += " focused";
+    }
+    
     return(
-      <li className="search-index-item"
+      <li className={klass}
           id={this.props.restaurant.id}
           onMouseOver={RestaurantActions.focusRestaurant}
           onMouseLeave={RestaurantActions.unfocusAllRestaurants}>
