@@ -64,10 +64,24 @@ main {
   border: 1px solid #ccc;
 }
 
-.search-index {
-  float: left;
-  display: block;
+.search-index-container {
   width: 300px;
+  height: 600px;
+  float: left;
+  display: flex;
+  overflow: hidden;
+  will-change: overflow;
+}
+
+.search-index {
+  overflow: auto;
+  height: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+}
+
+.search-index::-webkit-scrollbar {
+    display: none;
 }
 
 .search-index-item {
@@ -129,7 +143,7 @@ main {
 }
 
 .focused {
-  font-weight: 900;
+  background: #F5F5F1;
 }
 
 .map-detail > img {

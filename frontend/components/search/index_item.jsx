@@ -5,23 +5,23 @@ var RestaurantStore = require('../../stores/restaurant_store');
 var IndexItem = React.createClass({
   render: function () {
     var restaurant = this.props.restaurant;
-    var klass = "";
+    var klass = "search-index-item group";
     if (restaurant.focused) {
-      klass += "focused";
+      klass += " focused";
     }
 
     var priceRangeString = getPriceRangeString(restaurant.price_range);
 
     var labelContent = (RestaurantStore.findIndexById(restaurant.id) + 1).toString();
     return(
-      <li className="search-index-item group"
+      <li className={klass}
           id={restaurant.id}
           onMouseOver={RestaurantActions.focusRestaurant}
           onMouseLeave={RestaurantActions.unfocusAllRestaurants}>
         <img src={restaurant.photo_url}
              className="restaurant-thumb"/>
           <article>
-             <p className={klass}>
+             <p>
                {labelContent}: {restaurant.name}
              </p>
              <a href={restaurant.url}

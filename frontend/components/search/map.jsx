@@ -91,7 +91,8 @@ var Map = React.createClass({
     var contentString = generateContentString(restaurant);
 
     var infowindow = new google.maps.InfoWindow({
-      content: contentString
+      content: contentString,
+      restaurantId: restaurant.id
     });
 
     var marker = new google.maps.Marker({
@@ -116,7 +117,6 @@ var Map = React.createClass({
     marker.addListener("mouseout", RestaurantActions.unfocusAllRestaurants);
 
     marker.addListener("mouseover", infowindowCallback);
-    marker.addListener("mouseout", this.closeAllInfoWindows);
 
     this.markers.push(marker);
   },
