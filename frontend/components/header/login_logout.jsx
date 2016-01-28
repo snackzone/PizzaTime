@@ -6,7 +6,7 @@ var CurrentUserStore = require('../../stores/current_user_store');
 var LoginLogout = React.createClass({
   getInitialState: function () {
     return (
-      { loggedInStatus: CurrentUserStore.loggedInStatus() }
+      { currentUser: CurrentUserStore.currentUser() }
     );
   },
 
@@ -16,12 +16,14 @@ var LoginLogout = React.createClass({
   },
 
   _change: function () {
-    this.setState({loggedInStatus: CurrentUserStore.loggedInStatus() });
+    this.setState({ currentUser: CurrentUserStore.currentUser() });
   },
 
   render: function () {
+    var currentUser = this.state.currentUser;
 
-    var display = this.state.loggedInStatus ? <LoggedIn/> : <LoggedOut/>;
+    var display = currentUser ?
+      <LoggedIn name={currentUser.firstname} /> : <LoggedOut/>;
 
     return (
       <div>
