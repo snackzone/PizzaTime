@@ -8,7 +8,21 @@ var ApiUtil = {
       data: {user: user},
       url: "/users",
       success: function (data) {
-        console.log("success.");
+        ApiActions.signIn(data);
+      },
+      error: function (data) {
+        console.log("failure.");
+      }
+    });
+  },
+
+  fetchCurrentUser: function () {
+    $.ajax({
+      method: "GET",
+      dataType: "json",
+      url: "/session",
+      success: function (data) {
+        ApiActions.signIn(data);
       },
       error: function (data) {
         console.log("failure.");

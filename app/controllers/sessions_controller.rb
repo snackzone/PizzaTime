@@ -24,6 +24,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def show
+    @current_user = current_user
+    if @current_user
+      render json: @current_user.to_json
+    else
+      render json: {}
+    end
+  end
+
   def destroy
     sign_out
     render json: {}
