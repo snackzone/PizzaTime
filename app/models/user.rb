@@ -14,7 +14,9 @@
 #
 class User < ActiveRecord::Base
   validates :firstname, :surname, :email, :password_digest,
-  :session_token, :password_confirmation, presence: true
+  :session_token, presence: true
+
+  validates :password_confirmation, presence: true, allow_nil: true
 
   validates :email, uniqueness: true
 
@@ -43,8 +45,8 @@ class User < ActiveRecord::Base
 
   def reset_token!
     self.session_token = SecureRandom.urlsafe_base64(16)
-    self.save!
-    self.session_token
+    save!
+    session_token
   end
 
   private
