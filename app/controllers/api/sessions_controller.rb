@@ -8,26 +8,18 @@ class Api::SessionsController < ApplicationController
       params[:user][:password]
     )
 
-    # if @user
-    #   sign_in(@user)
-    #   redirect_to root_url
-    # else
-    #   flash.now[:errors] = ["Invalid email or password"]
-    #   render :new
-    # end
-
     if @user
       sign_in(@user)
-      render json: @user.to_json
+      render :show
     else
       render json: {} #ERRROR MESSAGE GOES HERE
     end
   end
 
   def show
-    @current_user = current_user
-    if @current_user
-      render json: @current_user.to_json
+    @user = current_user
+    if @user
+      render :show
     else
       render json: {}
     end

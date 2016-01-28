@@ -10,6 +10,9 @@ var Header = require('./components/header/header');
 var SessionForm = require('./components/forms/session_form');
 var UserForm = require('./components/forms/user_form');
 
+//for debugging.
+CurrentUserStore = require('./stores/current_user_store');
+
 var App = React.createClass({
   render: function () {
     return(
