@@ -1,4 +1,5 @@
 var React = require('react');
+var LoginLogout = require('./login_logout');
 
 var Header = React.createClass({
   render: function () {
@@ -6,6 +7,7 @@ var Header = React.createClass({
       <header>
         <nav className="header-nav">
           <a href="#" className="logo">PizzaTime.</a>
+          <LoginLogout/>
         </nav>
       </header>
     );

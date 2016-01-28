@@ -28,9 +28,11 @@
     "<%= image_url("10_black.png") %>"
   ];
 
+  window.PizzaTime.currentUserId = "<%= current_user ? current_user.id : nil %>";
+
   window.PizzaTime.imageUrls = {
     mapMarker: "<%= image_url("map_marker_solid.png") %>",
     mapMarkersRed: mapMarkersRed,
-    mapMarkersBlack: mapMarkersBlack
+    mapMarkersBlack: mapMarkersBlack,
   };
 </script>
