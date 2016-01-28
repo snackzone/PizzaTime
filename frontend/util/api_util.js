@@ -14,6 +14,20 @@ var ApiUtil = {
         console.log("failed to fetch restaurants from the db.");
       }
     });
+  },
+
+  signOut: function () {
+    $.ajax({
+      method: "DELETE",
+      dataType: "json",
+      url: "/session",
+      success: function (data) {
+        ApiActions.signOut();
+      },
+      error: function () {
+        console.log("failed to sign out.");
+      }
+    });
   }
 };
 

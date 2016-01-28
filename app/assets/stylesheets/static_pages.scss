@@ -47,6 +47,15 @@ header {
   margin: 10px 0;
 }
 
+.logged-out {
+  color: white;
+}
+
+.logged-out > a {
+  color: white;
+  text-decoration: underline;
+}
+
 img {
   display: block;
   width: auto;
