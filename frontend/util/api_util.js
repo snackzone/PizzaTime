@@ -6,7 +6,7 @@ var ApiUtil = {
       method: "POST",
       dataType: "json",
       data: {user: user},
-      url: "/users",
+      url: "api/users",
       success: function (data) {
         ApiActions.signIn(data);
       },
@@ -20,7 +20,7 @@ var ApiUtil = {
     $.ajax({
       method: "GET",
       dataType: "json",
-      url: "/session",
+      url: "api/session",
       success: function (data) {
         ApiActions.signIn(data);
       },
@@ -49,7 +49,7 @@ var ApiUtil = {
     $.ajax({
       method: "DELETE",
       dataType: "json",
-      url: "/session",
+      url: "api/session",
       success: function (data) {
         ApiActions.signOut();
       },
@@ -64,7 +64,7 @@ var ApiUtil = {
       method: "POST",
       dataType: "json",
       data: {user: credentials},
-      url: "/session",
+      url: "api/session",
       success: function (data) {
         console.log("success");
         ApiActions.signIn(data);
