@@ -38,9 +38,11 @@ var Search = React.createClass({
     return (
       <section className="search-section">
         <SearchNav/>
-        <div className="search group">
-          <Index restaurants={this.state.restaurants}/>
-          <Map restaurants={this.state.restaurants}/>
+        <div className="search-container">
+          <div className="search group">
+            <Index restaurants={this.state.restaurants}/>
+            <Map restaurants={this.state.restaurants}/>
+          </div>
         </div>
       </section>
     );

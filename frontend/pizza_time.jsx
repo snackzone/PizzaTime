@@ -1,12 +1,13 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Router = require('react-router').Router;
+var ReactRouter = require('react-router').Router;
 var Route = require('react-router').Route;
 var IndexRoute = require('react-router').IndexRoute;
 
 var Search = require('./components/search/search');
 var RestaurantStore = require('./stores/restaurant_store');
 var Header = require('./components/header/header');
+var SessionForm = require('./components/forms/session_form');
 
 var App = React.createClass({
   render: function () {
@@ -24,9 +25,10 @@ var App = React.createClass({
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Search}/>
+    <Route path="session/new" component={SessionForm}/>
   </Route>
 );
 
 document.addEventListener("DOMContentLoaded", function () {
-  ReactDOM.render(<Router>{routes}</Router>, document.getElementById("content"));
+  ReactDOM.render(<ReactRouter>{routes}</ReactRouter>, document.getElementById("content"));
 });

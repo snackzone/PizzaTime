@@ -28,6 +28,22 @@ var ApiUtil = {
         console.log("failed to sign out.");
       }
     });
+  },
+
+  submitSignInCredentials: function (credentials) {
+    $.ajax({
+      method: "POST",
+      dataType: "json",
+      data: {user: credentials},
+      url: "/session",
+      success: function (data) {
+        debugger
+        console.log("success");
+      },
+      error: function () {
+        console.log("failure.");
+      }
+    });
   }
 };
 

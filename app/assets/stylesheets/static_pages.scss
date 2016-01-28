@@ -72,12 +72,12 @@ ul {
   display: block;
 }
 
-main {
+.search-container {
+  display: block;
   background: white;
 }
 
 .search-section {
-  padding-bottom: 40px;
   border-bottom: 1px solid #ccc;
 }
 
@@ -222,4 +222,17 @@ main {
 .map-detail > section > a {
   color: blue;
   text-decoration: underline;
+}
+
+.session-form {
+  background: white;
+  display: block;
+  width: 900px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  font-weight: 900;
 }
