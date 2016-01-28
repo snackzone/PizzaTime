@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Restaurant.destroy_all
+User.destroy_all
 
 Restaurant.create!(
   name: "Vinnie's Pizzeria",
@@ -65,6 +66,22 @@ Restaurant.create!(
   price_range: 2,
   url: "http://www.pauliegee.com",
   photo_url: "http://i.imgur.com/PMP9uDn.jpg?1"
+)
+
+User.create!(
+  firstname: "Joey",
+  surname: "Pepperoni",
+  email: "guest@pizza-time.com",
+  zip: "11222",
+  password: "pizzatime"
+)
+
+User.create!(
+  firstname: "Zach",
+  surname: "Moroni",
+  email: "zachary.moroni@gmail.com",
+  zip: "11222",
+  password: "zachzach"
 )
 
 

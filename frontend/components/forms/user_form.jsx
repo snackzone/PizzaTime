@@ -24,39 +24,42 @@ var UserForm = React.createClass({
 
   render: function () {
     return (
-      <form className="form" onSubmit={this.handleSubmit}>
-        <label>
-          First Name:
-          <input type="text" valueLink={this.linkState('firstname')}/>
-        </label>
+      <section className="form-container group">
+        <form className="user-form form" onSubmit={this.handleSubmit}>
+          <h2>Sign Up</h2>
+          <p className="input-container group">
+            <label>First Name:</label>
+            <input type="text" valueLink={this.linkState('firstname')}/>
+          </p>
 
-        <label>
-          Last Name:
-          <input type="text" valueLink={this.linkState('surname')}/>
-        </label>
+          <p className="input-container group">
+            <label>Last Name:</label>
+            <input type="text" valueLink={this.linkState('surname')}/>
+          </p>
 
-        <label>
-          Email:
-          <input type="text" valueLink={this.linkState('email')}/>
-        </label>
+          <p className="input-container group">
+            <label>Email:</label>
+            <input type="text" valueLink={this.linkState('email')}/>
+          </p>
 
-        <label>
-          Zip Code:
-          <input type="text" valueLink={this.linkState('zip')}/>
-        </label>
+          <p className="input-container group">
+            <label>Zip Code:</label>
+            <input type="text" valueLink={this.linkState('zip')}/>
+          </p>
 
-        <label>
-          Password:
-          <input type="password" valueLink={this.linkState('password')}/>
-        </label>
+          <p className="input-container group">
+            <label>Password:</label>
+            <input type="password" valueLink={this.linkState('password')}/>
+          </p>
 
-        <label>
-          Confirm Password:
-          <input type="password" valueLink={this.linkState('password_confirmation')}/>
-        </label>
+          <p className="input-container group">
+            <label>Confirm Password:</label>
+            <input type="password" valueLink={this.linkState('password_confirmation')}/>
+          </p>
 
-        <button>Sign Up.</button>
-      </form>
+          <button>Sign Up.</button>
+        </form>
+      </section>
     );
   }
 });

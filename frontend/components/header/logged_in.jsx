@@ -11,7 +11,7 @@ var LoggedIn = React.createClass({
 
   render: function () {
     return (
-      <div>
+      <div className="logged-in">
         <h1>Hello, {this.props.name}!</h1>
         <button onClick={this.handleSignOut}>Sign Out</button>
       </div>

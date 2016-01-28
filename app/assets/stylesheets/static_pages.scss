@@ -62,6 +62,14 @@ header {
   text-decoration: underline;
 }
 
+.logged-in {
+  color: white;
+}
+
+.logged-in > button {
+  margin: 10px 0;
+}
+
 img {
   display: block;
   width: auto;
@@ -243,7 +251,7 @@ ul {
   min-height: 300px;
 }
 
-.form {
+.session-form {
   width: 50%;
   float: left;
   padding-right: 90px;
@@ -296,4 +304,19 @@ ul {
   border-radius: 3px;
   border: 1px solid #ccc;
   box-shadow: 0 1px 1px #eee;
+}
+
+.form > a {
+  text-decoration: underline;
+  color: blue;
+  font-size: 12px;
+  width: 100%;
+  text-align: right;
+  display: block;
+  margin: 10px 0;
+}
+
+.user-form {
+  width: 40%;
+  margin: auto;
 }
