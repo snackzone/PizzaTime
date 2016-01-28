@@ -1,3 +1,7 @@
+<% if current_user %>
+  <h1 YOU ARE LOGGED IN AS <%= current_user.email %></h1>
+<% end %>
+
 <h2>Sign In</h2>
 
 <form action="<%= session_url %>" method="post">

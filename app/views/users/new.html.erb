@@ -1,31 +1,11 @@
 <h2>Sign Up</h2>
 
-<form action="<%= users_url %>" method="post">
-  <%= auth_token_input %>
-  <label>
-    Email
-    <input type="text" name="user[email]" value="">
-  </label>
-  <br>
-  <label>
-    Zip Code
-    <input type="text" name="user[zip]" value="">
-  </label>
-<br>
-  <label>
-    First Name
-    <input type="text" name="user[firstname]" value="">
-  </label>
-<br>
-  <label>
-    Last Name
-    <input type="text" name="user[surname]" value="">
-  </label>
-<br>
-  <label>
-    Password
-    <input type="password" name="user[password]" value="">
-  </label>
-<br>
-  <input type="submit" value="Sign Up">
-</form>
+<%= form_for @user do |f| %>
+  Email: <%= f.text_field :email %><br>
+  First Name: <%= f.text_field :firstname %><br>
+  Last Name: <%= f.text_field :surname %><br>
+  Zip Code: <%= f.text_field :zip %><br>
+  Password: <%= f.password_field :password %><br>
+  Confirm Password: <%= f.password_field :password_confirmation %><br>
+  <%= f.submit %>
+<% end %>

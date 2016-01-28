@@ -14,11 +14,13 @@
 #
 class User < ActiveRecord::Base
   validates :firstname, :surname, :email, :password_digest,
-  :session_token, presence: true
+  :session_token, :password_confirmation, presence: true
+
+  validates :email, uniqueness: true
 
   validates_format_of :zip, with: /^\d{5}(-\d{4})?$/, multiline: true, message: "invalid zip"
 
-  validates :password, length: { minimum: 6, allow_nil: true }
+  validates :password, length: { minimum: 6, allow_nil: true }, confirmation: true
 
   attr_reader :password
 
