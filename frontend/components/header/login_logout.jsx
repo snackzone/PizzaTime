@@ -6,7 +6,7 @@ var CurrentUserStore = require('../../stores/current_user_store');
 var LoginLogout = React.createClass({
   getInitialState: function () {
     return (
-      {loggedInStatus: window.PizzaTime.currentUserId ? true : false}
+      { loggedInStatus: CurrentUserStore.loggedInStatus() }
     );
   },
 

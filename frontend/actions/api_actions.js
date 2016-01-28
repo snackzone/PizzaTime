@@ -14,6 +14,13 @@ var ApiActions = {
     Dispatcher.dispatch({
       actionType: CurrentUserConstants.SIGN_OUT,
     });
+  },
+
+  signIn: function (user) {
+    Dispatcher.dispatch({
+      actionType: CurrentUserConstants.SIGN_IN,
+      user: user
+    });
   }
 };
 

@@ -37,8 +37,8 @@ var ApiUtil = {
       data: {user: credentials},
       url: "/session",
       success: function (data) {
-        debugger
         console.log("success");
+        ApiActions.signIn(data);
       },
       error: function () {
         console.log("failure.");
