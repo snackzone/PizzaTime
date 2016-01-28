@@ -5,7 +5,7 @@ var Header = React.createClass({
   render: function () {
     return (
       <header>
-        <nav className="header-nav">
+        <nav className="header-nav group">
           <a href="#" className="logo">PizzaTime.</a>
           <LoginLogout/>
         </nav>

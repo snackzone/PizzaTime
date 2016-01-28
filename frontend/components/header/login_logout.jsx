@@ -28,7 +28,7 @@ var LoginLogout = React.createClass({
       <LoggedIn name={currentUser.firstname} /> : <LoggedOut/>;
 
     return (
-      <div>
+      <div className="login-logout">
         {display}
       </div>
     );

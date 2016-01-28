@@ -2,14 +2,14 @@ var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 var CurrentUserConstants = require('../constants/current_user_constants');
 
-var _current_user = null;
+var _current_user = {};
 var CurrentUserStore = new Store(AppDispatcher);
 
 CurrentUserStore.currentUser = function () {
-  if (_current_user) {
-    return $.extend({}, _current_user);
+  if (Object.keys(_current_user).length === 0) {
+    return false;
   } else {
-    return null;
+    return $.extend({}, _current_user);
   }
 };
 
@@ -18,7 +18,7 @@ CurrentUserStore.signIn = function (user) {
 };
 
 CurrentUserStore.signOut = function () {
-  _current_user = null;
+  _current_user = {};
 };
 
 CurrentUserStore.loggedInStatus = function () {

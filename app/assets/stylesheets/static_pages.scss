@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //RESET!
-h1, h2, h3, h4, div, main, body, p, a, ul, li, nav,
-main, header, body, footer, article, section, img, form {
+h1, h2, h3, h4, div, body, p, a, ul, li, nav,
+header, body, footer, article, section, img, form {
   margin: 0;
   padding: 0;
   border: 0;
@@ -44,6 +44,12 @@ header {
   -webkit-text-stroke: 1px white;
   display: block;
   width: 115px;
+  margin: 10px 0;
+  float: left;
+}
+
+.login-logout {
+  float: right;
   margin: 10px 0;
 }
 
@@ -224,15 +230,63 @@ ul {
   text-decoration: underline;
 }
 
-.form {
+.form-container {
   background: white;
   display: block;
-  width: 900px;
+  width: 1024px;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   margin: auto;
-  padding: 20px;
+  padding: 30px 80px 40px;
   box-sizing: border-box;
+  min-height: 300px;
+}
+
+.form {
+  width: 50%;
+  float: left;
+  padding-right: 90px;
+  box-sizing: border-box;
+  border-right: 1px solid #ccc;
+  display: block;
+  min-height: 240px;
+}
+
+.form > h2 {
   font-weight: 900;
+  color: #BD0E01;
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.form > p {
+  font-size: 12px;
+  display: block;
+  margin: 5px 0;
+}
+
+.form > .input-container {
+  display: block;
+  border: 1px solid none;
+  margin-top: 15px;
+}
+
+.input-container > label {
+  color: #BD0E01;
+  float: left;
+  font-weight: bold;
+  font-size: 12px;
+  display: block;
+  margin: 5px 0;
+}
+
+.input-container > input {
+  float: right;
+  width: 207px;
+}
+
+.form > button {
+  float: right;
 }

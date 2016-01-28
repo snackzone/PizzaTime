@@ -20,19 +20,21 @@ var SessionForm = React.createClass({
 
   render: function () {
     return (
-      <form className="form" onSubmit={this.handleSubmit}>
-        <label>
-          Email
-          <input type="text" valueLink={this.linkState('email')}/>
-        </label>
-
-        <label>
-          Password
-          <input type="password" valueLink={this.linkState('password')}/>
-        </label>
-
-        <button>Sign In.</button>
-      </form>
+      <section className="form-container group">
+        <form className="form group" onSubmit={this.handleSubmit}>
+          <h2>Log In</h2>
+          <p>Please enter your email address and password to log in.</p>
+          <p className="input-container group">
+            <label>Email Address</label>
+            <input type="text" valueLink={this.linkState('email')}/>
+          </p>
+          <p className="input-container group">
+            <label>Password</label>
+            <input type="password" valueLink={this.linkState('password')}/>
+          </p>
+          <button>Log In.</button>
+        </form>
+      </section>
     );
   }
 });
