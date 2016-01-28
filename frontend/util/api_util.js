@@ -1,6 +1,21 @@
 var ApiActions = require('../actions/api_actions');
 
 var ApiUtil = {
+  createUser: function (user) {
+    $.ajax({
+      method: "POST",
+      dataType: "json",
+      data: {user: user},
+      url: "/users",
+      success: function (data) {
+        console.log("success.");
+      },
+      error: function (data) {
+        console.log("failure.");
+      }
+    });
+  },
+
   fetchRestaurants: function (filters) {
     $.ajax({
       method: "GET",

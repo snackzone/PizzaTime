@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       sign_in(@user)
       render json: @user.to_json
     else
-      render json: {error_message: "invalid login credentials"}
+      render json: {} #ERRROR MESSAGE GOES HERE
     end
   end
 

@@ -8,6 +8,7 @@ var Search = require('./components/search/search');
 var RestaurantStore = require('./stores/restaurant_store');
 var Header = require('./components/header/header');
 var SessionForm = require('./components/forms/session_form');
+var UserForm = require('./components/forms/user_form');
 
 var App = React.createClass({
   render: function () {
@@ -26,6 +27,7 @@ var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={Search}/>
     <Route path="session/new" component={SessionForm}/>
+    <Route path="users/new" component={UserForm}/>
   </Route>
 );
 

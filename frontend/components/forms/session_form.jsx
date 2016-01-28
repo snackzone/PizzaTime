@@ -20,7 +20,7 @@ var SessionForm = React.createClass({
 
   render: function () {
     return (
-      <form className="session-form" onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <label>
           Email
           <input type="text" valueLink={this.linkState('email')}/>
