@@ -10,7 +10,7 @@ var pricePoints = [
 var PriceFilter = React.createClass({
   render: function () {
     var buttons = pricePoints.map(function(string, idx) {
-      return <PriceFilterButton num={idx + 1} string={string} key={idx}/>;
+      return <PriceFilterButton num={idx + 1} title={string} key={idx}/>;
     });
 
     return(

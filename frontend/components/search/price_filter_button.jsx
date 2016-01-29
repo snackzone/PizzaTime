@@ -14,10 +14,7 @@ var PriceFilterButton = React.createClass({
     }
 
     return (
-      <div className="price-filter-button-container">
-        <div className="price-filter-button-tooltip">
-        {this.props.string}
-        </div>
+      <div className="price-filter-button-container" title={this.props.title}>
         <a href="#" className="price-filter-button"
                 onClick={this.handleClick}>
           {dollarSigns}
