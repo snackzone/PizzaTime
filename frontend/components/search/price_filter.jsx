@@ -1,14 +1,20 @@
 var React = require('react');
 var PriceFilterButton = require('./price_filter_button');
+var pricePoints = [
+  "inexpensive",
+  "moderate",
+  "pricey",
+  "mama mia!"
+];
 
 var PriceFilter = React.createClass({
   render: function () {
-    var buttons = [1, 2, 3, 4].map(function(num) {
-      return <PriceFilterButton num={num} key={num}/>;
+    var buttons = pricePoints.map(function(string, idx) {
+      return <PriceFilterButton num={idx + 1} string={string} key={idx}/>;
     });
 
     return(
-      <div className="price-filter-button-container">
+      <div className="price-filter">
         {buttons}
       </div>
     );

@@ -184,24 +184,63 @@ ul {
   font-weight: 900;
 }
 
-.price-filter-button-container {
+// .price-filter-button-container {
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+//   display: inline-block;
+//   overflow: hidden;
+//   margin: 10px 0 0 0;
+// }
+//
+// .price-filter-button-container > div {
+//   display: inline-block;
+// }
+//
+// .price-filter-button {
+//   border-radius: 0;
+//   background: white;
+//   border: 0;
+//   border-right: 1px solid #ccc;
+//   margin: 0;
+//   padding: 10px 15px;
+//   font-size: 14px;
+//   font-weight:400;
+//   color: #333333;
+//   position: relative;
+// }
+//
+// .price-filter-button-modal {
+//   position: absolute;
+//   top: 30;
+// }
+//
+// .price-filter-button:last-child {
+//   border: 0;
+// }
+//
+// .price-filter-button:hover {
+//   background: #aaa;
+// }
+.price-filter {
   border: 1px solid #ccc;
   border-radius: 5px;
-  display: inline-block;
-  overflow: hidden;
   margin: 10px 0 0 0;
+  float: left;
+}
+
+.price-filter-button-container {
+  float: left;
+  position: relative;
 }
 
 .price-filter-button {
-  border-radius: 0;
   background: white;
-  border: 0;
   border-right: 1px solid #ccc;
-  margin: 0;
-  padding: 10px 15px;
+  padding: 0px 15px;
   font-size: 14px;
   font-weight:400;
   color: #333333;
+  display: block;
 }
 
 .price-filter-button:last-child {
@@ -210,6 +249,27 @@ ul {
 
 .price-filter-button:hover {
   background: #aaa;
+}
+
+.price-filter-button-modal {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  display: none;
+  background: #000;
+  color: white;
+  border-radius: 7px;
+  padding: 10px 15px;
+  font-size: 10px;
+  z-index: 1;
+}
+
+.price-filter-button-container:hover .price-filter-button-modal{
+  display: block;
 }
 
 .search {

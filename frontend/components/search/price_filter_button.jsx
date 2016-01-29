@@ -2,7 +2,8 @@ var React = require('react');
 var FilterActions = require('../../actions/filter_actions');
 
 var PriceFilterButton = React.createClass({
-  handleClick: function () {
+  handleClick: function (e) {
+    e.preventDefault();
     FilterActions.receiveFilter({max_price: this.props.num});
   },
 
@@ -13,10 +14,15 @@ var PriceFilterButton = React.createClass({
     }
 
     return (
-      <button className="price-filter-button"
-              onClick={this.handleClick}>
-        {dollarSigns}
-      </button>
+      <div className="price-filter-button-container">
+        <div className="price-filter-button-modal">
+        {this.props.string}
+        </div>
+        <a href="#" className="price-filter-button"
+                onClick={this.handleClick}>
+          {dollarSigns}
+        </a>
+      </div>
     );
   }
 });
