@@ -68,6 +68,64 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/PMP9uDn.jpg?1"
 )
 
+Restaurant.create!(
+  name: "Grimaldi's Pizza",
+  address: "19-29 Old Fulton St, Brooklyn, NY 11201",
+  lat: 40.702563,
+  lng: -73.993332,
+  price_range: 2,
+  photo_url: "http://i.imgur.com/Jl5qEWn.jpg"
+)
+
+Restaurant.create!(
+  name: "ápizz",
+  address: "217 Eldridge St, New York, NY 10002",
+  lat: 40.721682,
+  lng: -73.990265,
+  price_range: 3,
+  photo_url: "http://i.imgur.com/OEXFnqK.jpg"
+)
+
+Restaurant.create!(
+  name: "Numero 28 Pizzeria",
+  address: "1431 1st Avenue, New York, NY 10021",
+  lat: 40.769308,
+  lng: -73.955084,
+  price_range: 2,
+  url: "http://www.numero28.com",
+  photo_url: "http://i.imgur.com/2Ftxb7r.jpg"
+)
+
+Restaurant.create!(
+  name: "Bricco",
+  address: "304 W 56th St, New York, NY 10019",
+  lat: 40.766167,
+  lng: -73.984089,
+  price_range: 3,
+  url: "http://www.bricconyc.com",
+  photo_url: "http://i.imgur.com/G1mR2Q9.jpg"
+)
+
+Restaurant.create!(
+  name: "Rizzo's Fine Pizza",
+  address: "30-13 Steinway St, Astoria, NY 11103",
+  lat: 40.763336,
+  lng: -73.915199,
+  price_range: 1,
+  url: "http://rizzosfinepizza.com",
+  photo_url: "http://i.imgur.com/F7TJ0bX.jpg"
+)
+
+Restaurant.create!(
+  name: "Totonno Pizzeria Napolitana",
+  address: "1524 Neptune Ave, Brooklyn, NY 11224",
+  lat: 40.578899,
+  lng: -73.983853,
+  price_range: 2,
+  url: "http://www.totonnosconeyisland.com",
+  photo_url: "http://i.imgur.com/59y65Ip.jpg"
+)
+
 User.create!(
   firstname: "Joey",
   surname: "Pepperoni",
