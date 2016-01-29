@@ -7,8 +7,8 @@ var ApiUtil = {
       dataType: "json",
       data: {user: user},
       url: "api/users",
-      success: function (data) {
-        ApiActions.signIn(data);
+      success: function (user) {
+        ApiActions.signIn(user);
       },
       error: function (data) {
         console.log("failure.");
@@ -59,15 +59,18 @@ var ApiUtil = {
     });
   },
 
-  submitSignInCredentials: function (credentials) {
+  submitSignInCredentials: function (credentials, successCB, errorCB) {
     $.ajax({
       method: "POST",
       dataType: "json",
       data: {user: credentials},
       url: "api/session",
-      success: function (data) {
+      success: function (user) {
         console.log("success");
-        ApiActions.signIn(data);
+        ApiActions.signIn(user);
+        if (successCB) {
+          successCB(user.id);
+        }
       },
       error: function () {
         console.log("failure.");

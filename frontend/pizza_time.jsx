@@ -9,9 +9,7 @@ var RestaurantStore = require('./stores/restaurant_store');
 var Header = require('./components/header/header');
 var SessionForm = require('./components/forms/session_form');
 var UserForm = require('./components/forms/user_form');
-
-//for debugging.
-CurrentUserStore = require('./stores/current_user_store');
+var UserShow = require('./components/users/show');
 
 var App = React.createClass({
   render: function () {
@@ -29,6 +27,7 @@ var routes = (
     <IndexRoute component={Search}/>
     <Route path="session/new" component={SessionForm}/>
     <Route path="users/new" component={UserForm}/>
+    <Route path="users/:id" component={UserShow}/>
   </Route>
 );
 

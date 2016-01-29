@@ -1,9 +1,10 @@
 var React = require('react');
+var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var ApiUtil = require('../../util/api_util');
 
 var SessionForm = React.createClass({
-  mixins: [LinkedStateMixin],
+  mixins: [History, LinkedStateMixin],
 
   getInitialState: function () {
     return {
@@ -14,14 +15,19 @@ var SessionForm = React.createClass({
 
   guestLogin: function (e) {
     e.preventDefault();
+
     var credentials = {email: "guest@pizza-time.com", password: "pizzatime"};
-    ApiUtil.submitSignInCredentials(credentials);
+    ApiUtil.submitSignInCredentials(
+      credentials, successCB.bind(this), errorCB.bind(this)
+    );
   },
 
   handleSubmit: function (e) {
     e.preventDefault();
     var credentials = Object.assign({}, this.state);
-    ApiUtil.submitSignInCredentials(credentials);
+    ApiUtil.submitSignInCredentials(
+      credentials, successCB.bind(this), errorCB.bind(this)
+    );
   },
 
   render: function () {
@@ -45,5 +51,13 @@ var SessionForm = React.createClass({
     );
   }
 });
+
+var successCB = function (id) {
+  this.history.pushState({}, "users/" + id);
+};
+
+var errorCB = function () {
+
+};
 
 module.exports = SessionForm;
