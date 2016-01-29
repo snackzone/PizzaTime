@@ -33,7 +33,7 @@ var SessionForm = React.createClass({
 
     var credentials = {email: "guest@pizza-time.com", password: "pizzatime"};
     SessionApiUtil.submitSignInCredentials(
-      credentials, successCB.bind(this), errorCB.bind(this)
+      credentials, successCB.bind(this)
     );
   },
 
@@ -41,8 +41,10 @@ var SessionForm = React.createClass({
     e.preventDefault();
     var credentials = Object.assign({}, this.state);
     SessionApiUtil.submitSignInCredentials(
-      credentials, successCB.bind(this), errorCB.bind(this)
+      credentials, successCB.bind(this)
     );
+
+    this.setState({password: ""});
   },
 
   render: function () {
@@ -76,10 +78,6 @@ var SessionForm = React.createClass({
 
 var successCB = function (id) {
   this.history.pushState({}, "users/" + id);
-};
-
-var errorCB = function () {
-
 };
 
 module.exports = SessionForm;

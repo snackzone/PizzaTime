@@ -1,12 +1,18 @@
 var React = require('react');
 var SessionApiUtil = require('../../util/session_api_util');
 var CurrentUserStore = require('../../stores/current_user_store');
+var History = require('react-router').History;
+
 
 var LoggedIn = React.createClass({
+  mixins: [History],
+
   handleSignOut: function (e) {
     e.preventDefault();
-    //...just in case.
-    SessionApiUtil.signOut();
+
+    SessionApiUtil.signOut(function () {
+      this.history.pushState({}, "/");
+    }.bind(this));
   },
 
   render: function () {

@@ -1,6 +1,7 @@
 var SessionApiActions = require('../actions/session_api_actions');
 var FlashActions = require('../actions/flash_actions');
 
+
 var SessionApiUtil = {
   fetchCurrentUser: function (callback) {
     $.ajax({
@@ -19,13 +20,16 @@ var SessionApiUtil = {
     });
   },
 
-  signOut: function () {
+  signOut: function (callback) {
     $.ajax({
       method: "DELETE",
       dataType: "json",
       url: "api/session",
       success: function (data) {
         SessionApiActions.signOut();
+        if (callback) {
+          callback();
+        }
       },
       error: function () {
         console.log("failed to sign out.");
@@ -33,7 +37,7 @@ var SessionApiUtil = {
     });
   },
 
-  submitSignInCredentials: function (credentials, successCB, errorCB) {
+  submitSignInCredentials: function (credentials, successCB) {
     $.ajax({
       method: "POST",
       dataType: "json",
