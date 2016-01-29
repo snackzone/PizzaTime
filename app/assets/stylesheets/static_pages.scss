@@ -189,24 +189,24 @@ ul {
   border-radius: 5px;
   margin: 10px 0 0 0;
   float: left;
+  background: white;
 }
 
 .price-filter-button-container {
   float: left;
   position: relative;
+  border-right: 1px solid #ccc;
 }
 
 .price-filter-button {
-  background: white;
-  border-right: 1px solid #ccc;
-  padding: 0px 15px;
+  padding: 10px 15px;
   font-size: 14px;
   font-weight:400;
   color: #333333;
   display: block;
 }
 
-.price-filter-button:last-child {
+.price-filter-button-container:last-child {
   border: 0;
 }
 
@@ -220,7 +220,7 @@ ul {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 23px;
+  bottom: 43px;
   background: #000;
   color: #fff;
   font-size: 12px;
