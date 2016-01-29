@@ -10,10 +10,14 @@ var Header = require('./components/header/header');
 var SessionForm = require('./components/forms/session_form');
 var UserForm = require('./components/forms/user_form');
 var UserShow = require('./components/users/show');
-var ApiUtil = require('./util/api_util');
 var CurrentUserStore = require('./stores/current_user_store');
+var SessionApiUtil = require('./util/session_api_util');
 
 var App = React.createClass({
+  componentWillMount: function () {
+    SessionApiUtil.fetchCurrentUser();
+  },
+
   render: function () {
     return(
       <div>

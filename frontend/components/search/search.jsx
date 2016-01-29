@@ -4,7 +4,6 @@ var Index = require("./index");
 var RestaurantStore = require("../../stores/restaurant_store");
 var FilterStore = require("../../stores/filter_store");
 var RestaurantApiUtil = require('../../util/restaurant_api_util');
-var ApiActions = require('../../actions/api_actions');
 var SearchNav = require('./search_nav');
 
 var Search = React.createClass({

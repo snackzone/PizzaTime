@@ -1,5 +1,4 @@
 var React = require('react');
-var ApiUtil = require('../../util/api_util');
 var FilterActions = require('../../actions/filter_actions');
 var RestaurantStore = require('../../stores/restaurant_store');
 var RestaurantActions = require('../../actions/restaurant_actions');

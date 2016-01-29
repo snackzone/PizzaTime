@@ -1,4 +1,4 @@
-var SessionApiActions = require('../actions/api_actions');
+var SessionApiActions = require('../actions/session_api_actions');
 
 var SessionApiUtil = {
   fetchCurrentUser: function (callback) {

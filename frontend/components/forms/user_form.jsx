@@ -1,6 +1,6 @@
 var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
-var UserApiUtil = require('../../util/api_util');
+var UserApiUtil = require('../../util/user_api_util');
 
 var UserForm = React.createClass({
   mixins: [LinkedStateMixin],
