@@ -27,7 +27,7 @@ class Restaurant < ActiveRecord::Base
       restaurants = Restaurant.in_price_range(restaurants, filters["max_price"])
     end
 
-    restaurants
+    restaurants.limit(10)
   end
 
   def self.in_price_range(restaurants, max_price_string)
