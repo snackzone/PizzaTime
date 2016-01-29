@@ -3,7 +3,7 @@ var Map = require("./map");
 var Index = require("./index");
 var RestaurantStore = require("../../stores/restaurant_store");
 var FilterStore = require("../../stores/filter_store");
-var ApiUtil = require('../../util/api_util');
+var RestaurantApiUtil = require('../../util/restaurant_api_util');
 var ApiActions = require('../../actions/api_actions');
 var SearchNav = require('./search_nav');
 
@@ -18,7 +18,7 @@ var Search = React.createClass({
   },
 
   componentDidMount: function () {
-    ApiUtil.fetchRestaurants(FilterStore.all());
+    RestaurantApiUtil.fetchRestaurants(FilterStore.all());
     this.restaurantListenerToken =
       RestaurantStore.addListener(this._changeRestaurants);
     this.filterListenerToken =
@@ -36,7 +36,7 @@ var Search = React.createClass({
 
   _changeFilters: function () {
     this.setState({filters: FilterStore.all()});
-    ApiUtil.fetchRestaurants(FilterStore.all());
+    RestaurantApiUtil.fetchRestaurants(FilterStore.all());
   },
 
   render: function () {
