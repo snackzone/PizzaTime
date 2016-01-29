@@ -42,8 +42,8 @@ function _ensureLoggedIn (nextState, replace, callback) {
   function _redirectIfNotLoggedIn () {
     if (!CurrentUserStore.isLoggedIn()) {
       replace({}, "/session/new");
-      callback();
     }
+    callback();
   }
 }
 

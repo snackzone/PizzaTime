@@ -16,13 +16,16 @@ var ApiUtil = {
     });
   },
 
-  fetchCurrentUser: function () {
+  fetchCurrentUser: function (callback) {
     $.ajax({
       method: "GET",
       dataType: "json",
       url: "api/session",
       success: function (data) {
         ApiActions.signIn(data);
+        if (callback) {
+          callback();
+        }
       },
       error: function (data) {
         console.log("failure.");
