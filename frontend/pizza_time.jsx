@@ -41,7 +41,7 @@ function _ensureLoggedIn (nextState, replace, callback) {
   if (CurrentUserStore.userHasBeenFetched()) {
     _redirectIfNotLoggedIn();
   } else {
-    ApiUtil.fetchCurrentUser(_redirectIfNotLoggedIn);
+    SessionApiUtil.fetchCurrentUser(_redirectIfNotLoggedIn);
   }
   function _redirectIfNotLoggedIn () {
     if (!CurrentUserStore.isLoggedIn()) {

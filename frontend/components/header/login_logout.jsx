@@ -5,28 +5,17 @@ var CurrentUserStore = require('../../stores/current_user_store');
 var SessionApiUtil = require('../../util/session_api_util');
 
 var LoginLogout = React.createClass({
-  getInitialState: function () {
-    return (
-      { currentUser: CurrentUserStore.currentUser() }
-    );
-  },
-
   componentDidMount: function () {
     this.currentUserListenerToken =
-      CurrentUserStore.addListener(this._change);
-    SessionApiUtil.fetchCurrentUser();
+      CurrentUserStore.addListener(this.forceUpdate.bind(this));
   },
 
   componentWillUnmount: function () {
     this.currentUserListenerToken.remove();
   },
 
-  _change: function () {
-    this.setState({ currentUser: CurrentUserStore.currentUser() });
-  },
-
   render: function () {
-    var currentUser = this.state.currentUser;
+    var currentUser = CurrentUserStore.currentUser();
 
     var display = currentUser ?
       <LoggedIn name={currentUser.firstname} /> : <LoggedOut/>;
