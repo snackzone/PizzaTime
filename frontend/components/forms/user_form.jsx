@@ -1,6 +1,7 @@
 var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var UserApiUtil = require('../../util/user_api_util');
+var FlashStore = require('../../stores/flash_store');
 
 var UserForm = React.createClass({
   mixins: [LinkedStateMixin],
@@ -12,19 +13,46 @@ var UserForm = React.createClass({
       email: "",
       zip: "",
       password: "",
-      password_confirmation: ""
+      password_confirmation: "",
+      flash: FlashStore.all()
     };
+  },
+
+  componentDidMount: function () {
+    this.flashListener = FlashStore.addListener(this._updateFlash);
+  },
+
+  componentWillUnmount: function () {
+    this.flashListener.remove();
+  },
+
+  _updateFlash: function () {
+    this.setState({flash: FlashStore.all()});
   },
 
   handleSubmit: function (e) {
     e.preventDefault();
     var user = Object.assign({}, this.state);
-    UserApiUtil.createUser(user);
+    UserApiUtil.createUser(user, successCB);
   },
 
   render: function () {
+    var errors;
+    if (this.state.flash.length > 0) {
+      var messages = this.state.flash.map(function(error, index) {
+        return <li key={index}>{error}</li>;
+      });
+      errors = (
+        <ul className="user-form-errors">
+          <h2>Your form contains the following errors:</h2>
+          {messages}
+        </ul>
+      );
+    }
+
     return (
       <section className="form-container group">
+        {errors}
         <form className="user-form form" onSubmit={this.handleSubmit}>
           <h2>Sign Up</h2>
           <p className="input-container group">
@@ -63,5 +91,9 @@ var UserForm = React.createClass({
     );
   }
 });
+
+successCB = function (id) {
+  this.history.pushState({}, "users/" + id);
+};
 
 module.exports = UserForm;

@@ -76,7 +76,7 @@ var SessionForm = React.createClass({
   }
 });
 
-var successCB = function (id) {
+successCB = function (id) {
   this.history.pushState({}, "users/" + id);
 };
 

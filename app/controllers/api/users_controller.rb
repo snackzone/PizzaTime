@@ -9,7 +9,7 @@ class Api::UsersController < ApplicationController
       sign_in(@user)
       render :show
     else
-      render json: {}
+      render json: {errors: @user.errors.full_messages}.to_json, status: 422
     end
   end
 
