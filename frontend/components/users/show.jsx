@@ -1,8 +1,14 @@
 var React = require('react');
+var CurrentUserStore = require('../../stores/current_user_store');
 
 var UserShow = React.createClass({
   render: function () {
-    return <h1>User show</h1>;
+    return (
+      <section className="user-show-container">
+        <h1>Hello, user!</h1>
+        <button>FILE UPLOAD</button>
+      </section>
+    );
   }
 });
 
