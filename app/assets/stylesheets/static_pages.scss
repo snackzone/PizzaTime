@@ -209,7 +209,7 @@ ul {
 //   position: relative;
 // }
 //
-// .price-filter-button-modal {
+// .price-filter-button-tooltip {
 //   position: absolute;
 //   top: 30;
 // }
@@ -251,7 +251,7 @@ ul {
   background: #aaa;
 }
 
-.price-filter-button-modal {
+.price-filter-button-tooltip {
   position: absolute;
   top: -30px;
   left: 0;
@@ -268,7 +268,7 @@ ul {
   z-index: 1;
 }
 
-.price-filter-button-container:hover .price-filter-button-modal{
+.price-filter-button-container:hover .price-filter-button-tooltip{
   display: block;
 }
 

@@ -15,7 +15,7 @@ var PriceFilterButton = React.createClass({
 
     return (
       <div className="price-filter-button-container">
-        <div className="price-filter-button-modal">
+        <div className="price-filter-button-tooltip">
         {this.props.string}
         </div>
         <a href="#" className="price-filter-button"
