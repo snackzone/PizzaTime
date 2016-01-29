@@ -303,6 +303,37 @@ ul {
   min-height: 240px;
 }
 
+.session-form-signup {
+  display: block;
+  float: right;
+  width: 430px;
+}
+
+.session-form-signup > h2 {
+  display: block;
+  text-align: center;
+}
+
+.sign-up-button {
+  display: block;
+  background: #BD0E01;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  box-shadow: 0 3px 3px #aaa;
+  color: white;
+  font-size: 16px;
+  font-weight: 900;
+  margin: auto;
+  text-align: center;
+  width: 105px;
+  margin-top: 40px;
+}
+
+.sign-up-button:hover {
+  background: #333333;
+}
+
 .form > h2 {
   font-weight: 900;
   color: #BD0E01;
@@ -348,7 +379,7 @@ ul {
   box-shadow: 0 1px 1px #eee;
 }
 
-.form > a {
+.guest-login {
   text-decoration: underline;
   color: blue;
   font-size: 12px;

@@ -2,6 +2,8 @@ var React = require('react');
 var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var SessionApiUtil = require('../../util/session_api_util');
+var ReactRouter = require('react-router');
+
 
 var SessionForm = React.createClass({
   mixins: [History, LinkedStateMixin],
@@ -31,6 +33,7 @@ var SessionForm = React.createClass({
   },
 
   render: function () {
+    var Link = ReactRouter.Link;
     return (
       <section className="form-container group">
         <form className="session-form form group" onSubmit={this.handleSubmit}>
@@ -44,9 +47,14 @@ var SessionForm = React.createClass({
             <label>Password</label>
             <input type="password" valueLink={this.linkState('password')}/>
           </p>
-          <a href="#" onClick={this.guestLogin}>Login as a guest user.</a>
+          <a href="#" className="guest-login" onClick={this.guestLogin}>Login as a guest user.</a>
           <button>Log In.</button>
         </form>
+
+        <div className="session-form-signup form">
+          <h2>Don't have an account yet?</h2>
+          <Link to="/users/new" className="sign-up-button">Sign up.</Link>
+        </div>
       </section>
     );
   }
