@@ -7,7 +7,7 @@ var LoggedOut = React.createClass({
     return (
       <div className="logged-out">
         <h1>You are not logged in.</h1>
-        <Link to="session/new">Sign in</Link> or <Link to="/users/new">Sign up.</Link>
+        <Link to="/session/new">Sign in</Link> or <Link to="/users/new">Sign up.</Link>
       </div>
     );
   }
