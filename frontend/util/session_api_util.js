@@ -1,28 +1,13 @@
-var ApiActions = require('../actions/api_actions');
+var SessionApiActions = require('../actions/api_actions');
 
-var ApiUtil = {
-  createUser: function (user) {
-    $.ajax({
-      method: "POST",
-      dataType: "json",
-      data: {user: user},
-      url: "api/users",
-      success: function (user) {
-        ApiActions.signIn(user);
-      },
-      error: function (data) {
-        console.log("failure.");
-      }
-    });
-  },
-
+var SessionApiUtil = {
   fetchCurrentUser: function (callback) {
     $.ajax({
       method: "GET",
       dataType: "json",
       url: "api/session",
       success: function (data) {
-        ApiActions.signIn(data);
+        SessionApiActions.signIn(data);
         if (callback) {
           callback();
         }
@@ -39,7 +24,7 @@ var ApiUtil = {
       dataType: "json",
       url: "api/session",
       success: function (data) {
-        ApiActions.signOut();
+        SessionApiActions.signOut();
       },
       error: function () {
         console.log("failed to sign out.");
@@ -54,8 +39,7 @@ var ApiUtil = {
       data: {user: credentials},
       url: "api/session",
       success: function (user) {
-        console.log("success");
-        ApiActions.signIn(user);
+        SessionApiActions.signIn(user);
         if (successCB) {
           successCB(user.id);
         }
@@ -67,4 +51,4 @@ var ApiUtil = {
   }
 };
 
-module.exports = ApiUtil;
+module.exports = SessionApiUtil;

@@ -1,12 +1,12 @@
 var React = require('react');
-var ApiUtil = require('../../util/api_util');
+var SessionApiUtil = require('../../util/session_api_util');
 var CurrentUserStore = require('../../stores/current_user_store');
 
 var LoggedIn = React.createClass({
   handleSignOut: function (e) {
     e.preventDefault();
     //...just in case.
-    ApiUtil.signOut();
+    SessionApiUtil.signOut();
   },
 
   render: function () {

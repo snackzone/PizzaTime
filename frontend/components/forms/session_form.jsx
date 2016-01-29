@@ -1,7 +1,7 @@
 var React = require('react');
 var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
-var ApiUtil = require('../../util/api_util');
+var SessionApiUtil = require('../../util/session_api_util');
 
 var SessionForm = React.createClass({
   mixins: [History, LinkedStateMixin],
@@ -17,7 +17,7 @@ var SessionForm = React.createClass({
     e.preventDefault();
 
     var credentials = {email: "guest@pizza-time.com", password: "pizzatime"};
-    ApiUtil.submitSignInCredentials(
+    SessionApiUtil.submitSignInCredentials(
       credentials, successCB.bind(this), errorCB.bind(this)
     );
   },
@@ -25,7 +25,7 @@ var SessionForm = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
     var credentials = Object.assign({}, this.state);
-    ApiUtil.submitSignInCredentials(
+    SessionApiUtil.submitSignInCredentials(
       credentials, successCB.bind(this), errorCB.bind(this)
     );
   },

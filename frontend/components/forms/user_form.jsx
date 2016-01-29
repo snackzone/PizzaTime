@@ -1,6 +1,6 @@
 var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
-var ApiUtil = require('../../util/api_util');
+var UserApiUtil = require('../../util/api_util');
 
 var UserForm = React.createClass({
   mixins: [LinkedStateMixin],
@@ -19,7 +19,7 @@ var UserForm = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
     var user = Object.assign({}, this.state);
-    ApiUtil.createUser(user);
+    UserApiUtil.createUser(user);
   },
 
   render: function () {
