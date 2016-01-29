@@ -17,6 +17,10 @@ var LoginLogout = React.createClass({
     ApiUtil.fetchCurrentUser();
   },
 
+  componentWillUnmount: function () {
+    this.currentUserListenerToken.remove();
+  },
+
   _change: function () {
     this.setState({ currentUser: CurrentUserStore.currentUser() });
   },

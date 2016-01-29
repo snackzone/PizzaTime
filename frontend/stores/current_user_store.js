@@ -2,27 +2,32 @@ var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 var CurrentUserConstants = require('../constants/current_user_constants');
 
-var _current_user = {};
+var _currentUser = {};
+var _currentUserHasBeenFetched = false;
 var CurrentUserStore = new Store(AppDispatcher);
 
 CurrentUserStore.currentUser = function () {
-  if (Object.keys(_current_user).length === 0) {
+  if (Object.keys(_currentUser).length === 0) {
     return false;
   } else {
-    return $.extend({}, _current_user);
+    return $.extend({}, _currentUser);
   }
 };
 
 CurrentUserStore.signIn = function (user) {
-  _current_user = user;
+  _currentUser = user;
 };
 
 CurrentUserStore.signOut = function () {
-  _current_user = {};
+  _currentUser = {};
 };
 
-CurrentUserStore.loggedInStatus = function () {
-  return _current_user ? true : false;
+CurrentUserStore.isLoggedIn = function () {
+  return !!_currentUser.id;
+};
+
+CurrentUserStore.userHasBeenFetched = function () {
+  return _currentUserHasBeenFetched;
 };
 
 CurrentUserStore.__onDispatch = function (payload) {
@@ -33,6 +38,7 @@ CurrentUserStore.__onDispatch = function (payload) {
     break;
 
   case CurrentUserConstants.SIGN_IN:
+    _currentUserHasBeenFetched = true;
     CurrentUserStore.signIn(payload.user);
     CurrentUserStore.__emitChange();
     break;

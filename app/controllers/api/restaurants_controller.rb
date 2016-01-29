@@ -3,8 +3,10 @@ class Api::RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
     if params[:filters]
       @restaurants = Restaurant.filtered(@restaurants, params[:filters])
+    else
+      @restaurants = @restaurants.limit(10)
     end
 
-    @restuarants
+    @restaurants
   end
 end

@@ -25,6 +25,11 @@ var Search = React.createClass({
       FilterStore.addListener(this._changeFilters);
   },
 
+  componentWillUnmount: function () {
+    this.restaurantListenerToken.remove();
+    this.filterListenerToken.remove();
+  },
+
   _changeRestaurants: function () {
     this.setState({restaurants: RestaurantStore.all()});
   },

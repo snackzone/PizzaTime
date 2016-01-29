@@ -17,6 +17,10 @@ var Map = React.createClass({
       RestaurantStore.addListener(this.reconcileMarkers);
   },
 
+  componentWillUnmount: function () {
+    this.restaurantListenerToken.remove();
+  },
+
   createMap: function () {
     var mapDOMNode = this.refs.map;
     var mapOptions = {
