@@ -3,6 +3,7 @@ var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var SessionApiUtil = require('../../util/session_api_util');
 var ReactRouter = require('react-router');
+var FlashStore = require('../../stores/flash_store');
 
 
 var SessionForm = React.createClass({
@@ -13,6 +14,18 @@ var SessionForm = React.createClass({
       email: "",
       password: ""
     };
+  },
+
+  componentDidMount: function () {
+    this.flashListener = FlashStore.addListener(this._updateFlash);
+  },
+
+  componentWillUnmount: function () {
+    this.flashListener.remove();
+  },
+
+  _updateFlash: function () {
+    this.setState({flash: FlashStore.all()});
   },
 
   guestLogin: function (e) {
@@ -39,6 +52,7 @@ var SessionForm = React.createClass({
         <form className="session-form form group" onSubmit={this.handleSubmit}>
           <h2>Log In</h2>
           <p>Please enter your email address and password to log in.</p>
+          <p className="session-form-errors">{this.state.flash}</p>
           <p className="input-container group">
             <label>Email Address</label>
             <input type="text" valueLink={this.linkState('email')}/>

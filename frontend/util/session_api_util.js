@@ -1,4 +1,5 @@
 var SessionApiActions = require('../actions/session_api_actions');
+var FlashActions = require('../actions/flash_actions');
 
 var SessionApiUtil = {
   fetchCurrentUser: function (callback) {
@@ -44,8 +45,8 @@ var SessionApiUtil = {
           successCB(user.id);
         }
       },
-      error: function () {
-        console.log("failure.");
+      error: function (data) {
+        FlashActions.receiveFlash(data.responseJSON.errors);
       }
     });
   }

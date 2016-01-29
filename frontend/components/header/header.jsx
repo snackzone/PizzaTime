@@ -12,7 +12,6 @@ var Header = React.createClass({
 
   render: function () {
     var location = parseLocationHash(this.state.locationHash);
-    console.log("location hash is " + location);
     var loginLogout;
 
     if (["/session/new", "/users/new"].indexOf(location) === -1) {

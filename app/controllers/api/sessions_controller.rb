@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
       sign_in(@user)
       render :show
     else
-      render json: {} #ERRROR MESSAGE GOES HERE
+      render json: {errors: ["Invalid username or password."]}.to_json, status: 401
     end
   end
 
