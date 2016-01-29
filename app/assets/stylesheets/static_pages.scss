@@ -168,8 +168,8 @@ ul {
 }
 
 .search-nav-section {
-  height: 70px;
-  padding: 30px 0;
+  min-height: 70px;
+  padding: 30px 0 10px;
   width: 960px;
   margin: auto;
 }
@@ -186,9 +186,10 @@ ul {
 
 .price-filter-button-container {
   border: 1px solid #ccc;
-  border-radius: 7px;
+  border-radius: 5px;
   display: inline-block;
   overflow: hidden;
+  margin: 10px 0 0 0;
 }
 
 .price-filter-button {
@@ -197,8 +198,10 @@ ul {
   border: 0;
   border-right: 1px solid #ccc;
   margin: 0;
-  padding: 10px;
-  font-size: 12px;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight:400;
+  color: #333333;
 }
 
 .price-filter-button:last-child {
