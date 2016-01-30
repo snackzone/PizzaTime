@@ -72,8 +72,8 @@ header {
 
 img {
   display: block;
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
 }
 
 ul {
@@ -384,6 +384,10 @@ ul {
   border-radius: 3px;
   border: 1px solid #ccc;
   box-shadow: 0 1px 1px #eee;
+}
+
+.form > button:hover {
+  background: #aaa;
 }
 
 .guest-login {

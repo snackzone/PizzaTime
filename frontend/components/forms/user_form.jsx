@@ -2,6 +2,7 @@ var React = require('react');
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var UserApiUtil = require('../../util/user_api_util');
 var FlashStore = require('../../stores/flash_store');
+var FlashActions = require('../../actions/flash_actions');
 
 var UserForm = React.createClass({
   mixins: [LinkedStateMixin],
@@ -24,6 +25,7 @@ var UserForm = React.createClass({
 
   componentWillUnmount: function () {
     this.flashListener.remove();
+    FlashActions.receiveFlash([]);
   },
 
   _updateFlash: function () {

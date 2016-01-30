@@ -4,6 +4,7 @@ var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var SessionApiUtil = require('../../util/session_api_util');
 var ReactRouter = require('react-router');
 var FlashStore = require('../../stores/flash_store');
+var FlashActions = require('../../actions/flash_actions');
 
 
 var SessionForm = React.createClass({
@@ -22,6 +23,7 @@ var SessionForm = React.createClass({
 
   componentWillUnmount: function () {
     this.flashListener.remove();
+    FlashActions.receiveFlash([]);
   },
 
   _updateFlash: function () {

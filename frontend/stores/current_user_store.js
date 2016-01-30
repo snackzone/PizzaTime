@@ -44,7 +44,6 @@ CurrentUserStore.__onDispatch = function (payload) {
     break;
 
   case CurrentUserConstants.UPDATE_PHOTO:
-    debugger
     _currentUser.photo_url = payload.photo_url;
     CurrentUserStore.__emitChange();
   }
