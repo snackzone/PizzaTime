@@ -27,7 +27,7 @@ var UserApiUtil = {
       contentType: false,
       dataType: 'json',
       data: formData,
-      success: function (photo) {
+      success: function (user) {
         CurrentUserActions.receiveNewInfo(user);
       },
       error: function () {
