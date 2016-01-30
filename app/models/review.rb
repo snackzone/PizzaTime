@@ -12,12 +12,12 @@
 #
 
 class Review < ActiveRecord::Base
-  validates :user_id, :restaurant_id, presence: true
-  validates :user_id, uniqueness: { scope: :restaurant_id,
-        message: "Users may not review a restaurant more than once." }
+  validates :user, :restaurant, presence: true
+  validates :user, uniqueness: { scope: :restaurant,
+        message: "may not review a restaurant more than once." }
 
   validates :rating, inclusion: { in: 1..5 }
-  validates :body, length: {maximum: 300}
+  validates :body, length: {minimum: 20, maximum: 300}
 
   belongs_to :user
   belongs_to :restaurant
