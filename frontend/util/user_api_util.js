@@ -28,10 +28,27 @@ var UserApiUtil = {
       dataType: 'json',
       data: formData,
       success: function (photo) {
-        CurrentUserActions.receivePhoto(photo);
+        CurrentUserActions.receiveNewInfo(user);
       },
       error: function () {
         console.log("failed to upload photo.");
+      }
+    });
+  },
+
+  updateInfo: function (user, successCB) {
+    $.ajax({
+      method: "PATCH",
+      dataType: "json",
+      data: {user: user},
+      url: "api/users/" + user.id,
+      success: function (user) {
+        CurrentUserActions.receiveNewInfo(user);
+        FlashActions.receiveFlash(["Profile updated!"]);
+      },
+      error: function (data) {
+        console.log("failure.");
+        FlashActions.receiveFlash(data.responseJSON.errors);
       }
     });
   }

@@ -43,8 +43,8 @@ CurrentUserStore.__onDispatch = function (payload) {
     CurrentUserStore.__emitChange();
     break;
 
-  case CurrentUserConstants.UPDATE_PHOTO:
-    _currentUser.photo_url = payload.photo_url;
+  case CurrentUserConstants.UPDATE_INFO:
+    CurrentUserStore.signIn(payload.user);
     CurrentUserStore.__emitChange();
   }
 };
