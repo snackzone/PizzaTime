@@ -11,6 +11,7 @@ var UserShow = React.createClass({
       <div>
         <UserNav/>
         <section className="user-show">
+        {this.props.children}
         </section>
       </div>
     );

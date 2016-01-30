@@ -1,6 +1,8 @@
 var React = require('react');
 var CurrentUserStore = require('../../stores/current_user_store');
 var UserApiUtil = require('../../util/user_api_util');
+var ReactRouter = require('react-router');
+
 
 var UserNav = React.createClass({
   componentDidMount: function () {
@@ -34,6 +36,7 @@ var UserNav = React.createClass({
 
   render: function () {
     var currentUser = CurrentUserStore.currentUser();
+    var Link = ReactRouter.Link;
 
     return (
       <nav className="user-nav">
@@ -54,6 +57,9 @@ var UserNav = React.createClass({
                 onChange={this.changeFile}
               />
             </div>
+          </div>
+          <div className="user-nav-right group">
+            <Link to={"/users/" + currentUser.id + "/edit"}>Update Profile</Link>
           </div>
         </div>
       </nav>

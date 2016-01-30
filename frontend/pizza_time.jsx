@@ -12,6 +12,7 @@ var UserForm = require('./components/forms/user_form');
 var UserShow = require('./components/users/show');
 var CurrentUserStore = require('./stores/current_user_store');
 var SessionApiUtil = require('./util/session_api_util');
+var UserEdit = require('./components/users/edit');
 
 var App = React.createClass({
   componentWillMount: function () {
@@ -33,7 +34,9 @@ var routes = (
     <IndexRoute component={Search}/>
     <Route path="session/new" component={SessionForm}/>
     <Route path="users/new" component={UserForm}/>
-    <Route path="users/:id" component={UserShow} onEnter={_ensureLoggedIn}/>
+    <Route path="users/:id" component={UserShow} onEnter={_ensureLoggedIn}>
+      <Route path="edit" component={UserEdit} onEnter={_ensureLoggedIn}/>
+    </Route>
   </Route>
 );
 
