@@ -18,6 +18,9 @@ class Restaurant < ActiveRecord::Base
   validates :name, :address, :lat, :lng, presence: true;
   validates :price_range, inclusion: { in: 1..4 }
 
+  has_many :reviews
+  has_many :reviewers, through: :reviews, source: :user
+
   def self.filtered(restaurants, filters)
     if filters["bounds"]
       restaurants = Restaurant.in_bounds(restaurants, filters["bounds"])

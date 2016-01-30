@@ -2,16 +2,21 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  firstname       :string           not null
-#  surname         :string           not null
-#  email           :string           not null
-#  zip             :string           not null
-#  password_digest :string           not null
-#  session_token   :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                 :integer          not null, primary key
+#  firstname          :string           not null
+#  surname            :string           not null
+#  email              :string           not null
+#  zip                :string           not null
+#  password_digest    :string           not null
+#  session_token      :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  photo_file_name    :string
+#  photo_content_type :string
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
 #
+
 class User < ActiveRecord::Base
   validates :firstname, :surname, :email, :password_digest,
   :session_token, presence: true
@@ -23,6 +28,9 @@ class User < ActiveRecord::Base
   validates_format_of :zip, with: /^\d{5}(-\d{4})?$/, multiline: true, message: "invalid zip"
 
   validates :password, length: { minimum: 6, allow_nil: true }, confirmation: true
+
+  has_many :reviews
+  has_many :reviewed_restaurants, through: :reviews, source: :restaurant
 
   attr_reader :password
 
