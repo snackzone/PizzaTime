@@ -60,6 +60,7 @@ var UserNav = React.createClass({
           </div>
           <div className="user-nav-right group">
             <Link to={"/users/" + currentUser.id + "/edit"}>Update Profile</Link>
+            <Link to={"/users/" + currentUser.id + "/reviews"}>Your Reviews</Link>
           </div>
         </div>
       </nav>

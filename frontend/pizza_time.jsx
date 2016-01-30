@@ -13,6 +13,7 @@ var UserShow = require('./components/users/show');
 var CurrentUserStore = require('./stores/current_user_store');
 var SessionApiUtil = require('./util/session_api_util');
 var UserEdit = require('./components/users/edit');
+var UserReviews = require('./components/users/user_reviews');
 
 var App = React.createClass({
   componentWillMount: function () {
@@ -36,6 +37,7 @@ var routes = (
     <Route path="users/new" component={UserForm}/>
     <Route path="users/:id" component={UserShow} onEnter={_ensureLoggedIn}>
       <Route path="edit" component={UserEdit} onEnter={_ensureLoggedIn}/>
+      <Route path="reviews" component={UserReviews} onEnter={_ensureLoggedIn}/>
     </Route>
   </Route>
 );
