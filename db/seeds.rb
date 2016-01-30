@@ -9,7 +9,7 @@
 Restaurant.destroy_all
 User.destroy_all
 
-Restaurant.create!(
+vinnies = Restaurant.create!(
   name: "Vinnie's Pizzeria",
   address: "253 Nassau Ave, Brooklyn, NY 1122",
   lat: 40.725927,
@@ -19,7 +19,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/jMuFvgC.jpg"
 )
 
-Restaurant.create!(
+lombardis = Restaurant.create!(
   name: "Lombardi's Pizza",
   address: "32 Spring St, New York, NY 10012",
   lat: 40.721587,
@@ -29,7 +29,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/klHb9CO.jpg"
 )
 
-Restaurant.create!(
+l_and_b = Restaurant.create!(
   name: "L&B Spumoni Gardens",
   address: "2725 86th St, Brooklyn, NY 11223",
   lat: 40.594716,
@@ -39,7 +39,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/D3hvyKt.jpg"
 )
 
-Restaurant.create!(
+louie_and_ernies = Restaurant.create!(
   name: "Louie & Ernie's Pizza",
   address: "1300 Crosby Ave, Bronx, NY 10461",
   lat: 40.838182,
@@ -48,7 +48,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/JNRw8Ax.jpg"
 )
 
-Restaurant.create!(
+joes = Restaurant.create!(
   name: "Joe's Pizza",
   address: "7 Carmine Street, New York, NY 10014",
   lat: 40.730449,
@@ -58,7 +58,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/41GXzBQ.jpg"
 )
 
-Restaurant.create!(
+paulie_gees = Restaurant.create!(
   name: "Paulie Gee's",
   address: "60 Greenpoint Ave, Brooklyn, NY 11222",
   lat: 40.729805,
@@ -68,7 +68,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/PMP9uDn.jpg?1"
 )
 
-Restaurant.create!(
+grimaldis = Restaurant.create!(
   name: "Grimaldi's Pizza",
   address: "19-29 Old Fulton St, Brooklyn, NY 11201",
   lat: 40.702563,
@@ -77,7 +77,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/Jl5qEWn.jpg"
 )
 
-Restaurant.create!(
+apizz = Restaurant.create!(
   name: "ápizz",
   address: "217 Eldridge St, New York, NY 10002",
   lat: 40.721682,
@@ -86,7 +86,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/OEXFnqK.jpg"
 )
 
-Restaurant.create!(
+numero_28 = Restaurant.create!(
   name: "Numero 28 Pizzeria",
   address: "1431 1st Avenue, New York, NY 10021",
   lat: 40.769308,
@@ -96,7 +96,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/2Ftxb7r.jpg"
 )
 
-Restaurant.create!(
+bricco = Restaurant.create!(
   name: "Bricco",
   address: "304 W 56th St, New York, NY 10019",
   lat: 40.766167,
@@ -106,7 +106,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/G1mR2Q9.jpg"
 )
 
-Restaurant.create!(
+rizzos = Restaurant.create!(
   name: "Rizzo's Fine Pizza",
   address: "30-13 Steinway St, Astoria, NY 11103",
   lat: 40.763336,
@@ -116,7 +116,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/F7TJ0bX.jpg"
 )
 
-Restaurant.create!(
+totonno = Restaurant.create!(
   name: "Totonno Pizzeria Napolitana",
   address: "1524 Neptune Ave, Brooklyn, NY 11224",
   lat: 40.578899,
@@ -126,7 +126,7 @@ Restaurant.create!(
   photo_url: "http://i.imgur.com/59y65Ip.jpg"
 )
 
-User.create!(
+joey = User.create!(
   firstname: "Joey",
   surname: "Pepperoni",
   email: "guest@pizza-time.com",
@@ -134,7 +134,7 @@ User.create!(
   password: "pizzatime"
 )
 
-User.create!(
+zach = User.create!(
   firstname: "Zach",
   surname: "Moroni",
   email: "zachary.moroni@gmail.com",
@@ -142,6 +142,19 @@ User.create!(
   password: "zachzach"
 )
 
+zach.reviews.create!(
+  body: "come for the pizza, stay for the attitude.",
+  rating: 5,
+  restaurant_id: totonno.id
+)
+
+Restaurant.all.each do |restaurant|
+  joey.reviews.create!(
+    restaurant_id: restaurant.id,
+    rating: 5,
+    body: "My favorite slice is at #{restaurant.name}"
+  )
+end
 
 
 
