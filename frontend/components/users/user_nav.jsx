@@ -1,6 +1,7 @@
 var React = require('react');
 var CurrentUserStore = require('../../stores/current_user_store');
 var UserApiUtil = require('../../util/user_api_util');
+var PhotoUploadModal = require('./photo_upload_modal');
 
 var UserNav = React.createClass({
 
@@ -62,6 +63,7 @@ var UserNav = React.createClass({
               onSubmit={this.handleSubmit}
             />
           </div>
+          <PhotoUploadModal/>
         </div>
       </nav>
     );
