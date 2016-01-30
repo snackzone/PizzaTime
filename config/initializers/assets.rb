@@ -5,6 +5,8 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( map_marker_solid.png )
 
+Rails.application.config.assets.precompile += %w( dropdown-arrow-sprite.png )
+
 (1..10).each do |n|
   Rails.application.config.assets.precompile += [ "#{n}_black.png"]
   Rails.application.config.assets.precompile += [ "#{n}_red.png"]

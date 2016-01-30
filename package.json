@@ -22,7 +22,7 @@
     "url": "https://github.com/snackzone/PizzaTime/issues"
   },
   "homepage": "https://github.com/snackzone/PizzaTime#readme",
-    "dependencies": {
+  "dependencies": {
     "babel-core": "^6.1.4",
     "babel-loader": "^6.1.0",
     "babel-preset-react": "^6.1.4",
@@ -31,11 +31,12 @@
     "react": "^0.14.2",
     "react-addons-linked-state-mixin": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-onclickoutside": "^4.5.0",
     "react-router": "1.0.2",
     "webpack": "^1.12.4"
   },
   "engines": {
-  "node": "4.1.1",
-  "npm": "2.1.x"
+    "node": "4.1.1",
+    "npm": "2.1.x"
   }
 }

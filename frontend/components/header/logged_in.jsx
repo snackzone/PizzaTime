@@ -1,25 +1,40 @@
 var React = require('react');
-var SessionApiUtil = require('../../util/session_api_util');
 var CurrentUserStore = require('../../stores/current_user_store');
-var History = require('react-router').History;
+var LoggedInDropdown = require('./logged_in_dropdown');
 
 
 var LoggedIn = React.createClass({
-  mixins: [History],
+  mixins: [require('react-onclickoutside')],
 
-  handleSignOut: function (e) {
+  getInitialState: function () {
+    return {focused: false};
+  },
+
+  componentWillReceiveProps: function () {
+    this.setState({focused: false});
+  },
+
+  dropdownToggle: function (e) {
     e.preventDefault();
+    this.setState({focused: !this.state.focused});
+  },
 
-    SessionApiUtil.signOut(function () {
-      this.history.pushState({}, "/");
-    }.bind(this));
+  handleClickOutside: function (e) {
+    if (this.state.focused) {
+      this.setState({focused: false});
+    }
   },
 
   render: function () {
+    var currentUser = CurrentUserStore.currentUser();
+
     return (
-      <div className="logged-in">
-        <h1>Hello, {this.props.name}!</h1>
-        <button onClick={this.handleSignOut}>Sign Out</button>
+      <div className="logged-in-dropdown-container">
+        <div className="logged-in group" onClick={this.dropdownToggle}>
+          <img className="avatar-thumb" src={currentUser.photo_url}/>
+          <img className="logged-in-dropdown-arrow" src={window.PizzaTime.imageUrls.sprites.dropdown}/>
+        </div>
+        {this.state.focused ? <LoggedInDropdown user={currentUser}/> : null}
       </div>
     );
   }

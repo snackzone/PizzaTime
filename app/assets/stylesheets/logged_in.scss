@@ -1,0 +1,95 @@
+.logged-in {
+  color: white;
+  border: 1px solid #333333;
+  border-radius: 5px;
+}
+
+.logged-in > button {
+  margin: 10px 0;
+}
+
+.avatar-thumb {
+  height: 27px;
+  width: auto;
+  float: left;
+}
+
+.logged-in-dropdown-arrow {
+  display: block;
+  box-sizing: border-box;
+  width: auto;
+  height: 27px;
+  padding: 5px;
+  float: right;
+}
+
+.logged-in-dropdown-container {
+  position: relative;
+}
+
+.logged-in-dropdown {
+  display: block;
+  position: absolute;
+  background: white;
+  padding: 12px;
+  border-radius: 3px;
+  right: -50%;
+  top: 40px;
+  width: 200px;
+  color: #3B65A7;
+  box-shadow: 0 3px 3px #aaa;
+}
+
+.logged-in-dropdown:before {
+  content: "";
+  position: absolute;
+  left: 75%;
+  transform: translateX(-50%);
+  border-bottom: 10px solid white;
+  border-top: 0;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  top: -10px;
+}
+
+.logged-in-dropdown > li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+  white-space: nowrap;
+}
+
+.logged-in-dropdown > li:first-child {
+  padding: 0 0 10px 0;
+}
+
+.logged-in-dropdown> li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.sign-out-link {
+  font-weight: 900;
+  text-align: left;
+  font-size: 12px;
+}
+
+.sign-out-link:hover {
+  text-decoration: underline;
+}
+
+.dropdown-username:hover {
+  text-decoration: underline;
+}
+
+.dropdown-avatar {
+  float: left;
+  border-radius: 3px;
+  width: 63px;
+}
+
+.dropdown-username {
+  float: left;
+  display: block;
+  font-weight: 900;
+  margin-left: 10px;
+}
