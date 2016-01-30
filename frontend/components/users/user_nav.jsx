@@ -38,20 +38,22 @@ var UserNav = React.createClass({
     return (
       <nav className="user-nav">
         <div className="user-nav-container group">
-          <div className="photo-box">
-            <img className="profile-photo" src={currentUser.photo_url}/>
-            <label htmlFor="file" className="change-profile-picture">Update Photo.</label>
-          </div>
-          <div className="profile-info-container">
-            <h1 className="user-name">
-              {currentUser.firstname} {currentUser.surname.substring(0, 1)}.
-            </h1>
-            <input
-              id="file"
-              className="file"
-              type="file"
-              onChange={this.changeFile}
-            />
+          <div className="user-nav-left group">
+            <div className="photo-box">
+              <img className="profile-photo" src={currentUser.photo_url}/>
+              <label htmlFor="file" className="change-profile-picture">Update Photo.</label>
+            </div>
+            <div className="profile-info-container">
+              <h1 className="user-name">
+                {currentUser.firstname} {currentUser.surname.substring(0, 1)}.
+              </h1>
+              <input
+                id="file"
+                className="file"
+                type="file"
+                onChange={this.changeFile}
+              />
+            </div>
           </div>
         </div>
       </nav>

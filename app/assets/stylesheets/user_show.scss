@@ -10,6 +10,11 @@
   padding: 30px 0 10px;
   width: 960px;
   margin: auto;
+}
+
+.user-nav-left {
+  float: left;
+  width: 50%;
   position: relative;
 }
 
@@ -74,4 +79,5 @@
   font-size: 30px;
   display: block;
   font-color: #333333;
+  float: right;
 }

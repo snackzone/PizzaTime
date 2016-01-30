@@ -78,8 +78,8 @@ var SessionForm = React.createClass({
   }
 });
 
-successCB = function (id) {
+function successCB (id) {
   this.history.pushState({}, "users/" + id);
-};
+}
 
 module.exports = SessionForm;

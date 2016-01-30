@@ -3,9 +3,11 @@ var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var UserApiUtil = require('../../util/user_api_util');
 var FlashStore = require('../../stores/flash_store');
 var FlashActions = require('../../actions/flash_actions');
+var History = require('react-router').History;
+
 
 var UserForm = React.createClass({
-  mixins: [LinkedStateMixin],
+  mixins: [History, LinkedStateMixin],
 
   getInitialState: function () {
     return {
@@ -94,8 +96,8 @@ var UserForm = React.createClass({
   }
 });
 
-successCB = function (id) {
+function successCB (id) {
   this.history.pushState({}, "users/" + id);
-};
+}
 
 module.exports = UserForm;

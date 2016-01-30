@@ -9,10 +9,7 @@ var LoggedInDropdown = React.createClass({
 
   handleSignOut: function (e) {
     e.preventDefault();
-
-    SessionApiUtil.signOut(function () {
-      this.history.pushState({}, "/");
-    }.bind(this));
+    SessionApiUtil.signOut(successCB.bind(this));
   },
 
   render: function () {
@@ -35,5 +32,9 @@ var LoggedInDropdown = React.createClass({
     );
   }
 });
+
+function successCB (id) {
+  this.history.pushState({}, "/");
+}
 
 module.exports = LoggedInDropdown;
