@@ -12,6 +12,10 @@ var ReviewIndex = React.createClass({
     this.reviewListener = ReviewStore.addListener(this._change);
   },
 
+  componentWillUnmount: function () {
+    this.reviewListener.remove();
+  },
+
   _change: function () {
     this.setState({reviews: ReviewStore.findReviewsByUserId(this.props.user.id)});
   },

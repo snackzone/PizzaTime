@@ -1,15 +1,45 @@
 var React = require('react');
 var CurrentUserStore = require('../../stores/current_user_store');
+var UserStore = require('../../stores/user_store');
 var UserApiUtil = require('../../util/user_api_util');
 var UserNav = require('./user_nav');
 
 var UserShow = React.createClass({
-  render: function () {
-    var currentUser = CurrentUserStore.currentUser();
+  getInitialState: function () {
+    return ({
+      user: UserStore.find(this.props.params.id),
+      isCurrentUser: CurrentUserStore.isCurrentUser(this.props.params.id)
+    });
+  },
 
+  componentWillMount: function () {
+    if (!this.state.user.id) {
+      UserApiUtil.fetchById(this.props.params.id);
+    }
+    this.currentUserListener = CurrentUserStore.addListener(this.change);
+    this.userListener = UserStore.addListener(this.change);
+  },
+
+  change: function () {
+    this.setState({
+      user: UserStore.find(this.props.params.id),
+      isCurrentUser: CurrentUserStore.isCurrentUser(this.props.params.id)
+    });
+  },
+
+  componentWillUnmount: function () {
+    this.currentUserListener.remove();
+    this.userListener.remove();
+  },
+
+  componentWillReceiveProps: function() {
+    this.change();
+  },
+
+  render: function () {
     return (
       <div>
-        <UserNav/>
+        <UserNav user={this.state.user} isCurrentUser={this.state.isCurrentUser}/>
         <section className="user-show">
         {this.props.children}
         </section>

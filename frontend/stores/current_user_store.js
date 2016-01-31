@@ -1,6 +1,7 @@
 var Store = require('flux/utils').Store;
 var AppDispatcher = require('../dispatcher/dispatcher');
 var CurrentUserConstants = require('../constants/current_user_constants');
+var UserApiActions = require('../actions/user_api_actions');
 
 var _currentUser = {};
 var _currentUserHasBeenFetched = false;

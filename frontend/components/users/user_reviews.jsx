@@ -1,23 +1,23 @@
 var React = require('react');
 var ReviewIndex = require('../reviews/index');
-var CurrentUserStore = require('../../stores/current_user_store');
+var UserStore = require('../../stores/user_store');
 
 var UserReviews = React.createClass({
   getInitialState: function () {
-    return {user: CurrentUserStore.currentUser()};
+    return {user: UserStore.find(this.props.params.id)};
   },
 
   componentDidMount: function () {
-    this.currentUserListener =
-      CurrentUserStore.addListener(this._change);
+    this.userListener =
+      UserStore.addListener(this._change);
   },
 
   componentWillUnmount: function () {
-    this.currentUserListener.remove();
+    this.userListener.remove();
   },
 
   _change: function () {
-    this.setState({user: CurrentUserStore.currentUser()});
+    this.setState({user: UserStore.find(this.props.params.id)});
   },
 
   render: function () {

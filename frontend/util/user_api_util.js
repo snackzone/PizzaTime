@@ -30,7 +30,6 @@ var UserApiUtil = {
       data: formData,
       success: function (user) {
         CurrentUserActions.receiveNewInfo(user);
-        UserApiActions.receiveUser(user);
       },
       error: function () {
         console.log("failed to upload photo.");
@@ -46,7 +45,6 @@ var UserApiUtil = {
       url: "api/users/" + user.id,
       success: function (user) {
         CurrentUserActions.receiveNewInfo(user);
-        UserApiActions.receiveUser(user);
         FlashActions.receiveFlash(["Profile updated!"]);
       },
       error: function (data) {
