@@ -4,27 +4,11 @@ var ReviewApiUtil = require('../../util/review_api_util');
 var ReviewStore = require('../../stores/review_store');
 
 var ReviewIndex = React.createClass({
-  getInitialState: function () {
-    return {reviews: ReviewApiUtil.fetchReviewsForUser(this.props.user.id)};
-  },
-
-  componentDidMount: function () {
-    this.reviewListener = ReviewStore.addListener(this._change);
-  },
-
-  componentWillUnmount: function () {
-    this.reviewListener.remove();
-  },
-
-  _change: function () {
-    this.setState({reviews: ReviewStore.findReviewsByUserId(this.props.user.id)});
-  },
-
   render: function () {
     var reviews;
-
-    if (this.state.reviews) {
-      reviews = this.state.reviews.map(function(review, index) {
+    var user = this.props.user;
+    if (user.reviews) {
+      reviews = user.reviews.map(function(review, index) {
         return <ReviewIndexItem review={review} key={index}/>;
       });
     }

@@ -17,11 +17,11 @@ class Api::SessionsController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.includes(reviews: [:restaurant]).find(current_user.id)
     if @user
-      render :show
+      render "api/users/show"
     else
-      render json: {}
+      render json: {}, status: 404
     end
   end
 
