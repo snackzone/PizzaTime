@@ -14,7 +14,7 @@ var CurrentUserStore = require('./stores/current_user_store');
 var SessionApiUtil = require('./util/session_api_util');
 var UserEdit = require('./components/users/edit');
 var UserReviews = require('./components/users/user_reviews');
-UserStore = require('./stores/user_store');
+var UserStore = require('./stores/user_store');
 
 var App = React.createClass({
   componentWillMount: function () {
