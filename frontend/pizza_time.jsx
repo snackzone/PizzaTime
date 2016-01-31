@@ -36,7 +36,7 @@ var routes = (
     <Route path="session/new" component={SessionForm}/>
     <Route path="users/new" component={UserForm}/>
     <Route path="users/:id" component={UserShow} onEnter={_ensureLoggedIn}>
-      <Route path="edit" component={UserEdit} onEnter={_ensureLoggedIn}/>
+      <Route path="edit" component={UserEdit} onEnter={_ensureCurrentUser}/>
       <Route path="reviews" component={UserReviews} onEnter={_ensureLoggedIn}/>
     </Route>
   </Route>
@@ -51,6 +51,26 @@ function _ensureLoggedIn (nextState, replace, callback) {
   function _redirectIfNotLoggedIn () {
     if (!CurrentUserStore.isLoggedIn()) {
       replace({}, "/session/new");
+    }
+    callback();
+  }
+}
+
+function _ensureCurrentUser (nextState, replace, callback) {
+  if (CurrentUserStore.userHasBeenFetched()) {
+    _redirectIfNotCurrentUser();
+  } else {
+    SessionApiUtil.fetchCurrentUser(_redirectIfNotCurrentUser);
+  }
+  function _redirectIfNotCurrentUser() {
+    var id = _parseLocationHash(window.location.hash);
+
+    function _parseLocationHash(hash) {
+      var re = /#\/users\/(\d+)\/edit/;
+      return hash.match(re)[1];
+    }
+    if (!CurrentUserStore.isCurrentUser(id)) {
+      replace({}, "/");
     }
     callback();
   }

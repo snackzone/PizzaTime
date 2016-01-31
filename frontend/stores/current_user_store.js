@@ -26,6 +26,10 @@ CurrentUserStore.isLoggedIn = function () {
   return !!_currentUser.id;
 };
 
+CurrentUserStore.isCurrentUser = function (id) {
+  return _currentUser.id == id;
+};
+
 CurrentUserStore.userHasBeenFetched = function () {
   return _currentUserHasBeenFetched;
 };
