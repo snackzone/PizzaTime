@@ -32,8 +32,12 @@ var UserShow = React.createClass({
     this.userListener.remove();
   },
 
-  componentWillReceiveProps: function() {
-    this.change();
+  componentWillReceiveProps: function(nextProps) {
+    var id = parseInt(nextProps.params.id);
+    this.setState({
+      user: UserStore.find(id),
+      isCurrentUser: CurrentUserStore.isCurrentUser(id)
+    });
   },
 
   render: function () {
