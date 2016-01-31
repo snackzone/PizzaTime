@@ -11,7 +11,11 @@ var UserApiUtil = {
       data: {user: user},
       url: "api/users",
       success: function (user) {
-        SessionApiActions.signIn(user, successCB);
+        SessionApiActions.signIn(user);
+
+        if (successCB) {
+          successCB(user.id);
+        }
       },
       error: function (data) {
         console.log("failure.");
@@ -37,7 +41,7 @@ var UserApiUtil = {
     });
   },
 
-  updateInfo: function (user, successCB) {
+  updateInfo: function (user) {
     $.ajax({
       method: "PATCH",
       dataType: "json",

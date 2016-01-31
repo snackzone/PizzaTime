@@ -38,7 +38,7 @@ var UserEditForm = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
     var user = Object.assign({}, this.state);
-    UserApiUtil.updateInfo(user, successCB);
+    UserApiUtil.updateInfo(user);
   },
 
   render: function () {
@@ -84,9 +84,5 @@ var UserEditForm = React.createClass({
     );
   }
 });
-
-function successCB (id) {
-  this.history.pushState({}, "users/" + id);
-}
 
 module.exports = UserEditForm;

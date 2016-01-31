@@ -37,7 +37,7 @@ var UserForm = React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
     var user = Object.assign({}, this.state);
-    UserApiUtil.createUser(user, successCB);
+    UserApiUtil.createUser(user, successCB.bind(this));
   },
 
   render: function () {
