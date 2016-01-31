@@ -5,13 +5,33 @@ var ReactRouter = require('react-router');
 
 
 var UserNav = React.createClass({
-  componentDidMount: function () {
+  getInitialState: function () {
+    var id = this.user_id = _parseLocationHash(window.location.hash);
+    return {
+      isCurrentUser: CurrentUserStore.isCurrentUser(id),
+      user: UserStore.find(id)
+    };
+  },
+
+  componentWillMount: function () {
+    if (!this.state.user.id) {
+      UserApiUtil.fetchById(this.user_id);
+    }
     this.currentUserListener =
       CurrentUserStore.addListener(this.forceUpdate.bind(this));
+    this.userListener = UserStore.addListener(this._change);
+  },
+
+  _change: function () {
+    this.setState({
+      isCurrentUser: CurrentUserStore.isCurrentUser(this.user_id),
+      user: UserStore.find(this.user_id)
+    });
   },
 
   componentWillUnmount: function () {
     this.currentUserListener.remove();
+    this.userListener.remove();
   },
 
   changeFile: function (e) {
@@ -67,5 +87,10 @@ var UserNav = React.createClass({
     );
   }
 });
+
+function _parseLocationHash(hash) {
+  var re = /#\/users\/(\d+)/;
+  return hash.match(re)[1];
+}
 
 module.exports = UserNav;

@@ -1,6 +1,7 @@
 var SessionApiActions = require('../actions/session_api_actions');
 var FlashActions = require('../actions/flash_actions');
 var CurrentUserActions = require('../actions/current_user_actions');
+var UserApiActions = require('../actions/user_api_actions');
 
 var UserApiUtil = {
   createUser: function (user, successCB) {
@@ -49,6 +50,21 @@ var UserApiUtil = {
       error: function (data) {
         console.log("failure.");
         FlashActions.receiveFlash(data.responseJSON.errors);
+      }
+    });
+  },
+
+  fetchById: function (id) {
+    $.ajax({
+      method: "GET",
+      dataType: "json",
+      url: "api/users/" + id,
+      success: function (user) {
+        UserApiActions.receiveUser(user);
+        console.log("success");
+      },
+      error: function (data) {
+        console.log("failed to fetch user id " + id);
       }
     });
   }
