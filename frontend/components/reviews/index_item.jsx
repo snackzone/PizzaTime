@@ -4,7 +4,7 @@ var ReviewIndexItem = React.createClass({
   render: function () {
     return (
       <li>
-      This is a review.
+        {this.props.review.body}
       </li>
     );
   }
