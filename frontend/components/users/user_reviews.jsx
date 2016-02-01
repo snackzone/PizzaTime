@@ -1,11 +1,17 @@
 var React = require('react');
 var ReviewIndex = require('../reviews/index');
 var UserStore = require('../../stores/user_store');
-var NoReviews = require('./no_reviews');
+var CurrentUserStore = require('../../stores/current_user_store');
+var NoReviewsCurrentUser = require('./no_reviews_current_user');
+var NoReviewsUser = require('./no_reviews_user');
 
 var UserReviews = React.createClass({
   getInitialState: function () {
-    return {user: UserStore.find(this.props.params.id)};
+    var id = this.props.params.id;
+    return ({
+      user: UserStore.find(id),
+      isCurrentUser: CurrentUserStore.isCurrentUser(id)
+    });
   },
 
   componentDidMount: function () {
@@ -23,8 +29,14 @@ var UserReviews = React.createClass({
 
   render: function () {
     var user = this.state.user;
-    var renderComponent = user.reviews.length < 1 ?
-      <NoReviews/> : <ReviewIndex user={user}/>;
+
+    if (user.reviews.length > 0) {
+      renderComponent = <ReviewIndex user={user}/>;
+    } else if (this.state.isCurrentUser) {
+      renderComponent = <NoReviewsCurrentUser/>;
+    } else {
+      renderComponent = <NoReviewsUser/>;
+    }
 
     return (
       <div className="reviews">

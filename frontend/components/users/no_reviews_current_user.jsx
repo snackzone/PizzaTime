@@ -1,6 +1,6 @@
 var React = require('react');
 
-var NoReviews = React.createClass({
+var NoReviewsCurrentUser = React.createClass({
   render: function () {
     return (
       <div className="no-reviews">
@@ -14,4 +14,4 @@ var NoReviews = React.createClass({
   }
 });
 
-module.exports = NoReviews;
+module.exports = NoReviewsCurrentUser;
