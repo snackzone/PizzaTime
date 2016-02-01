@@ -43,7 +43,7 @@ var RestaurantShow = React.createClass({
 
     var restaurant = this.state.restaurant;
     return (
-      <div>
+      <div className="restaurant-show">
         <h1>{restaurant.name}</h1>
         <p>
           {restaurant.address}
