@@ -1,4 +1,5 @@
-json.extract! restaurant, :id, :name, :address, :price_range, :lat, :lng, :photo_url, :url
+json.extract! restaurant, :id, :name, :address, :price_range, :lat, :lng,
+:photo_url, :url, :mean_rating
 
 reviews = restaurant.reviews.sort do |a, b|
   b.created_at <=> a.created_at

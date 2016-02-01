@@ -40,7 +40,7 @@ var RestaurantShow = React.createClass({
     var queryString = $.param({
       center: [lat, lng].join(","),
       zoom: 15,
-      size: "200x200",
+      size: "280x140",
       markers: [lat, lng].join(",")
     });
 

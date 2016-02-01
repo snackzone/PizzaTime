@@ -67,4 +67,12 @@ class Restaurant < ActiveRecord::Base
     end
     return [ne, sw]
   end
+
+  def mean_rating
+    reviews = self.reviews
+    return 5 if reviews.length == 0
+    total = reviews.map { |review| review.rating }.inject(:+)
+    mean = total.to_f / reviews.length
+    return mean.ceil
+  end
 end
