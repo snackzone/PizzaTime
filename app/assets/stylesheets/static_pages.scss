@@ -306,7 +306,7 @@ ul {
   text-align: center;
 }
 
-.sign-up-button {
+.big-red-button {
   display: block;
   background: #BD0E01;
   padding: 10px 20px;
@@ -316,14 +316,17 @@ ul {
   color: white;
   font-size: 16px;
   font-weight: 900;
-  margin: auto;
   text-align: center;
   width: 105px;
-  margin-top: 40px;
 }
 
-.sign-up-button:hover {
+.big-red-button:hover {
   background: #424242;
+}
+
+.sign-up-button {
+  margin: auto;
+  margin-top: 40px;
 }
 
 .form > h2 {

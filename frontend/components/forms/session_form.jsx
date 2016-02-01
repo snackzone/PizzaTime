@@ -71,7 +71,7 @@ var SessionForm = React.createClass({
 
         <div className="session-form-signup form">
           <h2>Don't have an account yet?</h2>
-          <Link to="/users/new" className="sign-up-button">Sign up.</Link>
+          <Link to="/users/new" className="big-red-button sign-up-button">Sign up.</Link>
         </div>
       </section>
     );
@@ -79,7 +79,7 @@ var SessionForm = React.createClass({
 });
 
 function successCB (id) {
-  this.history.pushState({}, "users/" + id);
+  this.history.pushState({}, "users/" + id + "/reviews");
 }
 
 module.exports = SessionForm;

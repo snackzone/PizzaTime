@@ -26,7 +26,7 @@ var SessionApiUtil = {
       dataType: "json",
       url: "api/session",
       success: function () {
-        //this breaks if callback is called after signOut but idk why.
+        //this breaks if callback is called after signOut but I don't know why.
 
         if (callback) {
           callback();

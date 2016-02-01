@@ -1,6 +1,7 @@
 var React = require('react');
 var ReviewIndex = require('../reviews/index');
 var UserStore = require('../../stores/user_store');
+var NoReviews = require('./no_reviews');
 
 var UserReviews = React.createClass({
   getInitialState: function () {
@@ -21,10 +22,14 @@ var UserReviews = React.createClass({
   },
 
   render: function () {
+    var user = this.state.user;
+    var renderComponent = user.reviews.length < 1 ?
+      <NoReviews/> : <ReviewIndex user={user}/>;
+
     return (
       <div className="reviews">
         <h2>Reviews</h2>
-        <ReviewIndex user={this.state.user}/>
+        {renderComponent}
       </div>
     );
   }

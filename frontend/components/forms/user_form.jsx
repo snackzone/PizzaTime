@@ -97,7 +97,7 @@ var UserForm = React.createClass({
 });
 
 function successCB (id) {
-  this.history.pushState({}, "users/" + id);
+  this.history.pushState({}, "users/" + id + "/reviews");
 }
 
 module.exports = UserForm;

@@ -65,3 +65,9 @@
   font-size: 14px;
   margin: 12px 0;
 }
+
+.review-button {
+  white-space: nowrap;
+  margin-top: 20px;
+  font-size: 14px;
+}

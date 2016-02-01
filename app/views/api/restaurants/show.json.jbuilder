@@ -1,5 +1,9 @@
 json.extract! @restaurant, :id, :name, :address, :price_range, :lat, :lng, :photo_url, :url
 
-json.reviews @restaurant.reviews do |review|
+reviews = @restaurant.reviews.sort do |a, b|
+  b.created_at <=> a.created_at
+end
+
+json.reviews reviews do |review|
   json.partial! 'api/reviews/review', review: review
 end
