@@ -15,6 +15,11 @@
 #
 
 class Restaurant < ActiveRecord::Base
+  include PgSearch
+  #what's the difference?
+  multisearchable against: :name
+  pg_search_scope :search_by_name, against: :name
+
   validates :name, :address, :lat, :lng, presence: true;
   validates :price_range, inclusion: { in: 1..4 }
 
