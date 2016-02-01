@@ -40,11 +40,25 @@ var RestaurantShow = React.createClass({
     var queryString = $.param({
       center: [lat, lng].join(","),
       zoom: 15,
-      size: "280x140",
+      size: "280x280",
       markers: [lat, lng].join(",")
     });
 
     return url + queryString;
+  },
+
+  getStars: function () {
+    var rating = this.state.restaurant.mean_rating;
+    return window.PizzaTime.imageUrls.stars[rating - 1];
+  },
+
+  getPriceRangeString: function () {
+    var num = this.state.restaurant.price_range;
+    var priceRange = "";
+    for(var i = 0; i < num; i++) {
+      priceRange += "$";
+    }
+    return priceRange;
   },
 
   render: function () {
@@ -58,13 +72,17 @@ var RestaurantShow = React.createClass({
 
     var restaurant = this.state.restaurant;
     return (
-      <div className="restaurant-show">
+      <div className="restaurant-show group">
         <h1>{restaurant.name}</h1>
+        <img className="stars" src={this.getStars()} />
         <p>
-          {restaurant.address}
+          {restaurant.reviews.length + " "}
+          {restaurant.reviews.length == 1 ? "review" : "reviews"}
         </p>
-        <img src={restaurant.photo_url} />
+        <p className="dollar-signs">{this.getPriceRangeString()}</p>
         <img className="static-map" src={this.getMap()} />
+        <img className="restaurant-profile-photo" src={restaurant.photo_url} />
+        <p className="address">{restaurant.address}</p>
 
       </div>
     );

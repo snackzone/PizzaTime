@@ -5,15 +5,30 @@
   padding: 20px 0;
 }
 
-.restaurant-show > img:first-of-type {
-  width: 100px;
+.restaurant-profile-photo {
+  width: 220px;
+  border-radius: 5px;
+  float: left;
 }
 
 .static-map {
   width: auto;
+  padding: 10px;
+  border: 1px solid #E5E5E1;
+  background: white;
+  float: left;
+  margin-top: 15px;
 }
 
 .restaurant-show > h1 {
   font-size: 30px;
   font-weight: bold;
+}
+
+.restaurant-show > .address {
+  display: block;
+}
+
+.restaurant-show > .dollar-signs {
+
 }
