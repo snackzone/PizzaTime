@@ -151,7 +151,7 @@ zach.reviews.create!(
 Restaurant.all.each do |restaurant|
   joey.reviews.create!(
     restaurant_id: restaurant.id,
-    rating: 5,
+    rating: Random.new.rand(1..5),
     body: "My favorite slice is at #{restaurant.name}"
   )
 end

@@ -4,7 +4,7 @@ var ReviewIndexItem = React.createClass({
   render: function () {
     var review = this.props.review;
     var restaurant = this.props.review.restaurant;
-
+    var starsUrl = getStarsUrl(review.rating);
     var priceRange = getPriceRangeString(restaurant.price_range);
 
     return (
@@ -17,7 +17,7 @@ var ReviewIndexItem = React.createClass({
         </div>
 
         <div className="review-rating-container group">
-          <p className="stars">Rating: {review.rating}</p>
+          <img className="stars" src={starsUrl} />
           <p className="review-date">{review.date}</p>
         </div>
 
@@ -33,6 +33,10 @@ getPriceRangeString = function (num) {
     priceRange += "$";
   }
   return priceRange;
+};
+
+getStarsUrl = function (num) {
+  return window.PizzaTime.imageUrls.stars[num - 1];
 };
 
 module.exports = ReviewIndexItem;

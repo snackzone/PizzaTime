@@ -12,6 +12,12 @@ Rails.application.config.assets.precompile += %w( dropdown-arrow-sprite.png )
   Rails.application.config.assets.precompile += [ "#{n}_red.png"]
 end
 
+(2..5).each do |n|
+  Rails.application.config.assets.precompile += [ "#{n}-stars.png"]
+end
+
+Rails.application.config.assets.precompile += %w( 1-star.png )
+
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 # Precompile additional assets.

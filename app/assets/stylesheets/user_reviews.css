@@ -53,6 +53,8 @@
 .stars {
   float: left;
   margin-right: 15px;
+  width: auto;
+  height: auto;
 }
 
 .review-date {
