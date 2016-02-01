@@ -3,7 +3,6 @@ var ReviewForm = require('../forms/review_form');
 var SearchApiUtil = require('../../util/search_api_util');
 var SearchResultStore = require('../../stores/search_result_store');
 
-
 var NewReview = React.createClass({
   getInitialState: function () {
     return { query: "" };
@@ -38,16 +37,32 @@ var NewReview = React.createClass({
     }
 
     results = results.map(function(result, index) {
-      return <li key={index}>{result.name}</li>;
+      return (
+        <li className="group" key={index}>
+          <img className="search-result-thumb" src={result.photo_url}/>
+          <h2>
+            {result.name}
+          </h2>
+          <p>
+            {result.address}
+          </p>
+          <a href="#" className="new-review-button">Write a Review</a>
+        </li>
+      );
     });
 
     return (
       <div className="new-review">
-        <input type="text" placeholder="search for restaurants" onKeyUp={ this.search } />
-        <ul>
+        <h1>Search For Restaurants</h1>
+        <input
+          type="text"
+          className="review-search-bar"
+          placeholder="..."
+          onKeyUp={this.search}
+        />
+        <ul className="review-search-results">
           {results}
         </ul>
-        <ReviewForm/>
       </div>
     );
   }
