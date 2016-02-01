@@ -14,7 +14,7 @@ var ReviewIndex = React.createClass({
     }
 
     return (
-      <ul>
+      <ul className="review-list">
         {reviews}
       </ul>
     );

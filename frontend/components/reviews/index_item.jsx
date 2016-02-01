@@ -2,13 +2,37 @@ var React = require('react');
 
 var ReviewIndexItem = React.createClass({
   render: function () {
+    var review = this.props.review;
+    var restaurant = this.props.review.restaurant;
+
+    var priceRange = getPriceRangeString(restaurant.price_range);
+
     return (
-      <li>
-        <h2>{this.props.restaurant_name}</h2>
-        <h3>{this.props.created_at}</h3>
+      <li className="group">
+        <img className="review-thumb" src={restaurant.photo_url}/>
+        <div className="review-restaurant-info">
+          <a href="#">{restaurant.name}</a>
+          <p>{priceRange}</p>
+          <p>{restaurant.address}</p>
+        </div>
+
+        <div className="review-rating-container group">
+          <p className="stars">Rating: {review.rating}</p>
+          <p className="review-date">{review.date}</p>
+        </div>
+
+        <p className="review-body">{review.body}</p>
       </li>
     );
   }
 });
+
+getPriceRangeString = function (num) {
+  var priceRange = "";
+  for(var i = 0; i < num; i++) {
+    priceRange += "$";
+  }
+  return priceRange;
+};
 
 module.exports = ReviewIndexItem;

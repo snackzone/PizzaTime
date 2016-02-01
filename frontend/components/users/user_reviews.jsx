@@ -22,8 +22,8 @@ var UserReviews = React.createClass({
 
   render: function () {
     return (
-      <div>
-        REVIEWS.
+      <div className="reviews">
+        <h2>Reviews</h2>
         <ReviewIndex user={this.state.user}/>
       </div>
     );

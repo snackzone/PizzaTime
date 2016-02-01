@@ -63,16 +63,16 @@ var UserNav = React.createClass({
             <div className="photo-box">
               <img className="profile-photo" src={user.photo_url}/>
               {updatePhotoLabel}
-            </div>
-
-            <div className="profile-info-container">
-              <h1 className="user-name">
-                {user.firstname} {user.surname.substring(0, 1)}.
-              </h1>
               {updatePhotoInput}
             </div>
-
           </div>
+
+          <div className="user-nav-middle group">
+            <h1 className="user-name">
+              {user.firstname} {user.surname.substring(0, 1)}.
+            </h1>
+          </div>
+
 
           <div className="user-nav-right group">
             {updateProfile}

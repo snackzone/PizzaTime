@@ -1,0 +1,65 @@
+.reviews {
+  width: 515px;
+  border-right: 1px solid #E5E5E1;
+  padding: 10px;
+  font-size: 12px;
+  margin-left: 210px;
+}
+
+.reviews > h2 {
+  margin-bottom: 15px;
+  font-size: 21px;
+  color: #BD0E01;
+  font-weight: 700;
+}
+
+.review-thumb {
+  float: left;
+  border-radius: 3px;
+  width: 63px;
+  margin-right: 12px;
+  /*margin-bottom: 12px;*/
+}
+
+.review-restaurant-info {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.review-restaurant-info > * {
+  margin: 5px 0;
+}
+
+.review-restaurant-info > a {
+  font-weight: 700;
+  color: #3B65A7;
+  font-size: 14px;
+}
+
+.review-list > li {
+  padding: 18px 0;
+  border-top: 1px solid #E5E5E1;
+}
+
+.review-list > li:last-child {
+  border-bottom: 1px solid #E5E5E1;
+}
+
+.review-rating-container {
+  margin-top: 10px;
+  display: block;
+}
+
+.stars {
+  float: left;
+  margin-right: 15px;
+}
+
+.review-date {
+  float: left;
+}
+
+.review-body {
+  font-size: 14px;
+  margin: 12px 0;
+}
