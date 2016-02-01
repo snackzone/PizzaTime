@@ -22,10 +22,7 @@ class Restaurant < ActiveRecord::Base
                      tsearch: { prefix: true }
                    }
 
-  multisearchable against: [:name],
-                  using: {
-                    tsearch: { prefix: true }
-                  }
+  multisearchable against: [:name]
 
   validates :name, :address, :lat, :lng, presence: true;
   validates :price_range, inclusion: { in: 1..4 }
