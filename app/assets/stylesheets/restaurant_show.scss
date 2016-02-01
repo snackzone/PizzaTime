@@ -1,6 +1,21 @@
+.restaurant-show-container {
+  background: white;
+  min-height: 900px;
+}
+
+.restaurant-review-container {
+  width: 600px;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.restaurant-info-container {
+  border-bottom: 1px solid #E5E5E1;
+  background: #F5F5F1;
+}
+
 .restaurant-show {
   width: 960px;
-  min-height: 500px;
   margin: auto;
   padding: 20px 0;
 }
@@ -9,26 +24,52 @@
   width: 220px;
   border-radius: 5px;
   float: left;
+  margin: 20px;
+}
+//
+// .static-map {
+//   width: auto;
+//   padding: 10px;
+//   border: 1px solid #E5E5E1;
+//   background: white;
+//   float: left;
+//   margin-top: 15px;
+// }
+
+.static-map-container {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #E5E5E1;
+  float: left
 }
 
-.static-map {
-  width: auto;
-  padding: 10px;
-  border: 1px solid #E5E5E1;
-  background: white;
-  float: left;
-  margin-top: 15px;
+.static-map-container > .address {
+  margin: 10px 0 0 0;
+  font-size: 14px;
 }
+// .restaurant-show > .address {
+//   display: block;
+// }
 
 .restaurant-show > h1 {
   font-size: 30px;
   font-weight: bold;
 }
 
-.restaurant-show > .address {
-  display: block;
+.info-container {
+  margin: 10px 0 15px;
 }
 
-.restaurant-show > .dollar-signs {
+.info-container > * {
+  float: left;
+}
 
+.info-container > *:not(:first-child) {
+  padding-top: 5px;
+}
+
+.info-container > *:nth-child(2) {
+  margin-right: 10px;
 }

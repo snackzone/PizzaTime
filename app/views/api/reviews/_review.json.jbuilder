@@ -7,4 +7,5 @@ end
 
 json.author do |json|
   json.(review.user, :id, :firstname, :surname)
+  json.photo_url asset_path(review.user.photo.url(:original))
 end

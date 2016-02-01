@@ -1,6 +1,7 @@
 var React = require('react');
 var RestaurantApiUtil = require('../../util/restaurant_api_util');
 var RestaurantStore = require('../../stores/restaurant_store');
+var RestaurantReviews = require('./restaurant_review_index');
 
 var RestaurantShow = React.createClass({
   getInitialState: function () {
@@ -72,18 +73,28 @@ var RestaurantShow = React.createClass({
 
     var restaurant = this.state.restaurant;
     return (
-      <div className="restaurant-show group">
-        <h1>{restaurant.name}</h1>
-        <img className="stars" src={this.getStars()} />
-        <p>
-          {restaurant.reviews.length + " "}
-          {restaurant.reviews.length == 1 ? "review" : "reviews"}
-        </p>
-        <p className="dollar-signs">{this.getPriceRangeString()}</p>
-        <img className="static-map" src={this.getMap()} />
-        <img className="restaurant-profile-photo" src={restaurant.photo_url} />
-        <p className="address">{restaurant.address}</p>
-
+      <div className="restaurant-show-container">
+        <div className="restaurant-info-container">
+          <div className="restaurant-show group">
+            <h1>{restaurant.name}</h1>
+            <div className="info-container group">
+              <img className="stars" src={this.getStars()} />
+              <p>
+                {restaurant.reviews.length + " "}
+                {restaurant.reviews.length == 1 ? "review" : "reviews"}
+              </p>
+              <p className="dollar-signs">{this.getPriceRangeString()}</p>
+            </div>
+            <div className="static-map-container group">
+              <img className="static-map" src={this.getMap()} />
+              <p className="address">{restaurant.address}</p>
+            </div>
+            <img className="restaurant-profile-photo" src={restaurant.photo_url} />
+          </div>
+        </div>
+        <div className="restaurant-review-container">
+          <RestaurantReviews reviews={restaurant.reviews}/>
+        </div>
       </div>
     );
   }
