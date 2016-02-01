@@ -25,7 +25,7 @@ RestaurantStore.focusRestaurantById = function(id) {
 
 RestaurantStore.findIndexById = function(id) {
   for (var i = 0; i < _restaurants.length; i++) {
-    if (_restaurants[i].id === id) {
+    if (_restaurants[i].id == id) {
       return i;
     }
   }
@@ -46,10 +46,14 @@ RestaurantStore.unfocusAllRestaurants = function(id) {
 RestaurantStore.findById = function(id) {
   for (var i=0; i<_restaurants.length; i++) {
     var restaurant = _restaurants[i];
-    if (restaurant.id === id) {
+    if (restaurant.id == id) {
       return restaurant;
     }
   }
+};
+
+RestaurantStore.loadRestaurant = function(restaurant) {
+  _restaurants = [restaurant];
 };
 
 RestaurantStore.__onDispatch = function (payload) {
@@ -66,6 +70,11 @@ RestaurantStore.__onDispatch = function (payload) {
 
   case RestaurantConstants.UNFOCUS_ALL_RESTAURANTS:
     RestaurantStore.unfocusAllRestaurants();
+    RestaurantStore.__emitChange();
+    break;
+
+  case RestaurantConstants.RESTAURANT_RECEIVED:
+    RestaurantStore.loadRestaurant(payload.restaurant);
     RestaurantStore.__emitChange();
     break;
   }

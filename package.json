@@ -30,11 +30,9 @@
     "history": "1.13.x",
     "react": "^0.14.2",
     "react-addons-linked-state-mixin": "^0.14.2",
-    "react-autocomplete": "^0.1.4",
     "react-dom": "^0.14.2",
     "react-onclickoutside": "^4.5.0",
     "react-router": "1.0.2",
-    "react-simple-autocomplete": "^1.0.2",
     "webpack": "^1.12.4"
   },
   "engines": {

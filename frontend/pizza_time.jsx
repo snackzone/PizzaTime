@@ -16,6 +16,7 @@ var UserEdit = require('./components/users/edit');
 var UserReviews = require('./components/users/user_reviews');
 var UserStore = require('./stores/user_store');
 var NewReview = require('./components/reviews/new');
+var RestaurantShow = require('./components/restaurants/show');
 
 var App = React.createClass({
   componentWillMount: function () {
@@ -42,6 +43,7 @@ var routes = (
       <Route path="reviews" component={UserReviews} onEnter={_ensureLoggedIn}/>
     </Route>
     <Route path="reviews/new" component={NewReview} onEnter={_ensureLoggedIn}/>
+    <Route path="restaurants/:id" component={RestaurantShow}/>
   </Route>
 );
 

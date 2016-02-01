@@ -2,6 +2,7 @@ var React = require('react');
 var ReviewForm = require('../forms/review_form');
 var SearchApiUtil = require('../../util/search_api_util');
 var SearchResultStore = require('../../stores/search_result_store');
+var ReactRouter = require('react-router');
 
 var NewReview = React.createClass({
   getInitialState: function () {
@@ -27,7 +28,9 @@ var NewReview = React.createClass({
   },
 
   render: function () {
+    var Link = ReactRouter.Link;
     var results = [];
+
     for (var i = 0; i < SearchResultStore.all().length; i++) {
       var result = SearchResultStore.all()[i];
       if (result._type !== "Restaurant") {

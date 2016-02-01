@@ -7,6 +7,13 @@ var RestaurantApiActions = {
       actionType: RestaurantConstants.RESTAURANTS_RECEIVED,
       restaurants: restaurants
     });
+  },
+
+  receiveRestaurant: function(restaurant) {
+    Dispatcher.dispatch({
+      actionType: RestaurantConstants.RESTAURANT_RECEIVED,
+      restaurant: restaurant
+    });
   }
 };
 

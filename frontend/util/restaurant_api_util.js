@@ -14,6 +14,23 @@ var RestaurantApiUtil = {
         console.log("failed to fetch restaurants from the db.");
       }
     });
+  },
+
+  fetchRestaurant: function (id, callback) {
+    $.ajax({
+      method: "GET",
+      dataType: "json",
+      url: "api/restaurants/" + id,
+      success: function (data) {
+        RestaurantApiActions.receiveRestaurant(data);
+        if (callback) {
+          callback();
+        }
+      },
+      error: function () {
+        console.log("failed to fetch restaurant id #" + id);
+      }
+    });
   }
 };
 
