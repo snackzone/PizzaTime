@@ -5,8 +5,12 @@
   padding: 20px 0;
 }
 
-.restaurant-show > img {
+.restaurant-show > img:first-of-type {
   width: 100px;
+}
+
+.static-map {
+  width: auto;
 }
 
 .restaurant-show > h1 {

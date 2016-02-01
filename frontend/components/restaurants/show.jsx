@@ -32,6 +32,21 @@ var RestaurantShow = React.createClass({
     });
   },
 
+  getMap: function () {
+    var lat, lng;
+    lat = this.state.restaurant.lat;
+    lng = this.state.restaurant.lng;
+    var url = "https://maps.googleapis.com/maps/api/staticmap?";
+    var queryString = $.param({
+      center: [lat, lng].join(","),
+      zoom: 15,
+      size: "200x200",
+      markers: [lat, lng].join(",")
+    });
+
+    return url + queryString;
+  },
+
   render: function () {
     if (!this.state.loaded) {
       return (
@@ -49,6 +64,8 @@ var RestaurantShow = React.createClass({
           {restaurant.address}
         </p>
         <img src={restaurant.photo_url} />
+        <img className="static-map" src={this.getMap()} />
+
       </div>
     );
   }
