@@ -28,14 +28,25 @@ var NewReview = React.createClass({
   },
 
   render: function () {
-    if (SearchResultStore.all().length > 0) {
-      debugger
+    var results = [];
+    for (var i = 0; i < SearchResultStore.all().length; i++) {
+      var result = SearchResultStore.all()[i];
+      if (result._type !== "Restaurant") {
+        break;
+      }
+      results.push(result);
     }
+
+    results = results.map(function(result, index) {
+      return <li key={index}>{result.name}</li>;
+    });
 
     return (
       <div className="new-review">
         <input type="text" placeholder="search for restaurants" onKeyUp={ this.search } />
-
+        <ul>
+          {results}
+        </ul>
         <ReviewForm/>
       </div>
     );
