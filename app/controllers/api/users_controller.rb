@@ -15,6 +15,7 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    #need to include reviews...
     if @user.update(user_params)
       render :show
     else

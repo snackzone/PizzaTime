@@ -1,6 +1,6 @@
 class Api::RestaurantsController < ApplicationController
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.includes(reviews: [:user]).all
     if params[:filters]
       @restaurants = Restaurant.filtered(@restaurants, params[:filters])
     else
@@ -8,5 +8,9 @@ class Api::RestaurantsController < ApplicationController
     end
 
     @restaurants
+  end
+
+  def show
+    @restaurant = Restaurant.includes(reviews: [:user]).find(params[:id])
   end
 end
