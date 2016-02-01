@@ -1,14 +1,17 @@
 var React = require('react');
+var ReactRouter = require('react-router');
+
 
 var NoReviewsCurrentUser = React.createClass({
   render: function () {
+    var Link = ReactRouter.Link;
     return (
       <div className="no-reviews">
         <p>
           Looks like you haven't reviewed any slices yet!
           What are you waiting for?
         </p>
-        <a href="#" className="big-red-button review-button">Write a Review</a>
+        <Link to="/reviews/new" className="big-red-button review-button">Write a Review</Link>
       </div>
     );
   }

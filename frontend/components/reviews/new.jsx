@@ -1,10 +1,11 @@
 var React = require('react');
+var ReviewForm = require('../forms/review_form');
 
 var NewReview = React.createClass({
   render: function () {
     return (
-      <div>
-        New review form goes here!
+      <div className="new-review">
+        <ReviewForm/>
       </div>
     );
   }

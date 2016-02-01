@@ -39,10 +39,9 @@ var routes = (
     <Route path="users/new" component={UserForm}/>
     <Route path="users/:id" component={UserShow} onEnter={_ensureLoggedIn}>
       <Route path="edit" component={UserEdit} onEnter={_ensureCurrentUser}/>
-      <Route path="reviews" component={UserReviews} onEnter={_ensureLoggedIn}>
-        <Route path="new" component={NewReview} onEnter={_ensureLoggedIn}/>
-      </Route>
+      <Route path="reviews" component={UserReviews} onEnter={_ensureLoggedIn}/>
     </Route>
+    <Route path="reviews/new" component={NewReview} onEnter={_ensureLoggedIn}/>
   </Route>
 );
 
