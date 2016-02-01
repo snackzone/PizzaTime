@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :users, only: [:new, :create, :update, :show] do
         resources :reviews, only: [:index]
       end
+      get "search", to: "utils#search"
     end
     resource :static_pages, only: :root
 
