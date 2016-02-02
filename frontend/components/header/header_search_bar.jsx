@@ -43,7 +43,7 @@ var HeaderSearchBar = React.createClass({
   },
 
   clearSearch: function () {
-    // debugger
+    this._input.value = "";
     SearchActions.clearSearchResults();
     this.setState({
       query: ""
@@ -60,6 +60,7 @@ var HeaderSearchBar = React.createClass({
             name={result.name}
             id={result.id}
             key={index}
+            handleClick={this.clearSearch}
           />
         );
       });
@@ -75,6 +76,9 @@ var HeaderSearchBar = React.createClass({
             type="text"
             placeholder="pizza, pizza, pizza"
             onKeyUp={this.search}
+            ref={function(c) {
+              this._input = c;
+            }.bind(this)}
           />
           { results ?
           <ul

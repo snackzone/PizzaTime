@@ -5,9 +5,9 @@ var ReactRouter = require('react-router');
 var HeaderSearchResult = React.createClass({
   render: function () {
     var Link = ReactRouter.Link;
-    
+
     return (
-        <li>
+        <li onClick={this.props.handleClick}>
           <Link to={ "/restaurants/" + this.props.id }>{this.props.name}</Link>
         </li>
     );
