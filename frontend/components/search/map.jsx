@@ -26,10 +26,15 @@ var Map = React.createClass({
   createMap: function () {
     var mapDOMNode = this.refs.map;
     var mapOptions = {
-      center: {lat: 40.7058316, lng: -74.2581844},
-      zoom: 10
+      center: {lat: 40.736779, lng: -73.935598},
+      zoom: 12
     };
+    //google "NYC"
+    //40.7058316, -74.2581844
+    //van dam st & bradley ave
+    //40.736779, -73.935598
     this.map = new google.maps.Map(mapDOMNode, mapOptions);
+    this.map.addListener("mouseout", this.closeAllInfoWindows);
   },
 
   _idleHandler: function () {
