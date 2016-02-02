@@ -25,6 +25,7 @@ gem 'paperclip'
 gem 'aws-sdk', '~> 1.6'
 gem 'figaro'
 
+gem 'faker'
 gem 'pg_search'
 gem 'kaminari'
 # Use ActiveModel has_secure_password

@@ -66,3 +66,14 @@
 .info-container > *:nth-child(2) {
   margin-right: 10px;
 }
+
+.restaurant-show-already-reviewed {
+  font-weight: 900;
+  float: right;
+  width: 300px;
+  display: block;
+  background: white;
+  border-radius: 7px;
+  padding: 10px 20px;
+  text-align: center;
+}

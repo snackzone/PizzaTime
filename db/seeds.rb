@@ -8,6 +8,7 @@
 
 Restaurant.destroy_all
 User.destroy_all
+Review.destroy_all
 
 vinnies = Restaurant.create!(
   name: "Vinnie's Pizzeria",
@@ -131,7 +132,8 @@ joey = User.create!(
   surname: "Pepperoni",
   email: "guest@pizza-time.com",
   zip: "11222",
-  password: "pizzatime"
+  password: "pizzatime",
+  photo: File.open("app/assets/images/jr.jpeg")
 )
 
 zach = User.create!(
@@ -139,11 +141,12 @@ zach = User.create!(
   surname: "Moroni",
   email: "zachary.moroni@gmail.com",
   zip: "11222",
-  password: "zachzach"
+  password: "zachzach",
+  photo: File.open("app/assets/images/zachary-moroni.jpg")
 )
 
 zach.reviews.create!(
-  body: "come for the pizza, stay for the attitude.",
+  body: "Come for the pizza, stay for the attitude.",
   rating: 5,
   restaurant_id: totonno.id
 )
@@ -151,14 +154,56 @@ zach.reviews.create!(
 Restaurant.all.each do |restaurant|
   joey.reviews.create!(
     restaurant_id: restaurant.id,
-    rating: Random.new.rand(1..5),
+    rating: Random.new.rand(4..5),
     body: "My favorite slice is at #{restaurant.name}"
   )
 end
 
+mike = User.create!(
+  firstname: "Mike",
+  surname: "Turtle",
+  zip: "10009",
+  email: "mike@turtlepower.com",
+  password: "cowabunga",
+  photo: File.open("app/assets/images/michelangelo.jpg")
+)
+
+foodguy = User.create!(
+  firstname: "Tony",
+  surname: "Bourbon",
+  zip: "10010",
+  email: "foodguy@gmail.com",
+  password: "foodguy",
+  photo: File.open("app/assets/images/foodguy.jpg")
+)
+
+dog = User.create!(
+  firstname: "Winston",
+  surname: "The Dog",
+  zip: "11206",
+  email: "bigdawg@gmail.com",
+  password: "bowwow",
+  photo: File.open("app/assets/images/bulldog.jpg")
+)
 
 
+ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
+5.times do
+  dog.reviews.create!(
+    restaurant_id: ids.pop,
+    body: "woof! woof! woof! woof!",
+    rating: 5,
+  )
+end
 
+ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
+5.times do
+  foodguy.reviews.create!(
+    restaurant_id: ids.pop,
+    body: Faker::Hipster.sentence,
+    rating: Random.new.rand(1..3)
+  )
+end
 
 
 
