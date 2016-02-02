@@ -15,8 +15,8 @@ vinnies = Restaurant.create!(
   lat: 40.725927,
   lng: -73.941851,
   price_range: 1,
-  url: "http://www.vinniesbrooklyn.com",
-  photo_url: "http://i.imgur.com/jMuFvgC.jpg"
+  url: "https://www.vinniesbrooklyn.com",
+  photo_url: "https://i.imgur.com/jMuFvgC.jpg"
 )
 
 lombardis = Restaurant.create!(
@@ -25,8 +25,8 @@ lombardis = Restaurant.create!(
   lat: 40.721587,
   lng: -73.995533,
   price_range: 2,
-  url: "http://www.firstpizza.com",
-  photo_url: "http://i.imgur.com/klHb9CO.jpg"
+  url: "https://www.firstpizza.com",
+  photo_url: "https://i.imgur.com/klHb9CO.jpg"
 )
 
 l_and_b = Restaurant.create!(
@@ -35,8 +35,8 @@ l_and_b = Restaurant.create!(
   lat: 40.594716,
   lng: -73.981495,
   price_range: 1,
-  url: "http://www.spumonigardens.com",
-  photo_url: "http://i.imgur.com/D3hvyKt.jpg"
+  url: "https://www.spumonigardens.com",
+  photo_url: "https://i.imgur.com/D3hvyKt.jpg"
 )
 
 louie_and_ernies = Restaurant.create!(
@@ -45,7 +45,7 @@ louie_and_ernies = Restaurant.create!(
   lat: 40.838182,
   lng: -73.828850,
   price_range: 1,
-  photo_url: "http://i.imgur.com/JNRw8Ax.jpg"
+  photo_url: "https://i.imgur.com/JNRw8Ax.jpg"
 )
 
 joes = Restaurant.create!(
@@ -54,8 +54,8 @@ joes = Restaurant.create!(
   lat: 40.730449,
   lng: -74.002147,
   price_range: 1,
-  url: "http://www.joespizzanyc.com",
-  photo_url: "http://i.imgur.com/41GXzBQ.jpg"
+  url: "https://www.joespizzanyc.com",
+  photo_url: "https://i.imgur.com/41GXzBQ.jpg"
 )
 
 paulie_gees = Restaurant.create!(
@@ -64,8 +64,8 @@ paulie_gees = Restaurant.create!(
   lat: 40.729805,
   lng: -73.958404,
   price_range: 2,
-  url: "http://www.pauliegee.com",
-  photo_url: "http://i.imgur.com/PMP9uDn.jpg?1"
+  url: "https://www.pauliegee.com",
+  photo_url: "https://i.imgur.com/PMP9uDn.jpg?1"
 )
 
 grimaldis = Restaurant.create!(
@@ -74,7 +74,7 @@ grimaldis = Restaurant.create!(
   lat: 40.702563,
   lng: -73.993332,
   price_range: 2,
-  photo_url: "http://i.imgur.com/Jl5qEWn.jpg"
+  photo_url: "https://i.imgur.com/Jl5qEWn.jpg"
 )
 
 apizz = Restaurant.create!(
@@ -83,7 +83,7 @@ apizz = Restaurant.create!(
   lat: 40.721682,
   lng: -73.990265,
   price_range: 3,
-  photo_url: "http://i.imgur.com/OEXFnqK.jpg"
+  photo_url: "https://i.imgur.com/OEXFnqK.jpg"
 )
 
 numero_28 = Restaurant.create!(
@@ -92,8 +92,8 @@ numero_28 = Restaurant.create!(
   lat: 40.769308,
   lng: -73.955084,
   price_range: 2,
-  url: "http://www.numero28.com",
-  photo_url: "http://i.imgur.com/2Ftxb7r.jpg"
+  url: "https://www.numero28.com",
+  photo_url: "https://i.imgur.com/2Ftxb7r.jpg"
 )
 
 bricco = Restaurant.create!(
@@ -102,8 +102,8 @@ bricco = Restaurant.create!(
   lat: 40.766167,
   lng: -73.984089,
   price_range: 3,
-  url: "http://www.bricconyc.com",
-  photo_url: "http://i.imgur.com/G1mR2Q9.jpg"
+  url: "https://www.bricconyc.com",
+  photo_url: "https://i.imgur.com/G1mR2Q9.jpg"
 )
 
 rizzos = Restaurant.create!(
@@ -112,8 +112,8 @@ rizzos = Restaurant.create!(
   lat: 40.763336,
   lng: -73.915199,
   price_range: 1,
-  url: "http://rizzosfinepizza.com",
-  photo_url: "http://i.imgur.com/F7TJ0bX.jpg"
+  url: "https://rizzosfinepizza.com",
+  photo_url: "https://i.imgur.com/F7TJ0bX.jpg"
 )
 
 totonno = Restaurant.create!(
@@ -122,8 +122,8 @@ totonno = Restaurant.create!(
   lat: 40.578899,
   lng: -73.983853,
   price_range: 2,
-  url: "http://www.totonnosconeyisland.com",
-  photo_url: "http://i.imgur.com/59y65Ip.jpg"
+  url: "https://www.totonnosconeyisland.com",
+  photo_url: "https://i.imgur.com/59y65Ip.jpg"
 )
 
 joey = User.create!(
