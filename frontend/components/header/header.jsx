@@ -1,5 +1,6 @@
 var React = require('react');
 var LoginLogout = require('./login_logout');
+var HeaderSearchBar = require('./header_search_bar');
 
 var Header = React.createClass({
   getInitialState: function () {
@@ -22,6 +23,7 @@ var Header = React.createClass({
       <header>
         <nav className="header-nav group">
           <a href="#" className="logo">PizzaTime.</a>
+          <HeaderSearchBar/>
           {loginLogout}
         </nav>
       </header>

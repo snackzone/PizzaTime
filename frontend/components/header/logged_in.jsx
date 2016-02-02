@@ -1,10 +1,10 @@
 var React = require('react');
 var CurrentUserStore = require('../../stores/current_user_store');
 var LoggedInDropdown = require('./logged_in_dropdown');
-
+var ClickOutside = require('react-onclickoutside');
 
 var LoggedIn = React.createClass({
-  mixins: [require('react-onclickoutside')],
+  mixins: [ClickOutside],
 
   getInitialState: function () {
     return {focused: false};
