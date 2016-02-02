@@ -1,8 +1,8 @@
 var React = require('react');
+var ReactRouter = require('react-router');
 var ReviewForm = require('../forms/review_form');
 var SearchApiUtil = require('../../util/search_api_util');
 var SearchResultStore = require('../../stores/search_result_store');
-var ReactRouter = require('react-router');
 
 var ReviewSearch = React.createClass({
   getInitialState: function () {
@@ -43,9 +43,9 @@ var ReviewSearch = React.createClass({
       return (
         <li className="group" key={index}>
           <img className="search-result-thumb" src={result.photo_url}/>
-          <h2>
+          <Link to={"/restaurants/" + result.id}>
             {result.name}
-          </h2>
+          </Link>
           <p>
             {result.address}
           </p>
