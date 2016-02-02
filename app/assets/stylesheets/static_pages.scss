@@ -124,15 +124,29 @@ ul {
   border-top: 1px solid #E5E5E1;
 }
 
-.search-index-item > article {
+.search-index-item-info-container {
   display: block;
   float: left;
   margin: 0 0 0 15px;
+  width: 180px;
 }
 
-.search-index-item-link {
-  color: blue;
-  text-decoration: underline;
+.search-index-item-info-container > p {
+  margin: 5px 0;
+}
+
+.search-index-item-info-container > .num {
+  float: left;
+  margin-right: 5px;
+}
+
+.search-index-item-info-container > a {
+  color: #3B65A7;
+  font-weight: bold;
+}
+
+.search-index-item-info-container > a:hover {
+  color: #333333;
 }
 
 .search-index-item:last-child {

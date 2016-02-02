@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactRouter = require('react-router');
 var RestaurantActions = require('../../actions/restaurant_actions');
 var RestaurantStore = require('../../stores/restaurant_store');
 
@@ -11,25 +12,28 @@ var IndexItem = React.createClass({
     }
 
     var priceRangeString = getPriceRangeString(restaurant.price_range);
-
-    var labelContent = (RestaurantStore.findIndexById(restaurant.id) + 1).toString();
+    var Link = ReactRouter.Link;
+    var num = (RestaurantStore.findIndexById(restaurant.id) + 1).toString();
     return(
       <li className={klass}
           id={restaurant.id}
           onMouseOver={RestaurantActions.focusRestaurant}
           onMouseLeave={RestaurantActions.unfocusAllRestaurants}>
-        <img src={restaurant.photo_url}
-             className="restaurant-thumb"/>
-          <article>
-             <p>
-               {labelContent}: {restaurant.name}
-             </p>
-             <a href={restaurant.url}
-                className="search-index-item-link">
-                website
-             </a>
-             <p>{priceRangeString}</p>
-          </article>
+
+        <Link to={"/restaurants/" + restaurant.id}>
+          <img src={restaurant.photo_url}
+               className="restaurant-thumb"/>
+        </Link>
+
+        <article className="search-index-item-info-container group">
+           <div className="num">{num}: </div>
+           <Link to={"/restaurants/" + restaurant.id}>
+             {restaurant.name}
+           </Link>
+           <p>{restaurant.address}</p>
+           <div>{priceRangeString}</div>
+        </article>
+
       </li>
     );
   }
