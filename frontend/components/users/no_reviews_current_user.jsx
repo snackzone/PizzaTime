@@ -11,7 +11,7 @@ var NoReviewsCurrentUser = React.createClass({
           Looks like you haven't reviewed any slices yet!
           What are you waiting for?
         </p>
-        <Link to="/reviews/new" className="big-red-button review-button">Write a Review</Link>
+        <Link to="/reviews/search" className="big-red-button review-button">Write a Review</Link>
       </div>
     );
   }

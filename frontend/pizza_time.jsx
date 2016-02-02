@@ -15,8 +15,9 @@ var SessionApiUtil = require('./util/session_api_util');
 var UserEdit = require('./components/users/edit');
 var UserReviews = require('./components/users/user_reviews');
 var UserStore = require('./stores/user_store');
-var NewReview = require('./components/reviews/new');
+var ReviewSearch = require('./components/reviews/review_search');
 var RestaurantShow = require('./components/restaurants/show');
+var ReviewForm = require('./components/forms/review_form');
 
 var App = React.createClass({
   componentWillMount: function () {
@@ -42,8 +43,10 @@ var routes = (
       <Route path="edit" component={UserEdit} onEnter={_ensureCurrentUser}/>
       <Route path="reviews" component={UserReviews} onEnter={_ensureLoggedIn}/>
     </Route>
-    <Route path="reviews/new" component={NewReview} onEnter={_ensureLoggedIn}/>
-    <Route path="restaurants/:id" component={RestaurantShow}/>
+    <Route path="reviews/search" component={ReviewSearch} onEnter={_ensureLoggedIn}/>
+    <Route path="restaurants/:id/review" component={ReviewForm} onEnter={_ensureLoggedIn}/>
+    <Route path="restaurants/:id" component={RestaurantShow}>
+    </Route>
   </Route>
 );
 

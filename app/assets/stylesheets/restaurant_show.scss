@@ -20,21 +20,17 @@
   padding: 20px 0;
 }
 
+.restaurant-show > .big-red-button {
+  float: right;
+  white-space: nowrap;
+}
+
 .restaurant-profile-photo {
   width: 220px;
   border-radius: 5px;
   float: left;
-  margin: 20px;
+  margin: 20px 20px 20px 150px;
 }
-//
-// .static-map {
-//   width: auto;
-//   padding: 10px;
-//   border: 1px solid #E5E5E1;
-//   background: white;
-//   float: left;
-//   margin-top: 15px;
-// }
 
 .static-map-container {
   box-sizing: border-box;
@@ -49,9 +45,6 @@
   margin: 10px 0 0 0;
   font-size: 14px;
 }
-// .restaurant-show > .address {
-//   display: block;
-// }
 
 .restaurant-show > h1 {
   font-size: 30px;

@@ -4,7 +4,7 @@ var SearchApiUtil = require('../../util/search_api_util');
 var SearchResultStore = require('../../stores/search_result_store');
 var ReactRouter = require('react-router');
 
-var NewReview = React.createClass({
+var ReviewSearch = React.createClass({
   getInitialState: function () {
     return { query: "" };
   },
@@ -71,4 +71,4 @@ var NewReview = React.createClass({
   }
 });
 
-module.exports = NewReview;
+module.exports = ReviewSearch;

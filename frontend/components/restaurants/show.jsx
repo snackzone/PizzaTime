@@ -2,6 +2,8 @@ var React = require('react');
 var RestaurantApiUtil = require('../../util/restaurant_api_util');
 var RestaurantStore = require('../../stores/restaurant_store');
 var RestaurantReviews = require('./restaurant_review_index');
+var ReactRouter = require('react-router');
+
 
 var RestaurantShow = React.createClass({
   getInitialState: function () {
@@ -71,12 +73,18 @@ var RestaurantShow = React.createClass({
       );
     }
 
+    var Link = ReactRouter.Link;
     var restaurant = this.state.restaurant;
+
     return (
       <div className="restaurant-show-container">
         <div className="restaurant-info-container">
           <div className="restaurant-show group">
             <h1>{restaurant.name}</h1>
+            <Link to={"/restaurants/" + restaurant.id + "/review"}
+                  className="big-red-button">
+              Write a Review
+            </Link>
             <div className="info-container group">
               <img className="stars" src={this.getStars()} />
               <p>
