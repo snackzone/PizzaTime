@@ -88,7 +88,6 @@ var RatingSelector = React.createClass({
   render: function () {
     return (
       <div
-        className="rating-selector"
         name="rating-selector"
         id="rating-selector">
         <ul className="rating-selector group"

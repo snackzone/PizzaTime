@@ -46,21 +46,22 @@
   padding: 10px;
   width: 300px;
   margin: auto;
+  float: right;
 }
 
 .rating-selector {
-  padding: 10px 20px 20px;
+  padding: 10px 0 20px;
   border-bottom: 1px solid #aaa;
 }
 
 .review-body > textarea {
   background: transparent;
   margin: 0;
-  padding: 0;
+  padding: 10px 0;
   border: 0;
   resize: none;
   outline: none;
-  min-height: 200px;
+  min-height: 100px;
   font-size: 14px;
   width: 100%;
 }
