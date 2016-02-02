@@ -205,6 +205,11 @@ ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
   )
 end
 
+mike.reviews.create!(
+  restaurant_id: vinnies.id,
+  body: "Forgiveness is divine, but never pay full price for late pizza.",
+  rating: 3
+)
 
 
 

@@ -33,7 +33,7 @@ var SessionForm = React.createClass({
   guestLogin: function (e) {
     e.preventDefault();
 
-    var credentials = {email: "guest@pizza-time.com", password: "pizzatime"};
+    var credentials = {email: "mike@turtlepower.com", password: "cowabunga"};
     SessionApiUtil.submitSignInCredentials(
       credentials, successCB.bind(this)
     );
