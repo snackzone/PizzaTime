@@ -49,7 +49,7 @@ var ReviewSearch = React.createClass({
           <p>
             {result.address}
           </p>
-          <a href="#" className="new-review-button">Write a Review</a>
+          <Link to={"/restaurants/" + result.id} className="new-review-button">Write a Review</Link>
         </li>
       );
     });

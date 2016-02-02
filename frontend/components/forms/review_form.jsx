@@ -4,6 +4,8 @@ var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var ReviewApiUtil = require('../../util/review_api_util');
 var RestaurantApiUtil = require('../../util/restaurant_api_util');
 var CurrentUserStore = require('../../stores/current_user_store');
+var FlashStore = require('../../stores/flash_store');
+var FlashActions = require('../../actions/flash_actions');
 var ReactRouter = require('react-router');
 var History = require('react-router').History;
 
@@ -17,16 +19,20 @@ var ReviewForm = React.createClass({
       restaurant: RestaurantApiUtil.fetchRestaurant(this.props.params.id, this.change),
       loaded: false,
       body: "Write your review here!",
-      rating: null
+      rating: null,
+      flash: []
     });
   },
 
   componentDidMount: function () {
     this.restaurantListener = RestaurantStore.addListener(this.change);
+    this.flashListner = FlashStore.addListener(this._updateFlash);
   },
 
   componentWillUnmount: function () {
     this.restaurantListener.remove();
+    this.flashListner.remove();
+    FlashActions.receiveFlash([]);
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -73,6 +79,10 @@ var ReviewForm = React.createClass({
     return priceRange;
   },
 
+  _updateFlash: function () {
+    this.setState({ flash: FlashStore.all() });
+  },
+
   render: function () {
     if (!this.state.loaded) {
       return (
@@ -82,11 +92,23 @@ var ReviewForm = React.createClass({
       );
     }
 
+    var errors;
+    if (this.state.flash.length > 0) {
+      var messages = this.state.flash.map(function(error, index) {
+        return <li key={index}>{error}</li>;
+      });
+      errors = (
+        <ul className="user-form-errors">
+          {messages}
+        </ul>
+      );
+    }
+
     var restaurant = this.state.restaurant;
     var Link = ReactRouter.Link;
 
     return (
-      <div className="review-form">
+      <div className="review-form new-review">
         <h1>Write a Review</h1>
 
         <div className="restaurant-info-mini-container">
@@ -96,8 +118,9 @@ var ReviewForm = React.createClass({
           <p>{restaurant.address}</p>
         </div>
 
-        <form className="review-form" onSubmit={this.handleSubmit}>
-          <select valueLink={this.linkState('rating')}>
+        <form className="review-form group" onSubmit={this.handleSubmit}>
+          <label htmlFor="rating">Rating</label>
+          <select name="rating" valueLink={this.linkState('rating')}>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -110,8 +133,9 @@ var ReviewForm = React.createClass({
             defaultValue="Write your review here!">
           </textarea>
 
-          <button>Submit</button>
+          <button className="big-red-button submit-button">Submit</button>
         </form>
+        {errors}
       </div>
     );
   }
