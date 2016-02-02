@@ -50,9 +50,12 @@
   display: block;
 }
 
-.stars {
+.review-rating-container > .stars {
   float: left;
   margin-right: 15px;
+}
+
+.stars {
   width: auto;
   height: auto;
 }
