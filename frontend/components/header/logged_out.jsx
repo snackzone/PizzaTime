@@ -1,13 +1,32 @@
 var React = require('react');
 var ReactRouter = require('react-router');
+var SessionApiUtil = require('../../util/session_api_util');
+var History = require('react-router').History;
+
 
 var LoggedOut = React.createClass({
+  mixins: [History],
+
+  guestLogin: function (e) {
+    e.preventDefault();
+
+    var credentials = {email: "guest@pizza-time.com", password: "pizzatime"};
+    SessionApiUtil.submitSignInCredentials(
+      credentials, function successCB (id) {
+        this.history.pushState({}, "users/" + id + "/reviews");
+      }.bind(this)
+    );
+  },
+
   render: function () {
     var Link = ReactRouter.Link;
     return (
-      <div className="logged-out">
-        <h1>You are not logged in.</h1>
-        <Link to="/session/new">Sign in</Link> or <Link to="/users/new">Sign up.</Link>
+      <div className="logged-out group">
+        <a href="#" className="header-guest-login-button" onClick={this.guestLogin}>Guest Login.</a>
+        <div className="logged-out-link-container">
+          <h1>You are not logged in.</h1>
+          <Link to="/session/new">Sign in</Link> or <Link to="/users/new">Sign up.</Link>
+        </div>
       </div>
     );
   }
