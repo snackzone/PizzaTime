@@ -2,8 +2,11 @@ var React = require('react');
 var FilterActions = require('../../actions/filter_actions');
 var RestaurantStore = require('../../stores/restaurant_store');
 var RestaurantActions = require('../../actions/restaurant_actions');
+var History = require('react-router').History;
 
 var Map = React.createClass({
+  mixins: [History],
+
   getInitialState: function () {
     this.markers = [];
     return null;
@@ -118,7 +121,7 @@ var Map = React.createClass({
 
     marker.addListener("mouseover", RestaurantActions.focusRestaurantFromMarker);
     marker.addListener("mouseout", RestaurantActions.unfocusAllRestaurants);
-
+    marker.addListener("click", this.handleMarkerClick);
     marker.addListener("mouseover", infowindowCallback);
 
     this.markers.push(marker);
@@ -138,6 +141,11 @@ var Map = React.createClass({
         break;
       }
     }
+  },
+
+  handleMarkerClick: function () {
+    var id = RestaurantStore.focusedRestaurants()[0].id;
+    this.history.pushState({}, "/restaurants/" + id);
   },
 
   _updateBounds: function () {
@@ -179,7 +187,6 @@ var generateContentString = function (restaurant) {
   htmlString += "<section>";
   htmlString += "<h1>" + restaurant.name + "</h1>";
   htmlString += "<p>" + restaurant.address + "</p>";
-  htmlString += "<a href=" + restaurant.url + ">" + "Link" + "</a>";
   htmlString += "</section>";
   htmlString += "</div>";
   return htmlString;
