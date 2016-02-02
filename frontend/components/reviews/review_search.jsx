@@ -34,10 +34,11 @@ var ReviewSearch = React.createClass({
     var query = e.target.value;
     SearchApiUtil.search(query);
 
-    var searched = !(query.length === 0);
+    var loaded = this.state.results.length > 0;
+    var searched = (query.length !== 0);
     this.setState({
       query: query,
-      loaded: false,
+      loaded: loaded,
       searched: searched,
     });
   },
