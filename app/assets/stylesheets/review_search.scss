@@ -67,3 +67,19 @@
   float: left;
   margin-right: 10px;
 }
+
+.review-search-loading {
+  color: #F5F5F1;
+  font-style: italic;
+  font-weight: 900;
+  margin: 50px 100px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.review-search-no-results {
+  font-weight: 900;
+  font-size: 24px;
+  margin: 50px 100px;
+  text-align: center;
+}

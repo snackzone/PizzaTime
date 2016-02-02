@@ -7,7 +7,12 @@ var SearchResultStore = require('../../stores/search_result_store');
 
 var ReviewSearch = React.createClass({
   getInitialState: function () {
-    return { query: "" };
+    return ({
+      query: "",
+      results: [],
+      loaded: true,
+      searched: false
+    });
   },
 
   componentDidMount: function () {
@@ -19,41 +24,61 @@ var ReviewSearch = React.createClass({
   },
 
   _change: function () {
-    this.setState({query: query});
+    this.setState({
+      results: SearchResultStore.all(),
+      loaded: true
+    });
   },
 
   search: function (e) {
     var query = e.target.value;
     SearchApiUtil.search(query);
-    this.setState({query: query});
+
+    var searched = !(query.length === 0);
+    this.setState({
+      query: query,
+      loaded: false,
+      searched: searched,
+    });
   },
 
   render: function () {
     var Link = ReactRouter.Link;
-    var results = [];
 
-    for (var i = 0; i < SearchResultStore.all().length; i++) {
-      var result = SearchResultStore.all()[i];
-      if (result._type !== "Restaurant") {
-        break;
+    var resultsToRender = [];
+    if (!this.state.loaded) {
+
+      resultsToRender.push(<div key={1} className="review-search-loading">loading...</div>);
+
+    } else {
+
+      var allResults = this.state.results;
+
+      for (var i = 0; i < allResults.length; i++) {
+        var result = allResults[i];
+        if (result._type !== "Restaurant") {
+          break;
+        }
+        resultsToRender.push(result);
       }
-      results.push(result);
-    }
 
-    results = results.map(function(result, index) {
-      return (
-        <li className="group" key={index}>
-          <img className="search-result-thumb" src={result.photo_url}/>
-          <Link to={"/restaurants/" + result.id}>
-            {result.name}
-          </Link>
-          <p>
-            {result.address}
-          </p>
-          <Link to={"/restaurants/" + result.id + "/review"} className="new-review-button">Write a Review</Link>
-        </li>
-      );
-    });
+      resultsToRender = resultsToRender.map(function(result, index) {
+        return (
+          <li className="group" key={index}>
+            <img className="search-result-thumb" src={result.photo_url}/>
+            <Link to={"/restaurants/" + result.id}>{result.name}</Link>
+            <img className="stars" src={getStarsUrl(result.mean_rating)} />
+            <p>{result.address}</p>
+            <p>{getPriceRangeString(result.price_range)}</p>
+            <Link to={"/restaurants/" + result.id + "/review"} className="new-review-button">Write a Review</Link>
+          </li>
+        );
+      });
+
+      if (resultsToRender.length === 0 && this.state.searched) {
+        resultsToRender.push(<div key={1} className="review-search-no-results">No results!</div>);
+      }
+    }
 
     return (
       <div className="new-review">
@@ -65,11 +90,23 @@ var ReviewSearch = React.createClass({
           onKeyUp={this.search}
         />
         <ul className="review-search-results">
-          {results}
+          {resultsToRender}
         </ul>
       </div>
     );
   }
 });
+
+function getPriceRangeString (num) {
+  var priceRange = "";
+  for(var i = 0; i < num; i++) {
+    priceRange += "$";
+  }
+  return priceRange;
+}
+
+function getStarsUrl (num) {
+  return window.PizzaTime.imageUrls.stars[num - 1];
+}
 
 module.exports = ReviewSearch;

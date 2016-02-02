@@ -32,16 +32,16 @@ var ReviewIndexItem = React.createClass({
   }
 });
 
-getPriceRangeString = function (num) {
+function getPriceRangeString (num) {
   var priceRange = "";
   for(var i = 0; i < num; i++) {
     priceRange += "$";
   }
   return priceRange;
-};
+}
 
-getStarsUrl = function (num) {
+function getStarsUrl (num) {
   return window.PizzaTime.imageUrls.stars[num - 1];
-};
+}
 
 module.exports = ReviewIndexItem;
