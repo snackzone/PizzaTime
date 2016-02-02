@@ -29,3 +29,12 @@
   white-space: nowrap;
   width: auto;
 }
+
+.star {
+  float: left;
+  margin-left: 5px;
+}
+
+.star > img {
+  width: auto;
+}

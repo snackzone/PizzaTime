@@ -17,6 +17,10 @@ end
 end
 
 Rails.application.config.assets.precompile += %w( 1-star.png )
+Rails.application.config.assets.precompile += %w( star-filled.png )
+Rails.application.config.assets.precompile += %w( star-unfilled.png )
+
+
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path

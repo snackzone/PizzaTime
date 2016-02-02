@@ -8,7 +8,7 @@ var FlashStore = require('../../stores/flash_store');
 var FlashActions = require('../../actions/flash_actions');
 var ReactRouter = require('react-router');
 var History = require('react-router').History;
-
+var RatingSelector = require('./rating_selector');
 
 
 var ReviewForm = React.createClass({
@@ -127,6 +127,8 @@ var ReviewForm = React.createClass({
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
+
+          <RatingSelector/>
 
           <textarea
             valueLink={this.linkState('body')}
