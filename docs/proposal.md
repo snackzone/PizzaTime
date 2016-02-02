@@ -21,9 +21,8 @@ PizzaTime! allows users to:
 - [ ] View other users' reviews
 
 ##Heroku Link
-Forthcoming
 [Heroku][heroku]
-[heroku]: http://www.heroku.com
+[heroku]: http://pizza-time-nyc.herokuapp.com/
 
 ## Design Docs
 * [View Wireframes][view]
