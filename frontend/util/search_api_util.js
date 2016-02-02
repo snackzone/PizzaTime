@@ -12,7 +12,7 @@ var SearchApiUtil = {
         SearchActions.receiveResults(data);
       }
     });
-  },
+  }
 
 };
 

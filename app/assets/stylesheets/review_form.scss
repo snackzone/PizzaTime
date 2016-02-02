@@ -3,11 +3,19 @@
   height: 90px;
   border-radius: 7px;
   float: left;
-  margin-right: 10px;
+  margin-right: 50px;
 }
 
 .review-form {
   font-weight: 900;
+}
+
+.review-form > label {
+  margin-right: 10px;
+}
+
+.review-form > select {
+  margin: 20px 0;
 }
 
 .review-form > textarea {
@@ -17,4 +25,7 @@
 }
 
 .review-form > .submit-button {
+  margin: 20px 0 20px 140px;
+  white-space: nowrap;
+  width: auto;
 }

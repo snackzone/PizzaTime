@@ -119,7 +119,7 @@ var ReviewForm = React.createClass({
         </div>
 
         <form className="review-form group" onSubmit={this.handleSubmit}>
-          <label htmlFor="rating">Rating</label>
+          <label htmlFor="rating">Rating:</label>
           <select name="rating" valueLink={this.linkState('rating')}>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -133,7 +133,7 @@ var ReviewForm = React.createClass({
             defaultValue="Write your review here!">
           </textarea>
 
-          <button className="big-red-button submit-button">Submit</button>
+          <button className="big-red-button submit-button">Post Review</button>
         </form>
         {errors}
       </div>

@@ -8,7 +8,7 @@ var SearchActions = {
       searchResults: data.results,
       meta: {totalCount: data.total_count}
     });
-  },
+  }
 
 
 };

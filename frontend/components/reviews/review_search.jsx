@@ -2,6 +2,7 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var ReviewForm = require('../forms/review_form');
 var SearchApiUtil = require('../../util/search_api_util');
+var SearchActions = require('../../actions/search_actions');
 var SearchResultStore = require('../../stores/search_result_store');
 
 var ReviewSearch = React.createClass({
@@ -18,7 +19,7 @@ var ReviewSearch = React.createClass({
   },
 
   _change: function () {
-    this.forceUpdate();
+    this.setState({query: query});
   },
 
   search: function (e) {
@@ -49,7 +50,7 @@ var ReviewSearch = React.createClass({
           <p>
             {result.address}
           </p>
-          <Link to={"/restaurants/" + result.id} className="new-review-button">Write a Review</Link>
+          <Link to={"/restaurants/" + result.id + "/review"} className="new-review-button">Write a Review</Link>
         </li>
       );
     });
