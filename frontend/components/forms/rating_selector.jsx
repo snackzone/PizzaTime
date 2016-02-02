@@ -5,15 +5,18 @@ var RatingSelector = React.createClass({
     this.starUnfilledUrl = window.PizzaTime.imageUrls.sprites.star_unfilled;
     this.starFilledUrl = window.PizzaTime.imageUrls.sprites.star_filled;
 
-    var initialState = [];
-    for (var i = 0; i < 5; i++) {
-      initialState.push(this.unfilledStar(i));
+    var starsArray = [];
+    for (var i = 0; i <= this.props.rating; i++) {
+      starsArray.push(this.filledStar(i));
+    }
+
+    for (i; i < 5; i++) {
+      starsArray.push(this.unfilledStar(i));
     }
 
     return ({
-      starsArray: initialState,
-      set: false,
-      rating: -1
+      starsArray: starsArray,
+      set: this.props.ratingSet
     });
   },
 
@@ -58,6 +61,11 @@ var RatingSelector = React.createClass({
     this.fillStarsUpto(num);
   },
 
+  revert: function () {
+    var num = this.props.rating;
+    this.fillStarsUpto(num);
+  },
+
   fillStarsUpto: function (num) {
     var starsArray = [];
     for (var i = 0; i <= num; i++) {
@@ -71,23 +79,23 @@ var RatingSelector = React.createClass({
     this.setState({ starsArray: starsArray});
   },
 
-  revert: function () {
-    var num = this.state.rating;
-    this.fillStarsUpto(num);
-  },
-
   setRating: function (e) {
     e.preventDefault();
     var id = e.currentTarget.id;
-    this.setState({ set: true, rating: id });
+    this.props.handleClick(id);
   },
 
   render: function () {
     return (
-      <ul className="rating-selector group"
-        onMouseLeave={this.revert}>
-        {this.state.starsArray}
-      </ul>
+      <div
+        className="rating-selector"
+        name="rating-selector"
+        id="rating-selector">
+        <ul className="rating-selector group"
+          onMouseLeave={this.revert}>
+          {this.state.starsArray}
+        </ul>
+      </div>
     );
   }
 });
