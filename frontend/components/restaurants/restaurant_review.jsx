@@ -29,4 +29,8 @@ var RestaurantReview = React.createClass({
   }
 });
 
+function getStarsUrl (num) {
+  return window.PizzaTime.imageUrls.stars[num - 1];
+}
+
 module.exports = RestaurantReview;

@@ -18,12 +18,16 @@ SearchResultsStore.meta = function () {
 SearchResultsStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
 
-    case SearchConstants.RECEIVE_SEARCH_RESULTS:
-      _searchResults = payload.searchResults;
-      _meta = payload.meta;
-      SearchResultsStore.__emitChange();
-      break;
+  case SearchConstants.RECEIVE_SEARCH_RESULTS:
+    _searchResults = payload.searchResults;
+    _meta = payload.meta;
+    SearchResultsStore.__emitChange();
+    break;
 
+  case SearchConstants.EMPTY_STORE:
+    _searchResults = [];
+    _meta = {};
+    SearchResultsStore.__emitChange();
   }
 };
 

@@ -51,36 +51,10 @@ ul {
   font-size: 30px;
   font-weight: 600;
   color: white;
-  // -webkit-text-stroke: 1px white;
   display: block;
   margin: 10px 0;
   float: left;
   letter-spacing: 2px;
-}
-
-.header-search-bar {
-  float: left;
-  margin: 12px 0 10px 100px;
-}
-
-.header-search-bar > .input-container {
-  background: white;
-  padding: 5px;
-  border-radius: 2px;
-}
-
-.header-search-bar > .input-container > .find {
-  margin-right: 5px;
-  font-weight: bold;
-  float: left;
-}
-
-.header-search-input {
-  margin: 0;
-  border: 0;
-  padding: 0;
-  background: transparent;
-  font-size: 14px;
 }
 
 .login-logout {

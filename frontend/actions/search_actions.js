@@ -8,9 +8,13 @@ var SearchActions = {
       searchResults: data.results,
       meta: {totalCount: data.total_count}
     });
+  },
+
+  clearSearchResults: function () {
+    Dispatcher.dispatch({
+      actionType: SearchConstants.EMPTY_STORE
+    });
   }
-
-
 };
 
 module.exports = SearchActions;
