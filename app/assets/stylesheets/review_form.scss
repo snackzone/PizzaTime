@@ -24,8 +24,8 @@
   height: 200px;
 }
 
-.review-form > .submit-button {
-  margin: 20px 0 20px 140px;
+.review-body > .big-red-button {
+  margin: auto;
   white-space: nowrap;
   width: auto;
 }
@@ -37,4 +37,30 @@
 
 .star > img {
   width: auto;
+}
+
+.review-body {
+  border-radius: 2px;
+  border: 1px solid #aaa;
+  background: #F5F5F1;
+  padding: 10px;
+  width: 300px;
+  margin: auto;
+}
+
+.rating-selector {
+  padding: 10px 20px 20px;
+  border-bottom: 1px solid #aaa;
+}
+
+.review-body > textarea {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  resize: none;
+  outline: none;
+  min-height: 200px;
+  font-size: 14px;
+  width: 100%;
 }

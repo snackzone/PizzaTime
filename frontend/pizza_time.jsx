@@ -41,9 +41,9 @@ var routes = (
     <Route path="users/new" component={UserForm}/>
     <Route path="users/:id" component={UserShow} onEnter={_ensureLoggedIn}>
       <Route path="edit" component={UserEdit} onEnter={_ensureCurrentUser}/>
-      <Route path="reviews" component={UserReviews} onEnter={_ensureLoggedIn}/>
+      <Route path="reviews" component={UserReviews}/>
     </Route>
-    <Route path="reviews/search" component={ReviewSearch} onEnter={_ensureLoggedIn}/>
+    <Route path="reviews/search" component={ReviewSearch}/>
     <Route path="restaurants/:id/review" component={ReviewForm} onEnter={_ensureLoggedIn}/>
     <Route path="restaurants/:id" component={RestaurantShow}>
     </Route>

@@ -31,6 +31,7 @@
     "react": "^0.14.2",
     "react-addons-linked-state-mixin": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-input-placeholder": "^1.2.0",
     "react-onclickoutside": "^4.5.0",
     "react-router": "1.0.2",
     "webpack": "^1.12.4"

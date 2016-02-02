@@ -13,17 +13,21 @@ var Header = React.createClass({
 
   render: function () {
     var location = parseLocationHash(this.state.locationHash);
-    var loginLogout;
+    var loginLogout, headerSearchBar;
 
     if (["/session/new", "/users/new"].indexOf(location) === -1) {
       loginLogout = <LoginLogout/>;
+    }
+
+    if (location !== "/reviews/search") {
+      headerSearchBar = <HeaderSearchBar/>;
     }
 
     return (
       <header>
         <nav className="header-nav group">
           <a href="#" className="logo">PizzaTime.</a>
-          <HeaderSearchBar/>
+          {headerSearchBar}
           {loginLogout}
         </nav>
       </header>

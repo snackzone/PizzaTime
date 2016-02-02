@@ -8,7 +8,9 @@ var HeaderSearchResult = React.createClass({
 
     return (
         <li onClick={this.props.handleClick}>
-          <Link to={ "/restaurants/" + this.props.id }>{this.props.name}</Link>
+          <Link to={ "/restaurants/" + this.props.id }>
+            {this.props.name}
+          </Link>
         </li>
     );
   }

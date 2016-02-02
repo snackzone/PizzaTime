@@ -1,14 +1,14 @@
-var React = require('react');
-var RestaurantStore = require('../../stores/restaurant_store');
-var LinkedStateMixin = require('react-addons-linked-state-mixin');
-var ReviewApiUtil = require('../../util/review_api_util');
-var RestaurantApiUtil = require('../../util/restaurant_api_util');
 var CurrentUserStore = require('../../stores/current_user_store');
 var FlashStore = require('../../stores/flash_store');
 var FlashActions = require('../../actions/flash_actions');
-var ReactRouter = require('react-router');
 var History = require('react-router').History;
+var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var RatingSelector = require('./rating_selector');
+var React = require('react');
+var ReactRouter = require('react-router');
+var RestaurantApiUtil = require('../../util/restaurant_api_util');
+var RestaurantStore = require('../../stores/restaurant_store');
+var ReviewApiUtil = require('../../util/review_api_util');
 
 
 var ReviewForm = React.createClass({
@@ -18,15 +18,11 @@ var ReviewForm = React.createClass({
     return ({
       restaurant: RestaurantApiUtil.fetchRestaurant(this.props.params.id, this.change),
       loaded: false,
-      body: "Write your review here!",
+      body: "",
       rating: -1,
       ratingSet: false,
       flash: []
     });
-  },
-
-  componentWillMount: function () {
-    // this.makeRatingSelector();
   },
 
   componentDidMount: function () {
@@ -97,8 +93,7 @@ var ReviewForm = React.createClass({
   render: function () {
     if (!this.state.loaded) {
       return (
-        <div>
-          ..........LOADING..........
+        <div className="review-form new-review">
         </div>
       );
     }
@@ -130,18 +125,24 @@ var ReviewForm = React.createClass({
 
         <form className="review-form group" onSubmit={this.handleSubmit}>
 
-          <RatingSelector
-            rating={this.state.rating}
-            ratingSet={this.state.ratingSet}
-            handleClick={this.handleRating}
-          />
 
-          <textarea
-            valueLink={this.linkState('body')}
-            placeholder="Write your review here!">
-          </textarea>
+          <div className="review-body">
 
-          <button className="big-red-button submit-button">Post Review</button>
+            <RatingSelector
+              rating={this.state.rating}
+              ratingSet={this.state.ratingSet}
+              handleClick={this.handleRating}
+            />
+
+            <textarea
+              valueLink={this.linkState('body')}
+              placeholder="Write your review here!">
+            </textarea>
+
+            <button className="big-red-button submit-button">Post Review</button>
+
+          </div>
+
         </form>
         {errors}
       </div>
