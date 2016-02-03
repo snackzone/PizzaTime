@@ -67,6 +67,7 @@
 .review-body {
   font-size: 14px;
   margin: 12px 0;
+  word-wrap: break-word;
 }
 
 .review-button {
