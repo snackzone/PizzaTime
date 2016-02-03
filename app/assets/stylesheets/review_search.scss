@@ -43,21 +43,38 @@
   color: #3B65A7;
 }
 
-.new-review-button {
+.review-button {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 7px;
   background: white;
-  border: 1px solid #F5F5F1;
+  border: 1px solid #E5E5E1;
   text-align: center;
   float: right;
-  box-shadow: 0 0 5px black;
   font-weight: 900;
+  line-height: 25px;
+  vertical-align: middle;
 }
 
-.new-review-button:hover {
+.review-button::before {
+  vertical-align: middle;
+  margin-right: 10px;
+  line-height: normal;
+  display: inline-block;
+}
+
+.new.review-button::before {
+  content:url('star-unfilled.png');
+}
+
+.update.review-button::before {
+  content:url('star-filled.png')
+}
+
+.review-button:hover {
   background: #F5F5F1;
   border: 1px solid white;
+  box-shadow: 0 0 5px black;
 }
 
 .search-result-thumb {

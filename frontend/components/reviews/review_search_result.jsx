@@ -1,19 +1,42 @@
+var CurrentUserStore = require('../../stores/current_user_store');
 var React = require('react');
 var ReactRouter = require('react-router');
+var Link = ReactRouter.Link;
 
 var ReviewSearchResult = React.createClass({
+  newReviewLink: function () {
+    return (
+      <Link
+        to={"/restaurants/" + this.props.result.id + "/review"}
+        className="new review-button">
+        Write a Review
+      </Link>
+    );
+  },
+
+  updateReviewLink: function () {
+    return (
+      <Link
+        to={"/restaurants/" + this.props.result.id + "/review-update"}
+        className="update review-button">
+        Write an Update
+      </Link>
+    );
+  },
+
   render: function () {
-    var Link = ReactRouter.Link;
-    var result = this.props.result;
+    var restaurant = this.props.result;
+    var hasReviewed = CurrentUserStore.currentUserHasReviewedRestaurant(restaurant.id);
+    var reviewLink = hasReviewed ? this.updateReviewLink() : this.newReviewLink();
 
     return(
       <li className="group">
-        <img className="search-result-thumb" src={result.photo_url}/>
-        <Link to={"/restaurants/" + result.id}>{result.name}</Link>
-        <img className="stars" src={getStarsUrl(result.mean_rating)} />
-        <p>{result.address}</p>
-        <p>{getPriceRangeString(result.price_range)}</p>
-        <Link to={"/restaurants/" + result.id + "/review"} className="new-review-button">Write a Review</Link>
+        <img className="search-result-thumb" src={restaurant.photo_url}/>
+        <Link to={"/restaurants/" + restaurant.id}>{restaurant.name}</Link>
+        <img className="stars" src={getStarsUrl(restaurant.mean_rating)} />
+        <p>{restaurant.address}</p>
+        <p>{getPriceRangeString(restaurant.price_range)}</p>
+        {reviewLink}
       </li>
     );
   }
