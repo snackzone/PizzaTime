@@ -1,33 +1,14 @@
 var CurrentUserStore = require('../../stores/current_user_store');
 var React = require('react');
 var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
+var ReviewButton = require('./review_button');
 
 var ReviewSearchResult = React.createClass({
-  newReviewLink: function () {
-    return (
-      <Link
-        to={"/restaurants/" + this.props.result.id + "/review"}
-        className="new review-button">
-        Write a Review
-      </Link>
-    );
-  },
-
-  updateReviewLink: function () {
-    return (
-      <Link
-        to={"/restaurants/" + this.props.result.id + "/review"}
-        className="update review-button">
-        Write an Update
-      </Link>
-    );
-  },
-
   render: function () {
+
     var restaurant = this.props.result;
     var hasReviewed = CurrentUserStore.findReview(restaurant.id);
-    var reviewLink = hasReviewed ? this.updateReviewLink() : this.newReviewLink();
+    var Link = ReactRouter.Link;
 
     return(
       <li className="group">
@@ -36,7 +17,9 @@ var ReviewSearchResult = React.createClass({
         <img className="stars" src={getStarsUrl(restaurant.mean_rating)} />
         <p>{restaurant.address}</p>
         <p>{getPriceRangeString(restaurant.price_range)}</p>
-        {reviewLink}
+        <ReviewButton
+          restaurantId={restaurant.id}
+          isUpdate={hasReviewed}/>
       </li>
     );
   }

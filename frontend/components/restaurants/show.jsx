@@ -4,6 +4,7 @@ var RestaurantStore = require('../../stores/restaurant_store');
 var RestaurantReviews = require('./restaurant_review_index');
 var ReactRouter = require('react-router');
 var CurrentUserStore = require('../../stores/current_user_store');
+var ReviewButton = require('../reviews/review_button');
 
 
 var RestaurantShow = React.createClass({
@@ -76,32 +77,18 @@ var RestaurantShow = React.createClass({
 
     var Link = ReactRouter.Link;
     var restaurant = this.state.restaurant;
-    var idx = -1;
-    for(var i = 0; i < restaurant.reviews.length; i++) {
-      if (restaurant.reviews[i].author.id === CurrentUserStore.currentUser().id) {
-        idx = i;
-        break;
-      }
-    }
-
-    var reviewLink;
-    if (idx === -1) {
-      reviewLink = <Link to={"/restaurants/" + restaurant.id + "/review"}
-                         className="big-red-button">
-                          Write a Review
-                  </Link>;
-    } else {
-      reviewLink = <h2 className="restaurant-show-already-reviewed">
-                    You reviewed {restaurant.name} on {restaurant.reviews[idx].date}
-                  </h2>;
-    }
+    var isUpdate = !!CurrentUserStore.findReview(restaurant.id);
 
     return (
       <div className="restaurant-show-container">
         <div className="restaurant-info-container">
           <div className="restaurant-show group">
             <h1>{restaurant.name}</h1>
-            {reviewLink}
+
+            <ReviewButton
+              isUpdate={isUpdate}
+              restaurantId={restaurant.id}/>
+
             <div className="info-container group">
               <img className="stars" src={this.getStars()} />
               <p>
