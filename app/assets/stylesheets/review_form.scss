@@ -1,3 +1,11 @@
+.new-review {
+  min-height: 450px;
+}
+
+.review-form.new-review > h1 {
+  margin-bottom: 25px;
+}
+
 .restaurant-info-mini-container > img {
   width: 90px;
   height: 90px;
@@ -6,28 +14,50 @@
   margin-right: 50px;
 }
 
-.review-form {
-  font-weight: 900;
+.restaurant-info-mini-container {
+  margin-bottom: 50px;
 }
 
-.review-form > label {
+.restaurant-info-mini-container > * {
+  margin-bottom: 5px;
+}
+
+.restaurant-info-mini-container > .address {
+  font-size: 14px;
+}
+
+.restaurant-info-mini-container > a {
+  font-weight: 900;
+  color: #3B65A7;
+}
+
+.review-form-body > label {
   margin-right: 10px;
 }
 
-.review-form > select {
+.review-form-body > select {
   margin: 20px 0;
 }
 
-.review-form > textarea {
+.review-form-body > textarea {
   float: right;
   width: 300px;
   height: 200px;
 }
 
-.review-body > .big-red-button {
+.review-form-body > .big-red-button {
   margin: auto;
   white-space: nowrap;
   width: auto;
+}
+
+.big-red-button.disabled {
+  background: #aaa;
+}
+
+.big-red-button.disabled:hover {
+  background: #aaa;
+  cursor: default;
 }
 
 .star {
@@ -39,14 +69,13 @@
   width: auto;
 }
 
-.review-body {
+.review-form-body {
   border-radius: 2px;
   border: 1px solid #aaa;
   background: #F5F5F1;
   padding: 10px;
   width: 300px;
-  margin: auto;
-  float: right;
+  float: left;
 }
 
 .rating-selector {
@@ -54,14 +83,39 @@
   border-bottom: 1px solid #aaa;
 }
 
-.review-body > textarea {
+.review-form-body > textarea {
   background: transparent;
   margin: 0;
   padding: 10px 0;
   border: 0;
   resize: none;
   outline: none;
-  min-height: 100px;
+  height: 100px;
   font-size: 14px;
   width: 100%;
+}
+
+.new-review-left {
+  width: 50%;
+  float: left;
+  padding: 10px 20px 20px;
+  box-sizing: border-box;
+  border-right: 1px solid #F5F5F1;
+}
+
+.new-review-right {
+  width: 50%;
+  float: right;
+}
+
+.new-review-right > h3 {
+  margin-bottom: 10px;
+  margin-left: 100px;
+  color: #BD0E01;
+  font-weight: 900;
+}
+
+.new-review-right > .review-list {
+  width: 350px;
+  float: right;
 }
