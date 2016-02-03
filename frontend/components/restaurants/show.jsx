@@ -5,6 +5,8 @@ var RestaurantReviews = require('./restaurant_review_index');
 var ReactRouter = require('react-router');
 var CurrentUserStore = require('../../stores/current_user_store');
 var ReviewButton = require('../reviews/review_button');
+var ReviewMiniForm = require('../forms/review_mini_form');
+var SessionApiUtil = require('../../util/session_api_util');
 
 
 var RestaurantShow = React.createClass({
@@ -66,10 +68,31 @@ var RestaurantShow = React.createClass({
     return priceRange;
   },
 
+  getMiniForm: function (isUpdate) {
+    if (CurrentUserStore.isLoggedIn() && !isUpdate) {
+      return (
+        <ReviewMiniForm
+          restaurantId={this.state.restaurant.id}
+          isUpdate={isUpdate}
+          successCB={this.handleSubmit}
+        />
+      );
+    }
+  },
+
+  handleSubmit: function () {
+    SessionApiUtil.fetchCurrentUser();
+
+    this.setState({
+      restaurant: RestaurantApiUtil.fetchRestaurant(this.props.params.id, this.change),
+      loaded: false
+    });
+  },
+
   render: function () {
     if (!this.state.loaded) {
       return (
-        <div>
+        <div className="restaurant-show-container">
           ...........LOADING..........
         </div>
       );
@@ -105,6 +128,7 @@ var RestaurantShow = React.createClass({
           </div>
         </div>
         <div className="restaurant-review-container">
+          {this.getMiniForm(isUpdate)}
           <RestaurantReviews reviews={restaurant.reviews}/>
         </div>
       </div>

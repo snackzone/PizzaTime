@@ -77,6 +77,10 @@
   box-shadow: 0 0 5px black;
 }
 
+.review-button:hover:before {
+  content:url('star-filled.png')
+}
+
 .search-result-thumb {
   width: 90px;
   height: 90px;

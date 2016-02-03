@@ -26,6 +26,7 @@ var ReviewApiUtil = {
       url: "api/reviews/",
       success: function (data) {
         console.log("success!");
+
         if (callback) {
           callback(review.restaurant_id);
         }
@@ -41,6 +42,7 @@ var ReviewApiUtil = {
       url: "api/reviews/" + review.id,
       success: function (data) {
         console.log("success!");
+
         if (callback) {
           callback(review.restaurant_id);
         }
