@@ -10,6 +10,7 @@ var RestaurantApiUtil = require('../../util/restaurant_api_util');
 var RestaurantStore = require('../../stores/restaurant_store');
 var ReviewApiUtil = require('../../util/review_api_util');
 var ReviewIndex = require('../restaurants/restaurant_review_index');
+var SessionApiUtil = require('../../util/session_api_util');
 
 
 var ReviewForm = React.createClass({
@@ -65,6 +66,7 @@ var ReviewForm = React.createClass({
     ReviewApiUtil.submitReview(
       review, function successCB (id) {
         this.history.pushState({}, "restaurants/" + id);
+        SessionApiUtil.fetchCurrentUser();
       }.bind(this)
     );
 
