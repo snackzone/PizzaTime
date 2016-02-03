@@ -1,6 +1,6 @@
 var React = require('react');
-var ReactRouter = require('react-router');
 var ReviewForm = require('../forms/review_form');
+var ReviewSearchResult = require('./review_search_result');
 var SearchApiUtil = require('../../util/search_api_util');
 var SearchActions = require('../../actions/search_actions');
 var SearchResultStore = require('../../stores/search_result_store');
@@ -44,7 +44,6 @@ var ReviewSearch = React.createClass({
   },
 
   render: function () {
-    var Link = ReactRouter.Link;
 
     var resultsToRender = [];
     if (!this.state.loaded) {
@@ -65,14 +64,7 @@ var ReviewSearch = React.createClass({
 
       resultsToRender = resultsToRender.map(function(result, index) {
         return (
-          <li className="group" key={index}>
-            <img className="search-result-thumb" src={result.photo_url}/>
-            <Link to={"/restaurants/" + result.id}>{result.name}</Link>
-            <img className="stars" src={getStarsUrl(result.mean_rating)} />
-            <p>{result.address}</p>
-            <p>{getPriceRangeString(result.price_range)}</p>
-            <Link to={"/restaurants/" + result.id + "/review"} className="new-review-button">Write a Review</Link>
-          </li>
+          <ReviewSearchResult key={index} result={result}/>
         );
       });
 
@@ -87,7 +79,7 @@ var ReviewSearch = React.createClass({
         <input
           type="text"
           className="review-search-bar"
-          placeholder="..."
+          placeholder="Let's get reviewing..."
           onKeyUp={this.search}
         />
         <ul className="review-search-results">
@@ -97,17 +89,5 @@ var ReviewSearch = React.createClass({
     );
   }
 });
-
-function getPriceRangeString (num) {
-  var priceRange = "";
-  for(var i = 0; i < num; i++) {
-    priceRange += "$";
-  }
-  return priceRange;
-}
-
-function getStarsUrl (num) {
-  return window.PizzaTime.imageUrls.stars[num - 1];
-}
 
 module.exports = ReviewSearch;
