@@ -11,17 +11,34 @@ var ReviewIndex = require('../restaurants/restaurant_review_index');
 var SessionApiUtil = require('../../util/session_api_util');
 
 
+var ReviewSubmitButton = require('./review_submit_button');
+
+
 var ReviewForm = React.createClass({
   mixins: [History, LinkedStateMixin],
 
   getInitialState: function () {
-    return ({
-      restaurant: RestaurantApiUtil.fetchRestaurant(this.props.params.id, this.change),
-      loaded: false,
-      body: "",
-      rating: -1,
-      ratingSet: false
-    });
+    var review = this.review = CurrentUserStore.findReview(this.props.params.id);
+    var restaurant = RestaurantApiUtil.fetchRestaurant(this.props.params.id, this.change);
+    this.isUpdate = !!review;
+
+    if (this.isUpdate) {
+      return ({
+        restaurant: restaurant,
+        loaded: false,
+        body: review.body,
+        rating: parseInt(review.rating) - 1,
+        ratingSet: true
+      });
+    } else {
+      return ({
+        restaurant: restaurant,
+        loaded: false,
+        body: "",
+        rating: -1,
+        ratingSet: false
+      });
+    }
   },
 
   componentDidMount: function () {
@@ -57,14 +74,26 @@ var ReviewForm = React.createClass({
       rating:         parseInt(this.state.rating) + 1
     };
 
-    ReviewApiUtil.submitReview(
-      review, function successCB (id) {
-        this.history.pushState({}, "restaurants/" + id);
-        SessionApiUtil.fetchCurrentUser();
-      }.bind(this)
-    );
+    if (this.isUpdate) {
+      review.id = this.review.id;
 
-    this.setState({body: "", rating: -1});
+      ReviewApiUtil.updateReview(
+        review, this.flashSaved
+      );
+
+    } else {
+      ReviewApiUtil.submitReview(
+        review, function successCB (id) {
+          this.history.pushState({}, "restaurants/" + id);
+          SessionApiUtil.fetchCurrentUser();
+          this.setState({body: "", rating: -1});
+        }.bind(this)
+      );
+    }
+  },
+
+  flashSaved: function () {
+    console.log("saved.");
   },
 
   getPriceRangeString: function () {
@@ -83,6 +112,24 @@ var ReviewForm = React.createClass({
     });
   },
 
+  getOtherReviews: function () {
+    var otherReviews = [];
+    var reviews = this.state.restaurant.reviews;
+    var CurrentUser = CurrentUserStore.currentUser();
+
+    for (var i = 0; i < reviews.length; i++) {
+      var review = reviews[i];
+      if (review.author.id !== CurrentUser.id) {
+        otherReviews.push(review);
+      }
+      if (otherReviews.length === 3) {
+        return;
+      }
+    }
+
+    return otherReviews;
+  },
+
   render: function () {
     if (!this.state.loaded) {
       return (
@@ -91,20 +138,12 @@ var ReviewForm = React.createClass({
       );
     }
 
-    var disabled = (this.state.body.length < 20 ||
-      this.state.body.length > 300 ||
-      this.state.review < 1);
-
-    var buttonClass = "big-red-button submit-button";
-    if (disabled) {
-      buttonClass += " disabled";
-    }
-
     var restaurant = this.state.restaurant;
     var Link = ReactRouter.Link;
+
     return (
       <div className="review-form new-review group">
-        <h1>Write a Review</h1>
+        <h1>{this.isUpdate ? "Update Your Review" : "Write a Review"}</h1>
         <div className="new-review-left group">
           <div className="restaurant-info-mini-container">
             <img src={restaurant.photo_url}/>
@@ -129,7 +168,11 @@ var ReviewForm = React.createClass({
                 placeholder="Write your review here!">
               </textarea>
 
-              <button disabled={disabled} className={buttonClass}>Post Review</button>
+              <ReviewSubmitButton
+                length={this.state.body.length}
+                rated={this.state.ratingSet}
+                isUpdate={this.isUpdate}
+              />
 
             </div>
 
@@ -137,7 +180,7 @@ var ReviewForm = React.createClass({
         </div>
         <div className="new-review-right group">
           <h3>See What Others Have Written</h3>
-          <ReviewIndex reviews={this.state.restaurant.reviews.slice(0, 3)}/>
+          <ReviewIndex reviews={this.getOtherReviews()}/>
         </div>
       </div>
     );

@@ -46,7 +46,7 @@ var routes = (
     </Route>
     <Route path="reviews/search" component={ReviewSearch}/>
     <Route path="restaurants/:id/review" component={ReviewForm} onEnter={_ensureLoggedIn}/>
-    <Route path="restaurants/:id/review-update" component={ReviewUpdateForm} onEnter={_ensureLoggedIn}/>
+    <Route path="restaurants/:id/review-update" component={ReviewForm} onEnter={_ensureLoggedIn}/>
     <Route path="restaurants/:id" component={RestaurantShow}>
     </Route>
   </Route>

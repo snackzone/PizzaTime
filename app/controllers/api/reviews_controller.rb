@@ -21,6 +21,15 @@ class Api::ReviewsController < ApplicationController
     end
   end
 
+  def update
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      render :show
+    else
+      render json: {}, status: 422
+    end
+  end
+
   private
   def review_params
     params.require(:review).permit(:body, :user_id, :restaurant_id, :rating)

@@ -26,14 +26,24 @@ var ReviewApiUtil = {
       url: "api/reviews/",
       success: function (data) {
         console.log("success!");
-        //something needs to happen here.
         if (callback) {
           callback(review.restaurant_id);
         }
-      },
-      error: function (data) {
-        console.log(data.responseJSON.errors);
-        FlashActions.receiveFlash(data.responseJSON.errors);
+      }
+    });
+  },
+
+  updateReview: function (review, callback) {
+    $.ajax({
+      method: "PUT",
+      dataType: "json",
+      data: {review: review},
+      url: "api/reviews/" + review.id,
+      success: function (data) {
+        console.log("success!");
+        if (callback) {
+          callback(review.restaurant_id);
+        }
       }
     });
   }
