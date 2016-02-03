@@ -31,6 +31,17 @@ CurrentUserStore.isCurrentUser = function (id) {
   return _currentUser.id == id;
 };
 
+CurrentUserStore.currentUserHasReviewedRestaurant = function (id) {
+  var reviews = _currentUser.reviews;
+  for (var i = 0; i < reviews.length; i++) {
+    var review = reviews[i];
+    if (review.restaurant.id === id) {
+      return true;
+    }
+  }
+  return false;
+};
+
 CurrentUserStore.userHasBeenFetched = function () {
   return _currentUserHasBeenFetched;
 };
