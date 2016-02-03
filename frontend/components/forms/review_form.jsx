@@ -1,6 +1,4 @@
 var CurrentUserStore = require('../../stores/current_user_store');
-var FlashStore = require('../../stores/flash_store');
-var FlashActions = require('../../actions/flash_actions');
 var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var RatingSelector = require('./rating_selector');
@@ -22,20 +20,16 @@ var ReviewForm = React.createClass({
       loaded: false,
       body: "",
       rating: -1,
-      ratingSet: false,
-      flash: []
+      ratingSet: false
     });
   },
 
   componentDidMount: function () {
     this.restaurantListener = RestaurantStore.addListener(this.change);
-    this.flashListner = FlashStore.addListener(this._updateFlash);
   },
 
   componentWillUnmount: function () {
     this.restaurantListener.remove();
-    this.flashListner.remove();
-    FlashActions.receiveFlash([]);
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -82,10 +76,6 @@ var ReviewForm = React.createClass({
     return priceRange;
   },
 
-  _updateFlash: function () {
-    this.setState({ flash: FlashStore.all() });
-  },
-
   handleRating: function (rating) {
     this.setState({
       rating: rating,
@@ -98,18 +88,6 @@ var ReviewForm = React.createClass({
       return (
         <div className="review-form new-review">
         </div>
-      );
-    }
-
-    var errors;
-    if (this.state.flash.length > 0) {
-      var messages = this.state.flash.map(function(error, index) {
-        return <li key={index}>{error}</li>;
-      });
-      errors = (
-        <ul className="user-form-errors">
-          {messages}
-        </ul>
       );
     }
 
@@ -156,7 +134,6 @@ var ReviewForm = React.createClass({
             </div>
 
           </form>
-          {errors}
         </div>
         <div className="new-review-right group">
           <h3>See What Others Have Written</h3>

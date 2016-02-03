@@ -26,7 +26,7 @@ var ReviewSearchResult = React.createClass({
 
   render: function () {
     var restaurant = this.props.result;
-    var hasReviewed = CurrentUserStore.currentUserHasReviewedRestaurant(restaurant.id);
+    var hasReviewed = CurrentUserStore.findReview(restaurant.id);
     var reviewLink = hasReviewed ? this.updateReviewLink() : this.newReviewLink();
 
     return(
