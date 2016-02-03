@@ -4,6 +4,7 @@ var RestaurantStore = require('../../stores/restaurant_store');
 var RestaurantReviews = require('./restaurant_review_index');
 var ReactRouter = require('react-router');
 var CurrentUserStore = require('../../stores/current_user_store');
+var RestaurantPhotoForm = require('../forms/restaurant_photo_form');
 var ReviewButton = require('../reviews/review_button');
 var ReviewMiniForm = require('../forms/review_mini_form');
 var SessionApiUtil = require('../../util/session_api_util');
@@ -74,13 +75,13 @@ var RestaurantShow = React.createClass({
         <ReviewMiniForm
           restaurantId={this.state.restaurant.id}
           isUpdate={isUpdate}
-          successCB={this.handleSubmit}
+          successCB={this._handleSubmit}
         />
       );
     }
   },
 
-  handleSubmit: function () {
+  _handleSubmit: function () {
     SessionApiUtil.fetchCurrentUser();
 
     this.setState({
@@ -125,6 +126,7 @@ var RestaurantShow = React.createClass({
               <p className="address">{restaurant.address}</p>
             </div>
             <img className="restaurant-profile-photo" src={restaurant.photo_url} />
+            <RestaurantPhotoForm restaurantId={restaurant.id}/>
           </div>
         </div>
         <div className="restaurant-review-container">

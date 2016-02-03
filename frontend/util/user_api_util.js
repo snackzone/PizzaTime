@@ -24,7 +24,7 @@ var UserApiUtil = {
     });
   },
 
-  updatePhoto: function (formData, id) {
+  updateAvatar: function (formData, id) {
     $.ajax({
       method: "PATCH",
       url: "api/users/" + id,
@@ -39,6 +39,27 @@ var UserApiUtil = {
         console.log("failed to upload photo.");
       }
     });
+  },
+
+  uploadPhoto: function (id, formData, callback) {
+    $.ajax({
+      method: "POST",
+      url: "api/restaurants/" + id + "/photos",
+      processData: false,
+      contentType: false,
+      dataType: 'json',
+      data: formData,
+      success: function() {
+        console.log("success");
+        if (callback) {
+          callback();
+        }
+      },
+      error: function() {
+        console.log("failed to upload photo.");
+      }
+    });
+
   },
 
   updateInfo: function (user) {

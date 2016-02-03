@@ -24,7 +24,7 @@ var UserNav = React.createClass({
     var formData = new FormData();
     formData.append("user[photo]", photo);
     var id = this.props.user.id;
-    UserApiUtil.updatePhoto(formData, id);
+    UserApiUtil.updateAvatar(formData, id);
   },
 
   render: function () {
@@ -40,9 +40,8 @@ var UserNav = React.createClass({
       );
     }
 
-    var updatePhotoLabel, updatePhotoInput, updateProfile, reviewLinkText;
+    var updatePhotoLabel, updatePhotoInput, updateProfile;
 
-    reviewLinkText = user.firstname + "'s Reviews";
     if (this.props.isCurrentUser) {
       updatePhotoLabel = <label htmlFor="file" className="change-profile-picture">Update Photo.</label>;
       updatePhotoInput = <input
@@ -76,7 +75,7 @@ var UserNav = React.createClass({
 
           <div className="user-nav-right group">
             {updateProfile}
-            <Link to={"/users/" + user.id + "/reviews"}>{reviewLinkText}</Link>
+            <Link to={"/users/" + user.id + "/reviews"}>{user.firstname + "'s Reviews"}</Link>
             <Link to={"/reviews/search"}>Search Restaurants</Link>
           </div>
 

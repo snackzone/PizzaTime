@@ -29,6 +29,7 @@ class Restaurant < ActiveRecord::Base
 
   has_many :reviews
   has_many :reviewers, through: :reviews, source: :user
+  has_many :photos
 
   def self.filtered(restaurants, filters)
     if filters["bounds"]
