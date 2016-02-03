@@ -123,7 +123,7 @@ var ReviewForm = React.createClass({
         otherReviews.push(review);
       }
       if (otherReviews.length === 3) {
-        return;
+        break;
       }
     }
 

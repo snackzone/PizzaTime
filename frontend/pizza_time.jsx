@@ -18,7 +18,6 @@ var UserStore = require('./stores/user_store');
 var ReviewSearch = require('./components/reviews/review_search');
 var RestaurantShow = require('./components/restaurants/show');
 var ReviewForm = require('./components/forms/review_form');
-var ReviewUpdateForm = require('./components/forms/review_update_form');
 
 var App = React.createClass({
   componentWillMount: function () {
@@ -46,7 +45,6 @@ var routes = (
     </Route>
     <Route path="reviews/search" component={ReviewSearch}/>
     <Route path="restaurants/:id/review" component={ReviewForm} onEnter={_ensureLoggedIn}/>
-    <Route path="restaurants/:id/review-update" component={ReviewForm} onEnter={_ensureLoggedIn}/>
     <Route path="restaurants/:id" component={RestaurantShow}>
     </Route>
   </Route>

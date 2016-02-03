@@ -17,7 +17,7 @@ var ReviewSearchResult = React.createClass({
   updateReviewLink: function () {
     return (
       <Link
-        to={"/restaurants/" + this.props.result.id + "/review-update"}
+        to={"/restaurants/" + this.props.result.id + "/review"}
         className="update review-button">
         Write an Update
       </Link>
