@@ -17,12 +17,12 @@ var RestaurantPhotoButton = React.createClass({
 
   render: function () {
     return (
-      <div>
+      <div className="add-photo-button-container">
         <a
           href="#"
-          className="add-photo-button"
+          className="add-photo-button big-red-button"
           onClick={this.openForm}>
-          CLICK ME
+          Add a Photo
         </a>
       {this.state.active ?
         <RestaurantPhotoForm

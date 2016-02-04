@@ -50,6 +50,7 @@ var RestaurantPhotoForm = React.createClass({
     if (!this.state.imageFile) {
       buttonClass += " disabled";
     }
+    var disabled = this.state.caption.length > 99 ? "disabled" : "";
 
     return (
       <div className="screen-blur">
@@ -84,7 +85,12 @@ var RestaurantPhotoForm = React.createClass({
                 {!this.state.imageFile ? <p>Click to upload</p> : null}
 
             </div>
-            {!!this.state.imageFile ? <button className="big-red-button modal-submit-button">Submit</button> : null}
+            {!!this.state.imageFile ?
+              <button
+                disabled={!!disabled}
+                className={"big-red-button modal-submit-button " + disabled}>
+                Submit
+              </button> : null}
           </form>
 
           <div className="modal-cancel-button" onClick={this.props.closeForm}></div >
