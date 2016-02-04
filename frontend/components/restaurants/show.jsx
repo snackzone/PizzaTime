@@ -8,6 +8,7 @@ var ReviewButton = require('../reviews/review_button');
 var RestaurantPhotoButton = require('./restaurant_photo_button');
 var ReviewMiniForm = require('../forms/review_mini_form');
 var SessionApiUtil = require('../../util/session_api_util');
+var RestaurantPhotos = require('./restaurant_photos');
 
 
 var RestaurantShow = React.createClass({
@@ -125,7 +126,10 @@ var RestaurantShow = React.createClass({
               <img className="static-map" src={this.getMap()} />
               <p className="address">{restaurant.address}</p>
             </div>
-            <img className="restaurant-profile-photo" src={restaurant.photo_url} />
+            <RestaurantPhotos
+              profilePhoto={restaurant.photo_url}
+              userUploads={restaurant.photos}
+            />
             <RestaurantPhotoButton restaurant={restaurant}/>
           </div>
         </div>
