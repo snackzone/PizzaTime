@@ -26,7 +26,7 @@ var Header = React.createClass({
     return (
       <header>
         <nav className="header-nav group">
-          <a href="#" className="logo">PizzaTime.</a>
+          <a href="#" className="logo"><img src={window.PizzaTime.imageUrls.sprites.logo}/></a>
           {headerSearchBar}
           {loginLogout}
         </nav>
