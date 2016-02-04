@@ -20,6 +20,7 @@ Rails.application.config.assets.precompile += %w( 1-star.png )
 Rails.application.config.assets.precompile += %w( star-filled.png )
 Rails.application.config.assets.precompile += %w( star-unfilled.png )
 Rails.application.config.assets.precompile += %w( camera.png )
+Rails.application.config.assets.precompile += %w( advert.png )
 
 
 

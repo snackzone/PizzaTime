@@ -37,7 +37,9 @@ var RestaurantPhotos = React.createClass({
   }
 });
 
+
 function getPhotoArray (profilePhoto, userUploads) {
+  var ad = <img src={window.PizzaTime.imageUrls.sprites.ad}/>;
   var array = [
     <li>
       <img
@@ -48,7 +50,7 @@ function getPhotoArray (profilePhoto, userUploads) {
   var uploads = userUploads.map(function(upload, index) {
     return <UserUpload key={index} upload={upload}/>;
   });
-  return array.concat(uploads);
+  return array.concat(uploads).concat(ad);
 }
 
 module.exports = RestaurantPhotos;
