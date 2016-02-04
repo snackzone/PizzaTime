@@ -30,6 +30,7 @@
   margin: auto;
   background: transparent;
   position: relative;
+  overflow: hidden;
 }
 
 .photo-modal-button {
@@ -76,9 +77,9 @@
   right: 20px;
 }
 
-.image-preview-container > p {
-  position: absolute;
-  left: 100px;
+.photo-form-container > p {
+  text-align: center;
+  display: block;
   font-size: 24px;
   color: #B7B8B2;
   font-style: italic;

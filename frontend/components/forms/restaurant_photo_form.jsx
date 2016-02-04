@@ -82,7 +82,6 @@ var RestaurantPhotoForm = React.createClass({
                     value={this.state.caption}
                   /> : null}
 
-                {!this.state.imageFile ? <p>Click to upload</p> : null}
 
             </div>
             {!!this.state.imageFile ?
@@ -93,9 +92,10 @@ var RestaurantPhotoForm = React.createClass({
               </button> : null}
           </form>
 
-          <div className="modal-cancel-button" onClick={this.props.closeForm}></div >
-        </div>
+            {!this.state.imageFile ? <p>Click to upload</p> : null}
+        <div className="modal-cancel-button" onClick={this.props.closeForm}></div >
       </div>
+    </div>
     );
   }
 });
