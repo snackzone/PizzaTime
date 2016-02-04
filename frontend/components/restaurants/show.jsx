@@ -112,7 +112,7 @@ var RestaurantShow = React.createClass({
 
             <ReviewButton
               isUpdate={isUpdate}
-              restaurant={restaurant.id}/>
+              restaurant={restaurant}/>
 
             <div className="info-container group">
               <img className="stars" src={this.getStars()} />

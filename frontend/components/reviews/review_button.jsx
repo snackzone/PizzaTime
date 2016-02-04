@@ -9,7 +9,7 @@ var ReviewButton = React.createClass({
 
     return(
       <Link
-        to={"/restaurants/" + this.props.restaurantId + "/review"}
+        to={"/restaurants/" + this.props.restaurant.id + "/review"}
         className={"review-button" + klass}>
         {content}
       </Link>
