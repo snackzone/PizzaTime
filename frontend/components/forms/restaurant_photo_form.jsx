@@ -37,7 +37,7 @@ var RestaurantPhotoForm = React.createClass({
     formData.append("photo[caption]", this.state.caption);
     formData.append("photo[upload]", this.state.imageFile);
 
-    UserApiUtil.uploadPhoto(this.props.restaurantId, formData, this.resetForm);
+    UserApiUtil.uploadPhoto(this.props.restaurant.id, formData, this.resetForm);
 
   },
 
@@ -46,28 +46,49 @@ var RestaurantPhotoForm = React.createClass({
   },
 
   render: function () {
+    var buttonClass = "photo-modal-button";
+    if (!this.state.imageFile) {
+      buttonClass += " disabled";
+    }
+
     return (
-      <div>
-        <h2>New Post</h2>
+      <div className="screen-blur">
+        <div className="photo-form-container">
 
-        <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
 
-          <label>Title
-            <input
-              type="text"
-              placeholder="Add a caption (optional)"
-              onChange={this.changeCaption}
-              value={this.state.caption}
-            />
-          </label>
+              <input id="file" name="file" type="file" className="file" onChange={this.changeFile} />
 
-          <label>
-            <input type="file" onChange={this.changeFile} />
-          </label>
+            <div className="image-preview-container">
 
-          <img className="preview-image" src={this.state.imageUrl}/>
-          <button>Submit</button>
-        </form>
+                {!this.state.imageFile ?
+                  <label htmlFor="file" className="add-a-photo">
+                    <img src={window.PizzaTime.imageUrls.sprites.camera}/>
+                  </label> : null}
+
+                {!!this.state.imageFile ?
+                  <img
+                    className="preview-image"
+                    src={this.state.imageUrl}
+                  /> : null}
+
+                {!!this.state.imageFile ?
+                  <input
+                    type="text"
+                    className="photo-modal-caption"
+                    placeholder="Add a caption (optional)"
+                    onChange={this.changeCaption}
+                    value={this.state.caption}
+                  /> : null}
+
+                {!this.state.imageFile ? <p>Click to upload</p> : null}
+
+            </div>
+            {!!this.state.imageFile ? <button className="big-red-button modal-submit-button">Submit</button> : null}
+          </form>
+
+          <div className="modal-cancel-button" onClick={this.props.closeForm}></div >
+        </div>
       </div>
     );
   }
