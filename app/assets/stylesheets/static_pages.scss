@@ -72,14 +72,17 @@ ul {
 
 .header-guest-login-button {
   float: left;
-  margin-right: 30px;
-  padding: 10px 20px;
+  margin-right: 15px;
+  padding: 12px 10px 5px 10px;
+  height: 40px;
+  box-sizing: border-box;
   white-space: nowrap;
   border: 1px solid #333333;
   border-radius: 7px;
   box-shadow: 0 1px 1px #333333;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 400;
+  vertical-align: baseline;
 }
 
 .header-guest-login-button:hover {
@@ -88,10 +91,23 @@ ul {
 
 .logged-out-link-container {
   float: right;
+  font-size: 12px;
 }
 
 .logged-out-link-container > a {
   text-decoration: underline;
+}
+
+.header-tiny-link-container {
+  float: right;
+  margin-top: 4px;
+}
+
+.header-tiny-link-container > a {
+  display:block;
+  margin-left: 25px;
+  text-decoration: underline;
+  margin-bottom: 3px;
 }
 
 .group:after {

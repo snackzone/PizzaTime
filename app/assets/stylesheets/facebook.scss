@@ -1,0 +1,35 @@
+.facebook-logo {
+  width: 25px;
+  height: 25px;
+  background: white;
+  display: block;
+  overflow: hidden;
+  border-radius: 3px;
+  float:left;
+}
+
+.facebook-logo:hover {
+  box-shadow: 0 0 3px rgba(0,0,0,0.5);
+  background: rgba(254,254,254,1);
+}
+
+.big-red-button.facebook {
+  text-decoration: none;
+  padding: 5px 10px 8px 10px;
+  box-shadow: 0 1px 1px #333333;
+  border: 1px solid #333333;
+  font-weight: 400;
+  margin-right: 55px;
+}
+
+.facebook:after {
+  content:image-url('facebook-logo.png');
+  width: 25px;
+  height: 25px;
+  background: white;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 3px;
+  margin-left: 5px;
+  vertical-align: bottom;
+}

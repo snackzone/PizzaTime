@@ -51,14 +51,15 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_by_auth_hash(auth_hash)
+    debugger
+
     provider = auth_hash[:provider]
     uid = auth_hash[:uid]
-
-    debugger
 
     user = User.find_by(provider: provider, uid: uid)
 
     return user if user
+
     name = auth_hash[:info][:name].split(" ")
     firstname = name.first
     surname = name.last

@@ -23,11 +23,13 @@ var LoggedOut = React.createClass({
     var Link = ReactRouter.Link;
     return (
       <div className="logged-out group">
-        <a href="#" className="header-guest-login-button" onClick={this.guestLogin}>Guest Login.</a>
-        <FacebookLogin/>
+        <a href="#" className="header-guest-login-button" onClick={this.guestLogin}>guest login</a>
         <div className="logged-out-link-container">
-          <h1>You are not logged in.</h1>
-          <Link to="/session/new">Sign in</Link> or <Link to="/users/new">Sign up.</Link>
+          <div className="header-tiny-link-container">
+            <Link to="/session/new" className="header-tiny-link">Sign in</Link>
+            <Link to="/users/new" className="header-tiny-link">Sign up</Link>
+          </div>
+          <FacebookLogin/>
         </div>
       </div>
     );
