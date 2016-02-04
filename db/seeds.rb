@@ -186,6 +186,42 @@ dog = User.create!(
   photo: File.open("app/assets/images/bulldog.jpg")
 )
 
+lena = User.create!(
+  firstname: "Hannah",
+  surname: "Dunwell",
+  zip: "11222",
+  email: "ld@gmail.com",
+  password: "lenalena",
+  photo: File.open("app/assets/images/lena.gif")
+)
+
+bill = User.create!(
+  firstname: "William",
+  surname: "Margrave",
+  zip: "10023",
+  password: "whoyagonnacall",
+  photo: File.open("app/assets/images/bill.jpg"),
+  email: "w.margrave@columbia.edu"
+)
+
+snake = User.create!(
+  firstname: "Curtis",
+  surname: "Rousseau",
+  zip: "10003",
+  password: "24hours",
+  photo: File.open("app/assets/images/snake.jpg"),
+  email: "snake1997@hotmail.com"
+)
+
+pizza_rat = User.create!(
+  firstname: "Pizza",
+  surname: "Rat",
+  zip: "10002",
+  password: "squeak",
+  photo: File.open("app/assets/images/pizza-rat.jpg"),
+  email: "pizzarat@mta.gov"
+)
+
 
 ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
 5.times do
@@ -200,7 +236,7 @@ ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
 5.times do
   foodguy.reviews.create!(
     restaurant_id: ids.pop,
-    body: Faker::Hipster.sentence,
+    body: Faker::Hipster.sentences(3),
     rating: Random.new.rand(1..3)
   )
 end
@@ -211,7 +247,18 @@ mike.reviews.create!(
   rating: 3
 )
 
+user_ids = User.pluck(:id);
+restaurant_ids = Restaurant.pluck(:id);
 
+Dir.glob('/app/assets/images/user-uploads/*.jpg') do |photo|
+  user = User.find(user_ids.sample)
+  id = restaurant_ids.sample
+  user.photos.create!(
+    upload: File.open(photo),
+    caption: Faker::Hipster.sentence,
+    restaurant_id: id
+  )
+end
 
 
 
