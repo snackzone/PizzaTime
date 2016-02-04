@@ -37,7 +37,6 @@ var RestaurantPhotos = React.createClass({
   }
 });
 
-
 function getPhotoArray (profilePhoto, userUploads) {
   var ad = <img src={window.PizzaTime.imageUrls.sprites.ad}/>;
   var array = [

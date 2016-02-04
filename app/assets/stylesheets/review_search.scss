@@ -64,11 +64,11 @@
 }
 
 .new.review-button::before {
-  content:url('star-unfilled.png');
+  content:image-url('star-unfilled.png');
 }
 
 .update.review-button::before {
-  content:url('star-filled.png')
+  content:image-url('star-filled.png')
 }
 
 .review-button:hover {
