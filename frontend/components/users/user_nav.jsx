@@ -42,6 +42,7 @@ var UserNav = React.createClass({
 
     var updatePhotoLabel, updatePhotoInput, updateProfile;
     var reviewLinkText = user.firstname + "'s Reviews";
+    var photoLinkText = user.firstname + "'s Photos";
 
     if (this.props.isCurrentUser) {
       updatePhotoLabel = <label htmlFor="file" className="change-profile-picture">Update Photo.</label>;
@@ -53,6 +54,7 @@ var UserNav = React.createClass({
                          />;
       updateProfile = <Link to={"/users/" + user.id + "/edit"}>Update Profile</Link>;
       reviewLinkText = "Your Reviews";
+      photoLinkText = "Your Photos";
     }
 
     return (
@@ -77,6 +79,7 @@ var UserNav = React.createClass({
           <div className="user-nav-right group">
             {updateProfile}
             <Link to={"/users/" + user.id + "/reviews"}>{reviewLinkText}</Link>
+            <Link to={"/users/" + user.id + "/photos"}>{photoLinkText}</Link>
             <Link to={"/reviews/search"}>Search Restaurants</Link>
           </div>
 

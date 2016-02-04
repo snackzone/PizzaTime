@@ -1,0 +1,68 @@
+.polaroid-wrapper {
+  list-style: none;
+}
+
+.user-photo-gallery {
+  list-style: none;
+}
+
+.user-photo-gallery-container > h2 {
+  display: block;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #E5E5E1;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  font-size: 21px;
+  color: #BD0E01;
+  font-weight: 700;
+}
+
+.polaroid-wrapper {
+  background: #F5F5F1;
+  padding: 20px 20px 20px 20px;
+  border: 1px solid #E5E5E1;
+  width: 210px;
+  box-sizing: content-box;
+  border-radius: 3px;
+  float: left;
+  overflow: hidden;
+  margin: 0 16px 20px 0;
+}
+
+.polaroid-wrapper > li > img {
+  width: 100%;
+  height: auto;
+}
+
+.polaroid-wrapper > li, .polaroid-wrapper > li > p {
+  position: static;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.polaroid-wrapper > li {
+  width: auto;
+  height: auto;
+  border: 1px solid #E5E5E1;
+  position: relative;
+  box-sizing: content-box;
+  // width: 250px;
+  // height: 250px;
+  overflow: hidden;
+  background: white;
+}
+
+.polaroid-wrapper li > p {
+  border: 1px solid #E5E5E1;
+  position: absolute;
+  background: white;
+  bottom: 10px;
+  left: 5px;
+  font-style: italic;
+  color: #333333;
+  font-weight: 900;
+  padding: 5px;
+  font-size: 14px;
+}
