@@ -12,8 +12,7 @@ Rails.application.routes.draw do
       end
       get "search", to: "utils#search"
     end
+    get 'auth/facebook/callback', to: 'sessions#omniauth_facebook'
     resource :static_pages, only: :root
-    resources :users, only: [:new, :create]
-    resource :session, only: [:new, :create, :destroy, :show]
   end
 end

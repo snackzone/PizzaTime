@@ -25,7 +25,11 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
-  validates_format_of :zip, with: /^\d{5}(-\d{4})?$/, multiline: true, message: "invalid zip"
+  validates_format_of :zip,
+    with: /^\d{5}(-\d{4})?$/,
+    multiline: true,
+    allow_nil: true,
+    message: "invalid zip"
 
   validates :password, length: { minimum: 6, allow_nil: true }, confirmation: true
 
@@ -44,6 +48,22 @@ class User < ActiveRecord::Base
     user = User.find_by(email: email)
     return nil unless user && user.valid_password?(password)
     user
+  end
+
+  def self.find_or_create_by_auth_hash(auth_hash)
+    provider = auth_hash[:provider]
+    uid = auth_hash[:uid]
+
+    user = User.find_by(provider: provider, uid: uid)
+
+    return user if user
+
+    User.create(
+      provider: provider,
+      uid: uid,
+      email: auth_hash[:info][:name],
+      password: SecureRandom::urlsafe_base64
+    )
   end
 
   def password=(password)

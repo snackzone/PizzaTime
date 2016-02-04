@@ -24,6 +24,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip'
 gem 'aws-sdk', '~> 1.6'
 gem 'figaro'
+gem 'omniauth-facebook'
+
 
 gem 'faker'
 gem 'pg_search'
