@@ -25,20 +25,6 @@
   white-space: nowrap;
 }
 
-.restaurant-photo {
-  float: left;
-  width: 220px;
-  position: absolute;
-}
-
-.restaurant-photo-container {
-  width: 220px;
-  border-radius: 5px;
-  float: left;
-  margin: 20px 20px 20px 150px;
-  position: relative;
-}
-
 .static-map-container {
   box-sizing: border-box;
   width: 300px;
@@ -83,10 +69,4 @@
   border-radius: 7px;
   padding: 10px 20px;
   text-align: center;
-}
-
-.add-photo-button {
-  display: inline-block;
-  padding: 20px 50px;
-  background: pink;
 }

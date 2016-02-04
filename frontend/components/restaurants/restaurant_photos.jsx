@@ -3,40 +3,52 @@ var UserUpload = require('./user_upload');
 
 var RestaurantPhotos = React.createClass({
   getInitialState: function () {
-    this.array = this.photoArray();
-    return {array: this.photoArray()};
+    this.array = getPhotoArray(this.props.profilePhoto, this.props.userUploads);
+    return {array: this.array};
   },
 
-  photoArray: function () {
-    // debugger
-    var array = [<img className="restaurant-photo" src={this.props.profilePhoto} />];
-    var uploads = this.props.userUploads.map(function(upload, index) {
-      return <UserUpload key={index} upload={upload}/>;
-    });
-    return array.concat(uploads);
-  },
-
-  rotate_right: function () {
-    this.array.unshift(this.array.pop());
+  componentWillReceiveProps: function (newProps) {
+    this.array = getPhotoArray(newProps.profilePhoto, newProps.userUploads);
     this.setState({array: this.array});
   },
 
   rotate_left: function () {
+    this.array.unshift(this.array.pop());
+    this.setState({array: this.array});
+  },
+
+  rotate_right: function () {
     this.array.push(this.array.shift());
     this.setState({array: this.array});
   },
 
   render: function () {
     return (
-      <div className="carosel">
-        <figure className="restaurant-photo-container group">
-          {this.state.array[0]}
-        </figure>
-        <button onClick={this.rotate_left}>{"<"}</button>
-        <button onClick={this.rotate_right}>{">"}</button>
+      <div className="carousel-wrapper">
+        <div className="carousel group">
+          <div className="carousel-arrow left" onClick={this.rotate_left}></div>
+          <ul className="restaurant-photo-wrapper">
+            {this.state.array[0]}
+          </ul>
+          <div className="carousel-arrow right" onClick={this.rotate_right}></div>
+        </div>
       </div>
     );
   }
 });
+
+function getPhotoArray (profilePhoto, userUploads) {
+  var array = [
+    <li>
+      <img
+        className="restaurant-photo"
+        src={profilePhoto} />
+    </li>
+  ];
+  var uploads = userUploads.map(function(upload, index) {
+    return <UserUpload key={index} upload={upload}/>;
+  });
+  return array.concat(uploads);
+}
 
 module.exports = RestaurantPhotos;

@@ -18,7 +18,7 @@ var ReviewSearchResult = React.createClass({
         <p>{restaurant.address}</p>
         <p>{getPriceRangeString(restaurant.price_range)}</p>
         <ReviewButton
-          restaurantId={restaurant.id}
+          restaurant={restaurant}
           isUpdate={hasReviewed}/>
       </li>
     );

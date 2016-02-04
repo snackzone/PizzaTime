@@ -1,4 +1,5 @@
 var React = require('react');
+var RestaurantApiUtil = require('../../util/restaurant_api_util');
 var UserApiUtil = require('../../util/user_api_util');
 
 var RestaurantPhotoForm = React.createClass({
@@ -41,6 +42,7 @@ var RestaurantPhotoForm = React.createClass({
   },
 
   resetForm: function () {
+    RestaurantApiUtil.fetchRestaurant(this.props.restaurant.id);
     this.setState({caption: "", imageFile: null, imageUrl: ""});
     this.props.closeForm();
   },

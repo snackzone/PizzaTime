@@ -1,8 +1,11 @@
 json.extract! restaurant, :id, :name, :address, :price_range, :lat, :lng,
 :photo_url, :url, :mean_rating
 
+photos = restaurant.photos.sort do |a, b|
+  b.created_at <=> a.created_at
+end
 
-json.photos restaurant.photos do |photo|
+json.photos photos do |photo|
   json.partial! 'api/photos/photo', photo: photo
 end
 

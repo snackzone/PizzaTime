@@ -5,7 +5,7 @@ var Route = require('react-router').Route;
 var IndexRoute = require('react-router').IndexRoute;
 
 var Search = require('./components/search/search');
-var RestaurantStore = require('./stores/restaurant_store');
+RestaurantStore = require('./stores/restaurant_store');
 var Header = require('./components/header/header');
 var SessionForm = require('./components/forms/session_form');
 var UserForm = require('./components/forms/user_form');

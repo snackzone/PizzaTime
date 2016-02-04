@@ -4,9 +4,9 @@ var UserUpload = React.createClass({
   render: function () {
     var upload = this.props.upload;
     return (
-      <li className="group">
+      <li>
+        <p className="carousel-caption">{"\""+upload.caption+"\""}</p>
         <img src={upload.url} className="restaurant-photo"/>
-        <p>{"\""+upload.caption+"\""}</p>
       </li>
     );
   }

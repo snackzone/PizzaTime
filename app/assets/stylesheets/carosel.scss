@@ -1,0 +1,101 @@
+.restaurant-photo-wrapper {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, .7);
+  padding: 2px;
+  max-width: 225px;
+}
+
+.restaurant-photo-wrapper > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.restaurant-photo {
+  width: 100%;
+}
+
+.carousel {
+  width: 350px;
+  height: 250px;
+  border-radius: 5px;
+  float: left;
+  margin: 20px 20px 20px 120px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #E5E5E1;
+}
+
+.carousel > * {
+  float:left;
+}
+
+.carousel > img {
+  width: 250px;
+  margin: auto;
+}
+
+.carousel-arrow {
+  height: 100%;
+  display: block;
+  font-size: 36px;
+  font-weight: bold;
+  top: 0;
+  color: white;
+  width: 50px;
+}
+
+.carousel-arrow.left {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.carousel-arrow.right {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.carousel-arrow:hover {
+  background: #aaa;
+}
+
+.carousel-arrow.left:hover {
+  box-shadow: -3px 0 3px rgba(0, 0, 0, .3);
+
+}
+
+.carousel-arrow.right:hover {
+  box-shadow: 3px 0 3px rgba(0, 0, 0, .3);
+}
+
+.carousel-arrow:before {
+  margin: 200px auto 0 auto;;
+  display: block;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.carousel-arrow.left:before {
+  border-color: transparent #BD0E01 transparent transparent;
+  border-width: 15px 15px 15px 0;
+}
+
+.carousel-arrow.right:before {
+  border-color: transparent transparent transparent #BD0E01;
+  border-width: 15px 0 15px 15px;
+}
+
+.carousel-wrapper {
+  display: inline-block;
+}

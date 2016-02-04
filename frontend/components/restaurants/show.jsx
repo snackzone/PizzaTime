@@ -126,6 +126,7 @@ var RestaurantShow = React.createClass({
               <img className="static-map" src={this.getMap()} />
               <p className="address">{restaurant.address}</p>
             </div>
+
             <RestaurantPhotos
               profilePhoto={restaurant.photo_url}
               userUploads={restaurant.photos}
