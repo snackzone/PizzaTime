@@ -259,6 +259,10 @@ ul {
   display: block;
 }
 
+.price-filter-button.active {
+  background: #aaa;
+}
+
 .price-filter-button-container:last-child {
   border: 0;
 }
