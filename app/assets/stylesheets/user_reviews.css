@@ -74,3 +74,8 @@
   margin-top: 20px;
   font-size: 14px;
 }
+
+.no-reviews > .big-red-button {
+  margin-top: 35px;
+  margin-left: 125px;
+}
