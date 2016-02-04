@@ -79,7 +79,7 @@ var UserApiUtil = {
     });
   },
 
-  fetchById: function (id) {
+  fetchById: function (id, callback) {
     $.ajax({
       method: "GET",
       dataType: "json",
@@ -87,6 +87,9 @@ var UserApiUtil = {
       success: function (user) {
         UserApiActions.receiveUser(user);
         console.log("success");
+        if (callback) {
+          callback();
+        }
       },
       error: function (data) {
         console.log("failed to fetch user id " + id);
