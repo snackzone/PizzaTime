@@ -3,13 +3,17 @@
   height: 250px;
   overflow: hidden;
   position: relative;
+  border: 10px solid white;
+  border-bottom: 40px solid white;
+  border-radius: 5px;
+  background: white;
 }
 
 .carousel-caption {
   position: absolute;
   bottom: 10px;
   left: 10px;
-  background: rgba(255, 255, 255, .7);
+  background: rgba(255, 255, 255, 1);
   padding: 2px;
   max-width: 225px;
 }
@@ -25,14 +29,13 @@
 }
 
 .carousel {
-  width: 350px;
+  width: 400px;
   height: 250px;
   border-radius: 5px;
   float: left;
-  margin: 20px 20px 20px 120px;
-  background: white;
+  // background: white;
   border-radius: 12px;
-  border: 1px solid #E5E5E1;
+  // border: 1px solid #E5E5E1;
 }
 
 .carousel > * {
@@ -50,8 +53,9 @@
   font-size: 36px;
   font-weight: bold;
   top: 0;
-  color: white;
+  // color: white;
   width: 50px;
+  border-color: red;
 }
 
 .carousel-arrow.left {
@@ -64,17 +68,12 @@
   border-bottom-right-radius: 12px;
 }
 
-.carousel-arrow:hover {
-  background: #aaa;
+.carousel-arrow.left:hover:before {
+  border-color: transparent #333333 transparent transparent;
 }
 
-.carousel-arrow.left:hover {
-  box-shadow: -3px 0 3px rgba(0, 0, 0, .3);
-
-}
-
-.carousel-arrow.right:hover {
-  box-shadow: 3px 0 3px rgba(0, 0, 0, .3);
+.carousel-arrow.right:hover:before {
+  border-color: transparent transparent transparent #333333;
 }
 
 .carousel-arrow:before {

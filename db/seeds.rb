@@ -247,6 +247,8 @@ mike.reviews.create!(
   rating: 3
 )
 
+
+##This method isn't working yet.
 user_ids = User.pluck(:id);
 restaurant_ids = Restaurant.pluck(:id);
 

@@ -12,6 +12,7 @@
 .restaurant-info-container {
   border-bottom: 1px solid #E5E5E1;
   background: #F5F5F1;
+  // margin-bottom: 50px;
 }
 
 .restaurant-show {
@@ -20,18 +21,19 @@
   padding: 20px 0;
 }
 
-.restaurant-show > .big-red-button {
-  float: right;
-  white-space: nowrap;
-}
-
 .static-map-container {
   box-sizing: border-box;
   width: 300px;
   padding: 10px;
   background: white;
   border: 1px solid #E5E5E1;
-  float: left
+  float: left;
+  // margin-top: 75px;
+}
+
+.restaurant-show > .carousel-wrapper {
+  float: right;
+  margin-right: 50px;
 }
 
 .static-map-container > .address {
@@ -44,8 +46,25 @@
   font-weight: bold;
 }
 
+.restaurant-show-button-container {
+  float: right;
+  width: 400px;
+  margin-right: 150px;
+}
+
+.restaurant-show-button-container > .review-button {
+  float: left;
+  margin: 0;
+}
+
+.restaurant-show-button-container > div > .big-red-button {
+  float: right;
+  margin-top: 5px;
+}
+
 .info-container {
   margin: 10px 0 15px;
+  // float: left;
 }
 
 .info-container > * {
@@ -58,15 +77,4 @@
 
 .info-container > *:nth-child(2) {
   margin: 0 10px;
-}
-
-.restaurant-show-already-reviewed {
-  font-weight: 900;
-  float: right;
-  width: 300px;
-  display: block;
-  background: white;
-  border-radius: 7px;
-  padding: 10px 20px;
-  text-align: center;
 }

@@ -110,9 +110,13 @@ var RestaurantShow = React.createClass({
           <div className="restaurant-show group">
             <h1>{restaurant.name}</h1>
 
-            <ReviewButton
-              isUpdate={isUpdate}
-              restaurant={restaurant}/>
+            <div className="restaurant-show-button-container group">
+              <RestaurantPhotoButton restaurant={restaurant}/>
+              <ReviewButton
+                isUpdate={isUpdate}
+                restaurant={restaurant}/>
+            </div>
+
 
             <div className="info-container group">
               <img className="stars" src={this.getStars()} />
@@ -121,6 +125,7 @@ var RestaurantShow = React.createClass({
                 {restaurant.reviews.length == 1 ? "review" : "reviews"}
               </p>
               <p className="dollar-signs">{this.getPriceRangeString()}</p>
+
             </div>
             <div className="static-map-container group">
               <img className="static-map" src={this.getMap()} />
@@ -131,7 +136,6 @@ var RestaurantShow = React.createClass({
               profilePhoto={restaurant.photo_url}
               userUploads={restaurant.photos}
             />
-            <RestaurantPhotoButton restaurant={restaurant}/>
           </div>
         </div>
         <div className="restaurant-review-container">
