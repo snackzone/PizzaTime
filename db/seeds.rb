@@ -9,6 +9,7 @@
 Restaurant.destroy_all
 User.destroy_all
 Review.destroy_all
+Photo.destroy_all
 
 vinnies = Restaurant.create!(
   name: "Vinnie's Pizzeria",

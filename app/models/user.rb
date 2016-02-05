@@ -33,9 +33,9 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6, allow_nil: true }, confirmation: true
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :reviewed_restaurants, through: :reviews, source: :restaurant
-  has_many :photos
+  has_many :photos, dependent: :destroy
 
   attr_reader :password
 
