@@ -426,9 +426,11 @@ ul {
   background: #424242;
 }
 
-.sign-up-button {
+.big-red-button.sign-up-button {
   margin: auto;
   margin-top: 40px;
+  display: block;
+  width: 75px;
 }
 
 .form > h2 {
