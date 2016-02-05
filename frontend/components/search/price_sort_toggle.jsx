@@ -5,14 +5,15 @@ var SortToggle = React.createClass({
   getInitialState: function () {
     return ({
       active: false,
-      ascending: false
+      ascending: false,
+      clickCount: 0
     });
   },
 
   handleClick: function (e) {
     e.preventDefault();
     var field, filter;
-    if (this.state.active && !this.state.ascending) {
+    if (this.state.clickCount === 2) {
       field = this.props.sortField;
       filter = {};
       filter[field] = { ascending: "none"};
@@ -20,7 +21,8 @@ var SortToggle = React.createClass({
 
       this.setState({
         active: false,
-        ascending: !this.state.ascending
+        ascending: false,
+        clickCount: 0
       });
       return;
     }
@@ -32,7 +34,8 @@ var SortToggle = React.createClass({
 
     this.setState({
       active: true,
-      ascending: !this.state.ascending
+      ascending: !this.state.ascending,
+      clickCount: this.state.clickCount + 1
     });
   },
 
