@@ -144,7 +144,9 @@ zach = User.create!(
   email: "zachary.moroni@gmail.com",
   zip: "11222",
   password: "zachzach",
-  photo: File.open("app/assets/images/zachary-moroni.jpg")
+  photo: File.open("app/assets/images/zachary-moroni.jpg"),
+  uid: "1066901750039886",
+  provider: "facebook"
 )
 
 zach.reviews.create!(
@@ -254,12 +256,12 @@ mike.reviews.create!(
 user_ids = User.pluck(:id);
 restaurant_ids = Restaurant.pluck(:id);
 
-Dir.glob('/app/assets/images/user-uploads/*.jpg') do |photo|
+(1..18).each do |num|
   user = User.find(user_ids.sample)
   id = restaurant_ids.sample
   user.photos.create!(
-    upload: File.open(photo),
-    caption: Faker::Hipster.sentence,
+    upload: File.open("app/assets/images/user-uploads/#{num}.jpg"),
+    caption: Faker::Hipster.sentence(4),
     restaurant_id: id
   )
 end
