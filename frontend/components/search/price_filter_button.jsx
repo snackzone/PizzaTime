@@ -5,7 +5,11 @@ var PriceFilterButton = React.createClass({
   handleClick: function (e) {
     e.preventDefault();
     this.props.handleClick(this.props.id, this.props.maxPrice);
-    FilterActions.receiveFilter({max_price: this.props.num});
+    if (this.props.maxPrice) {
+      FilterActions.receiveFilter({max_price: 5});
+    } else {
+      FilterActions.receiveFilter({max_price: this.props.num});
+    }
   },
 
   render: function () {
