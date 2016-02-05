@@ -6,7 +6,7 @@ var ReviewSubmitButton = React.createClass({
       this.props.length > 300 ||
       !this.props.rated);
 
-    var klass = "big-red-button submit-button";
+    var klass = "big-red-button submit-button submit";
     if (disabled) {
       klass += " disabled";
     }
