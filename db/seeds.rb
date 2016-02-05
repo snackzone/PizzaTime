@@ -10,6 +10,7 @@ Restaurant.destroy_all
 User.destroy_all
 Review.destroy_all
 Photo.destroy_all
+FortuneCookie.destroy_all
 
 vinnies = Restaurant.create!(
   name: "Vinnie's Pizzeria",
@@ -263,6 +264,56 @@ Dir.glob('/app/assets/images/user-uploads/*.jpg') do |photo|
   )
 end
 
+
+FortuneCookie.create!(
+  quote: "There’s no better feeling in the world than a warm pizza box on your lap.",
+  author: "Kevin James"
+)
+
+FortuneCookie.create!(
+  quote: "The perfect lover is one who turns into a pizza at 4:00 a.m.",
+  author: "Charles Pierce"
+)
+
+FortuneCookie.create!(
+  quote: "And I don’t cook, either. Not as long as they still deliver pizza.",
+  author: "Tiger Woods"
+)
+
+FortuneCookie.create!(
+  quote: "I think of dieting, then I eat pizza.",
+  author: "Lara Stone"
+)
+
+FortuneCookie.create!(
+  quote: "Everybody likes pizza! It's a quick and easy clean-up meal.",
+  author: "Buddy Valastro"
+)
+
+FortuneCookie.create!(
+  quote: "My love is pizza shaped. Won’t you have a slice? It’s circular, so there’s enough to go around. ",
+  author: "Dora J. Arod"
+)
+
+FortuneCookie.create!(
+  quote: "Those pizzas I ate were for medicinal purposes.",
+  author: "Amy Neftzger"
+)
+
+FortuneCookie.create!(
+  quote: "Pizza is like the entire food pyramid!",
+  author: "Madeline Oles"
+)
+
+FortuneCookie.create!(
+  quote: "There’s very little in my world that a foot massage and a thin-crust, everything-on-it pizza won’t set right.",
+  author: "G.A. McKevett"
+)
+
+FortuneCookie.create!(
+  quote: "Pizza makes me think that anything is possible.",
+  author: "Henry Rollins"
+)
 
 
 

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :users, only: [:new, :create, :update, :show] do
         resources :reviews, only: [:index]
       end
+      get "fortune_cookie", to: "fortune_cookies#random"
       get "search", to: "utils#search"
     end
     get 'auth/facebook/callback', to: 'sessions#omniauth_facebook'

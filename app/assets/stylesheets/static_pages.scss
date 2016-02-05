@@ -19,7 +19,7 @@ header, body, footer, article, section, img, form {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Istok Web', sans-serif;
   background: #F5F5F1;
   color: #333333;
 }
@@ -234,6 +234,30 @@ ul {
   padding: 30px 0 10px;
   width: 960px;
   margin: auto;
+  position: relative;
+}
+
+.fortune-cookie {
+  float: right;
+  width: 300px;
+  position: absolute;
+  right: 0;
+  top: 30px;
+}
+
+.fortune-cookie > * {
+  text-align: right;
+  color: #aaa;
+}
+
+.fortune-cookie > p:first-child {
+  margin-bottom: 15px;
+  font-weight: 900;
+}
+
+.fortune-cookie > p:last-child {
+  font-style: italic;
+  font-weight: 400;
 }
 
 .search-nav-section > h2 {
