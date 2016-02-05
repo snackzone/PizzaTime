@@ -56,9 +56,8 @@ class User < ActiveRecord::Base
     uid = auth_hash[:uid]
 
     user = User.find_by(provider: provider, uid: uid)
-
+    
     return user if user
-
     name = auth_hash[:info][:name].split(" ")
     firstname = name.first
     surname = name.last

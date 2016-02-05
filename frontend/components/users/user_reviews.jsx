@@ -4,13 +4,15 @@ var UserStore = require('../../stores/user_store');
 var CurrentUserStore = require('../../stores/current_user_store');
 var NoReviewsCurrentUser = require('./no_reviews_current_user');
 var NoReviewsUser = require('./no_reviews_user');
+var UserApiUtil = require('../../util/user_api_util');
 
 var UserReviews = React.createClass({
   getInitialState: function () {
     var id = this.props.params.id;
     return ({
-      user: UserStore.find(id),
-      isCurrentUser: CurrentUserStore.isCurrentUser(id)
+      user: UserApiUtil.fetchById(this.props.params.id, this._change),
+      isCurrentUser: CurrentUserStore.isCurrentUser(id),
+      loaded: false
     });
   },
 
@@ -24,10 +26,23 @@ var UserReviews = React.createClass({
   },
 
   _change: function () {
-    this.setState({user: UserStore.find(this.props.params.id)});
+    this.setState({
+      user: UserStore.find(this.props.params.id),
+      loaded: true
+    });
   },
 
   render: function () {
+    debugger
+
+    if (!this.state.loaded) {
+      return (
+        <div className="reviews">
+          <h2>Reviews</h2>
+        </div>
+      );
+    }
+
     var user = this.state.user;
 
     if (user.reviews.length > 0) {
