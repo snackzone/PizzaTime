@@ -33,7 +33,6 @@ var UserReviews = React.createClass({
   },
 
   render: function () {
-    debugger
 
     if (!this.state.loaded) {
       return (

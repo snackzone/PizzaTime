@@ -110,3 +110,28 @@
   display: block;
   margin-bottom: 10px;
 }
+
+.user-nav-links {
+  color: #3B65A7
+}
+
+.user-nav-links:hover {
+  text-decoration: underline;
+}
+
+.user-nav-links:before {
+  margin-right: 10px;
+}
+
+.user-nav-links#photos:before {
+  content:image-url("photos-large.png")
+}
+
+.user-nav-links#reviews:before {
+content:image-url("reviews.png")
+
+}
+
+.user-nav-links#search:before {
+  content:image-url("search.png")
+}

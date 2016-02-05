@@ -27,6 +27,10 @@ Rails.application.config.assets.precompile += %w( logo.png )
 Rails.application.config.assets.precompile += %w( photos.png )
 Rails.application.config.assets.precompile += %w( settings.png )
 
+Rails.application.config.assets.precompile += %w( reviews.png )
+Rails.application.config.assets.precompile += %w( photos-large.png )
+Rails.application.config.assets.precompile += %w( search.png )
+
 
 
 # Add additional assets to the asset load path
