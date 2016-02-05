@@ -24,6 +24,9 @@ Rails.application.config.assets.precompile += %w( advert.png )
 Rails.application.config.assets.precompile += %w( facebook-logo.png )
 Rails.application.config.assets.precompile += %w( logo.png )
 
+Rails.application.config.assets.precompile += %w( photos.png )
+Rails.application.config.assets.precompile += %w( settings.png )
+
 
 
 # Add additional assets to the asset load path

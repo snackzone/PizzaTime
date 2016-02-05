@@ -112,8 +112,11 @@ ul {
 .header-tiny-link-container > a {
   display:block;
   margin-left: 25px;
-  text-decoration: underline;
   margin-bottom: 3px;
+}
+
+.header-tiny-link-container > a:hover {
+  text-decoration: underline;
 }
 
 

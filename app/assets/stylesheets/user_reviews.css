@@ -6,6 +6,10 @@
   margin-left: 210px;
 }
 
+.user-show > .reviews {
+  border: 0;
+}
+
 .reviews > h2 {
   margin-bottom: 15px;
   font-size: 21px;

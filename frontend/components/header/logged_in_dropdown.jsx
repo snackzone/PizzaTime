@@ -18,12 +18,24 @@ var LoggedInDropdown = React.createClass({
     return (
       <ul className="logged-in-dropdown">
         <li className="group">
-          <Link to={"/users/" + user.id} className="dropdown-username">
+          <Link to={"/users/" + user.id} className="dropdown-username profilename">
             <img src={user.photo_url} className="dropdown-avatar"/>
           </Link>
           <Link to={"/users/" + user.id} className="dropdown-username">
             {user.firstname} {user.surname.substring(0, 1)}.
           </Link>
+          <Link to={"/users/" + user.id + "/reviews"} className="dropdown-username">
+            Reviews
+          </Link>
+          <div className="sprites-container">
+            <Link to={"/users/" + user.id + "/photos"} className="dropdown-username">
+              <img src={window.PizzaTime.imageUrls.sprites.photos}/>
+            </Link>
+            <Link to={"/users/" + user.id + "/edit"} className="dropdown-username">
+              <img src={window.PizzaTime.imageUrls.sprites.settings}/>
+            </Link>
+          </div>
+
         </li>
         <li>
           <a href="#" className="sign-out-link" onClick={this.handleSignOut}>Log Out</a>
