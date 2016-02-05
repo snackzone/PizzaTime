@@ -51,6 +51,7 @@ var UserPhotos = React.createClass({
                 key={index}>
                 <UserUpload
                   upload={photo}
+                  linkPath={"/restaurants/" + photo.restaurant_id}
                 />
               </div>
             );
