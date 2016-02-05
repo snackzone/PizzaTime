@@ -13,10 +13,6 @@ var Index = React.createClass({
       );
     });
 
-    if (restaurants.length === 0) {
-      restaurants = <h3 className="no-results">No results!</h3>;
-    }
-
     return (
       <div className="search-index-container">
         <ul className="search-index">
