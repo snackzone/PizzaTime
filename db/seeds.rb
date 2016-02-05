@@ -212,21 +212,21 @@ pizza_rat = User.create!(
   email: "pizzarat@mta.gov"
 )
 
-User.all.each do |user|
-  ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
-  5.times do
-    user.reviews.create!(
-      restaurant_id: ids.pop,
-      body: Faker::Hipster.sentences(3).join(" "),
-      rating: Random.new.rand(1..5)
-    )
-  end
-end
-
-dog.reviews.destroy_all
-pizza_rat.reviews.destroy_all
-zach.reviews.destroy_all
-mike.reviews.destroy_all
+# User.all.each do |user|
+#   ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
+#   5.times do
+#     user.reviews.create!(
+#       restaurant_id: ids.pop,
+#       body: Faker::Hipster.sentences(3).join(" "),
+#       rating: Random.new.rand(1..5)
+#     )
+#   end
+# end
+#
+# dog.reviews.destroy_all
+# pizza_rat.reviews.destroy_all
+# zach.reviews.destroy_all
+# mike.reviews.destroy_all
 
 zach.reviews.create!(
   body: "Come for the pizza, stay for the attitude.",
@@ -266,7 +266,6 @@ restaurant_ids = Restaurant.pluck(:id);
   id = restaurant_ids.sample
   user.photos.create!(
     upload: File.open("app/assets/images/user-uploads/#{num}.jpg"),
-    caption: Faker::Hipster.sentence(4),
     restaurant_id: id
   )
 end
@@ -321,6 +320,171 @@ FortuneCookie.create!(
   author: "Henry Rollins"
 )
 
+ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
+
+joey.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 1,
+  body: "The worst. Will not be going back.",
+)
+
+joey.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 2,
+  body: "Meh. Too greasy.",
+)
+
+joey.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 3,
+  body: "An ok slice.",
+)
+
+joey.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 4,
+  body: "Pretty good pizza!",
+)
+
+id = ids.pop
+joey.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 5,
+  body: "Amazing! #{Restaurant.find(id).name} is the best.",
+)
+
+
+ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
+
+foodguy.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 1,
+  body: "This is some terrible pizza.",
+)
+
+foodguy.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 2,
+  body: "Ok for killing a hangover or taking care of a squeaky hinge.",
+)
+
+foodguy.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 3,
+  body: "Not too shabby.",
+)
+
+foodguy.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 4,
+  body: "I like this pizza!!",
+)
+
+foodguy.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 5,
+  body: "Truly the best. An institution.",
+)
+
+
+ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
+
+lena.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 1,
+  body: "Ugh.",
+)
+
+lena.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 2,
+  body: "It's alright. I won't be going back.",
+)
+
+lena.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 3,
+  body: "A fine slice.",
+)
+
+lena.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 4,
+  body: "Good pizza!",
+)
+
+id = ids.pop
+lena.reviews.create!(
+  restaurant_id: id,
+  rating: 5,
+  body: "Does not get better than #{Restaurant.find(id).name}",
+)
+
+ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
+
+bill.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 1,
+  body: "Not. pizza.",
+)
+
+bill.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 2,
+  body: "Not great. Pretty bad, actually!",
+)
+
+bill.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 3,
+  body: "Have I eaten here? I can't remember.",
+)
+
+bill.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 4,
+  body: "Oh yeah. That's pizza. I know pizza. This is it.",
+)
+
+id = ids.pop
+bill.reviews.create!(
+  restaurant_id: id,
+  rating: 5,
+  body: "#{Restaurant.find(id).name} is without a doubt the best pizza you will ever eat.",
+)
+
+ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
+
+snake.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 1,
+  body: "Awful. Inedbible. Disgusting. Hyberbolic.",
+)
+
+snake.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 2,
+  body: "I don't like this pizza.",
+)
+
+snake.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 3,
+  body: "Meh. Good pizza.",
+)
+
+snake.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 4,
+  body: "Great pizza!",
+)
+
+id = ids.pop
+snake.reviews.create!(
+  restaurant_id: id,
+  rating: 5,
+  body: "Wow! SO GOOD.",
+)
 
 
 
