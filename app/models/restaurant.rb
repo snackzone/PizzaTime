@@ -44,7 +44,11 @@ class Restaurant < ActiveRecord::Base
       restaurants = Restaurant.sort_price(restaurants, filters["sort_price"]["ascending"])
     end
 
-    restaurants.limit(10)
+    if filters["sort_rating"]
+      restaurants = Restaurant.sort_rating(restaurants, filters["sort_rating"]["ascending"])
+    end
+
+    restaurants.take(10)
   end
 
   def self.sort_price(restaurants, string)
@@ -52,6 +56,14 @@ class Restaurant < ActiveRecord::Base
       restaurants.order(:price_range)
     else
       restaurants.order(price_range: :desc)
+    end
+  end
+
+  def self.sort_rating(restaurants, string)
+    if string == "true"
+      restaurants.sort_by { |restaurant| restaurant.mean_rating }
+    else
+      restaurants.sort_by { |restaurant| restaurant.mean_rating }.reverse
     end
   end
 

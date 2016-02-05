@@ -1,7 +1,7 @@
 var React = require('react');
 var FilterActions = require('../../actions/filter_actions');
 
-var PriceSortToggle = React.createClass({
+var SortToggle = React.createClass({
   getInitialState: function () {
     return ({
       active: false,
@@ -11,11 +11,10 @@ var PriceSortToggle = React.createClass({
 
   handleClick: function (e) {
     e.preventDefault();
-    FilterActions.receiveFilter(
-      {sort_price:
-        { ascending: !this.state.ascending}
-      }
-    );
+    var field = this.props.sortField;
+    var filter = {};
+    filter[field] = { ascending: !this.state.ascending};
+    FilterActions.receiveFilter(filter);
 
     this.setState({
       active: true,
@@ -29,9 +28,9 @@ var PriceSortToggle = React.createClass({
       : "inactive";
 
     return (
-      <div className={"sort-toggle " + klass} onClick={this.handleClick}>Sort (price)</div>
+      <div className={"sort-toggle " + klass} onClick={this.handleClick}>{this.props.name}</div>
     );
   }
 });
 
-module.exports = PriceSortToggle;
+module.exports = SortToggle;
