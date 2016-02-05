@@ -1,6 +1,9 @@
 class Api::RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.includes(reviews: [:user]).all
+
+    # debugger
+
     if params[:filters]
       @restaurants = Restaurant.filtered(@restaurants, params[:filters])
     else

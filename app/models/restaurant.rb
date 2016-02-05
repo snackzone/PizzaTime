@@ -40,7 +40,19 @@ class Restaurant < ActiveRecord::Base
       restaurants = Restaurant.in_price_range(restaurants, filters["max_price"])
     end
 
+    if filters["sort_price"]
+      restaurants = Restaurant.sort_price(restaurants, filters["sort_price"]["ascending"])
+    end
+
     restaurants.limit(10)
+  end
+
+  def self.sort_price(restaurants, string)
+    if string == "true"
+      restaurants.order(:price_range)
+    else
+      restaurants.order(price_range: :desc)
+    end
   end
 
   def self.in_price_range(restaurants, max_price_string)
