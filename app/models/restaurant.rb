@@ -54,16 +54,20 @@ class Restaurant < ActiveRecord::Base
   def self.sort_price(restaurants, string)
     if string == "true"
       restaurants.order(:price_range)
-    else
+    elsif string == "false"
       restaurants.order(price_range: :desc)
+    else
+      restaurants
     end
   end
 
   def self.sort_rating(restaurants, string)
     if string == "true"
       restaurants.sort_by { |restaurant| restaurant.mean_rating }
-    else
+    elsif string == "false"
       restaurants.sort_by { |restaurant| restaurant.mean_rating }.reverse
+    else
+      restaurants
     end
   end
 

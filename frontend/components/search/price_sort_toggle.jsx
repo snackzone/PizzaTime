@@ -11,8 +11,22 @@ var SortToggle = React.createClass({
 
   handleClick: function (e) {
     e.preventDefault();
-    var field = this.props.sortField;
-    var filter = {};
+    var field, filter;
+    if (this.state.active && !this.state.ascending) {
+      field = this.props.sortField;
+      filter = {};
+      filter[field] = { ascending: "none"};
+      FilterActions.receiveFilter(filter);
+
+      this.setState({
+        active: false,
+        ascending: !this.state.ascending
+      });
+      return;
+    }
+
+    field = this.props.sortField;
+    filter = {};
     filter[field] = { ascending: !this.state.ascending};
     FilterActions.receiveFilter(filter);
 
