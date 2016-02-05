@@ -44,14 +44,13 @@
 
 .header-search-results > li {
   padding: 5px 10px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+  border-bottom: 1px solid #D3D3D3;
+  border-top: 1px solid none;
+  border-left: 1px solid none;
+  border-right: 1px solid none;
+  box-sizing: border-box;
 }
 
 .header-search-results > li:hover {
-  background: #aaa;
-}
-
-
-.header-search-results > li:last-child {
-  border-bottom: 0;
+  border: 1px solid #aaa;
 }

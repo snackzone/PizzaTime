@@ -11,7 +11,16 @@ var PriceFilter = React.createClass({
   getInitialState: function () {
     var filter = this;
     var buttons = pricePoints.map(function(string, idx) {
-      return <PriceFilterButton num={idx + 1} title={string} id={idx} active={false} maxPrice={false} key={idx} handleClick={filter.handleButtonClick}/>;
+      return (
+        <PriceFilterButton
+          num={idx + 1}
+          title={string}
+          id={idx}
+          active={false}
+          maxPrice={false}
+          key={idx}
+          handleClick={filter.handleButtonClick}/>
+      );
     });
 
     return ({buttons: buttons});
@@ -27,7 +36,16 @@ var PriceFilter = React.createClass({
       buttons = pricePoints.map(function(string, idx) {
         var active = idx <= id;
         var maxPrice = idx === id;
-        return <PriceFilterButton num={idx + 1} title={string} id={idx} active={active} key={idx} maxPrice={maxPrice} handleClick={filter.handleButtonClick}/>;
+        return (
+          <PriceFilterButton
+            num={idx + 1}
+            title={string}
+            id={idx}
+            active={active}
+            key={idx}
+            maxPrice={maxPrice}
+            handleClick={filter.handleButtonClick}/>
+        );
       });
     }
     this.setState({buttons: buttons});
@@ -36,7 +54,16 @@ var PriceFilter = React.createClass({
   emptyButtons: function () {
     var filter = this;
     var buttons = pricePoints.map(function(string, idx) {
-      return <PriceFilterButton num={idx + 1} title={string} id={idx} active={false} maxPrice={false} key={idx} handleClick={filter.handleButtonClick}/>;
+      return (
+        <PriceFilterButton
+          num={idx + 1}
+          title={string}
+          id={idx}
+          active={false}
+          maxPrice={false}
+          key={idx}
+          handleClick={filter.handleButtonClick}/>
+      );
     });
 
     return buttons;

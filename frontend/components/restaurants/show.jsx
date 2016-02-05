@@ -13,6 +13,8 @@ var RestaurantPhotos = require('./restaurant_photos');
 
 var RestaurantShow = React.createClass({
   getInitialState: function () {
+    window.scrollTo(0, 0);
+
     return ({
       restaurant: RestaurantApiUtil.fetchRestaurant(this.props.params.id, this.change),
       loaded: false

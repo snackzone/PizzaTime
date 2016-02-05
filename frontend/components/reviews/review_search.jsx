@@ -7,6 +7,8 @@ var SearchResultStore = require('../../stores/search_result_store');
 
 var ReviewSearch = React.createClass({
   getInitialState: function () {
+    window.scrollTo(0, 0);
+
     return ({
       query: "",
       results: [],

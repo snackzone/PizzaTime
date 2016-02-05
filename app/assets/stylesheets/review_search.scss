@@ -57,6 +57,9 @@
   font-weight: 900;
   line-height: 25px;
   vertical-align: middle;
+  transition: background .25s ease-in-out;
+  transition: border .25s ease-in-out;
+  transition: box-shadow .25s ease-in-out;
 }
 
 .review-button::before {

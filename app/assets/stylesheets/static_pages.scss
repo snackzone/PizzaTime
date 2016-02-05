@@ -88,6 +88,7 @@ ul {
   text-decoration: none;
   font-weight: 400;
   vertical-align: baseline;
+  transition: background .25s ease-in-out;
 }
 
 .header-guest-login-button:hover {
@@ -114,6 +115,8 @@ ul {
   text-decoration: underline;
   margin-bottom: 3px;
 }
+
+
 
 .group:after {
   content: "";
@@ -165,6 +168,7 @@ ul {
 .search-index-item {
   padding: 10px 0;
   border-top: 1px solid #E5E5E1;
+  transition: background .25s ease-in-out;
 }
 
 .search-index-item-info-container {
@@ -186,6 +190,7 @@ ul {
 .search-index-item-info-container > a {
   color: #3B65A7;
   font-weight: bold;
+  transition: color .25s ease-in-out;
 }
 
 .search-index-item-info-container > a:hover {
@@ -257,6 +262,7 @@ ul {
   font-weight:400;
   color: #333333;
   display: block;
+  transition: background .25s ease-in;
 }
 
 .price-filter-button.active {
@@ -385,6 +391,7 @@ ul {
   width: 105px;
   cursor: pointer;
   white-space: nowrap;
+  transition: background .25s ease-in-out;
 }
 
 .big-red-button:hover {

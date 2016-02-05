@@ -84,7 +84,7 @@ var HeaderSearchBar = React.createClass({
           <ul
             className="header-search-results"
             onClick={this.clearSearch}>
-            {results}
+            {results.slice(0, 10)}
           </ul>
             : null }
         </div>

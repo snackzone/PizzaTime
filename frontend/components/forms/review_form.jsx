@@ -18,6 +18,8 @@ var ReviewForm = React.createClass({
   mixins: [History, LinkedStateMixin],
 
   getInitialState: function () {
+    window.scrollTo(0, 0);
+    
     var review = this.review = CurrentUserStore.findReview(this.props.params.id);
     var restaurant = RestaurantApiUtil.fetchRestaurant(this.props.params.id, this.change);
     this.isUpdate = !!review;

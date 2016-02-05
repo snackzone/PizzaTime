@@ -8,6 +8,7 @@ var SearchNav = require('./search_nav');
 
 var Search = React.createClass({
   getInitialState: function () {
+    window.scrollTo(0, 0);
     return(
       {
         restaurants: RestaurantStore.all(),

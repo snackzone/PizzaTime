@@ -6,6 +6,7 @@ var UserNav = require('./user_nav');
 
 var UserShow = React.createClass({
   getInitialState: function () {
+    window.scrollTo(0, 0);
     return ({
       user: UserStore.find(this.props.params.id),
       isCurrentUser: CurrentUserStore.isCurrentUser(this.props.params.id)
