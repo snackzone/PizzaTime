@@ -70,8 +70,7 @@
   font-size: 20px;
   display: block;
   padding: 10px 12px;
-  background: #B7B8B2;
-  color: white;
+  color: #B7B8B2;
   border-radius: 5px;
   position: absolute;
   top: 20px;
@@ -87,12 +86,16 @@
   font-weight: 900;
 }
 
-.modal-submit-button {
+.big-red-button.modal-submit-button {
   margin: auto;
+  display: block;
+  width: 100px;
+  text-align: center;
+  margin-top: 15px;
 }
 
 .modal-cancel-button:hover {
-  background: #383837;
+  color: #383837;
 }
 
 .photo-form-container:hover {
