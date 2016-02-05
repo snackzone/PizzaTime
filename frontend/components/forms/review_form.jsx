@@ -1,4 +1,5 @@
 var CurrentUserStore = require('../../stores/current_user_store');
+var DeleteReviewButton = require('./delete_review_button');
 var History = require('react-router').History;
 var LinkedStateMixin = require('react-addons-linked-state-mixin');
 var RatingSelector = require('./rating_selector');
@@ -192,8 +193,8 @@ var ReviewForm = React.createClass({
                 isUpdate={this.isUpdate}
               />
             </div>
-
           </form>
+          {this.isUpdate ? <DeleteReviewButton review={this.review}/> : null}
         </div>
         <div className="new-review-right group">
           <h3>See What Others Have Written</h3>

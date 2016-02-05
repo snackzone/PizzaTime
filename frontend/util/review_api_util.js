@@ -50,6 +50,22 @@ var ReviewApiUtil = {
         }
       }
     });
+  },
+
+  deleteReview: function (review, callback) {
+    $.ajax({
+      method: "DELETE",
+      dataType: "json",
+      url: "api/reviews/" + review.id,
+      success: function (data) {
+        if (callback) {
+          callback(review.restaurant.id);
+        }
+      },
+      error: function () {
+        console.log("failed to delete review.");
+      }
+    });
   }
 };
 

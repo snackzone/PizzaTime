@@ -13,6 +13,11 @@ var Map = React.createClass({
   },
 
   componentDidMount: function () {
+    // navigator.geolocation.getCurrentPosition(geoCallback);
+    // function geoCallback(data) {
+    //
+    //
+    // }
     this.createMap();
     this.map.addListener('idle', this._idleHandler);
     this.restaurantListenerToken =

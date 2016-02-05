@@ -238,7 +238,7 @@ ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
 5.times do
   foodguy.reviews.create!(
     restaurant_id: ids.pop,
-    body: Faker::Hipster.sentences(3),
+    body: Faker::Hipster.sentences(3).join(" "),
     rating: Random.new.rand(1..3)
   )
 end
