@@ -50,7 +50,7 @@ var ReviewSearch = React.createClass({
     var resultsToRender = [];
     if (!this.state.loaded) {
 
-      resultsToRender.push(<div key={1} className="review-search-loading">loading...</div>);
+      resultsToRender.push(<div key={1} className="review-search-loading">...</div>);
 
     } else {
 
@@ -71,7 +71,7 @@ var ReviewSearch = React.createClass({
       });
 
       if (resultsToRender.length === 0 && this.state.searched) {
-        resultsToRender.push(<div key={1} className="review-search-no-results">No results!</div>);
+        resultsToRender.push(<div key={1} className="review-search-no-results">no results</div>);
       }
     }
 

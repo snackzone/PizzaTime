@@ -1,5 +1,6 @@
 var ReviewApiActions = require('../actions/review_api_actions');
 var FlashActions = require('../actions/flash_actions');
+var SessionApiUtil = require('./session_api_util');
 
 var ReviewApiUtil = {
   //I don't think this is used anywhere.
@@ -58,6 +59,8 @@ var ReviewApiUtil = {
       dataType: "json",
       url: "api/reviews/" + review.id,
       success: function (data) {
+        SessionApiUtil.fetchCurrentUser();
+
         if (callback) {
           callback(review.restaurant.id);
         }
