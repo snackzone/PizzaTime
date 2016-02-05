@@ -9,6 +9,8 @@ var RestaurantStore = require('../../stores/restaurant_store');
 var ReviewApiUtil = require('../../util/review_api_util');
 var ReviewIndex = require('../restaurants/restaurant_review_index');
 var SessionApiUtil = require('../../util/session_api_util');
+var FlashStore = require('../../stores/flash_store');
+var FlashActions = require('../../actions/flash_actions');
 
 
 var ReviewSubmitButton = require('./review_submit_button');
@@ -19,7 +21,7 @@ var ReviewForm = React.createClass({
 
   getInitialState: function () {
     window.scrollTo(0, 0);
-    
+
     var review = this.review = CurrentUserStore.findReview(this.props.params.id);
     var restaurant = RestaurantApiUtil.fetchRestaurant(this.props.params.id, this.change);
     this.isUpdate = !!review;
@@ -30,7 +32,8 @@ var ReviewForm = React.createClass({
         loaded: false,
         body: review.body,
         rating: parseInt(review.rating) - 1,
-        ratingSet: true
+        ratingSet: true,
+        flash: []
       });
     } else {
       return ({
@@ -38,17 +41,20 @@ var ReviewForm = React.createClass({
         loaded: false,
         body: "",
         rating: -1,
-        ratingSet: false
+        ratingSet: false,
+        flash: []
       });
     }
   },
 
   componentDidMount: function () {
     this.restaurantListener = RestaurantStore.addListener(this.change);
+    this.flashListener = FlashStore.addListener(this._updateFlash);
   },
 
   componentWillUnmount: function () {
     this.restaurantListener.remove();
+    this.flashListener.remove();
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -56,7 +62,8 @@ var ReviewForm = React.createClass({
       restaurant: RestaurantApiUtil.fetchRestaurant(nextProps.params.id, this.change),
       loaded: false,
       reviewBody: "Write your review here!",
-      rating: null
+      rating: null,
+      flash: []
     });
   },
 
@@ -114,6 +121,14 @@ var ReviewForm = React.createClass({
     });
   },
 
+  _updateFlash: function () {
+    this.setState({flash: FlashStore.all()});
+    var that = this;
+    window.setTimeout(function () {
+      that.setState({flash: []});
+    }, 3000);
+  },
+
   getOtherReviews: function () {
     var otherReviews = [];
     var reviews = this.state.restaurant.reviews;
@@ -158,6 +173,7 @@ var ReviewForm = React.createClass({
 
 
             <div className="review-form-body">
+              {this.state.flash ? <h1 className="review-updated">{this.state.flash[0]}</h1> : null}
 
               <RatingSelector
                 rating={this.state.rating}
@@ -175,7 +191,6 @@ var ReviewForm = React.createClass({
                 rated={this.state.ratingSet}
                 isUpdate={this.isUpdate}
               />
-
             </div>
 
           </form>

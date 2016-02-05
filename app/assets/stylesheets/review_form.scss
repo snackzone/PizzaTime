@@ -76,6 +76,15 @@
   padding: 10px;
   width: 300px;
   float: left;
+  position: relative;
+}
+
+.review-updated {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-weight: 900;
+  color: #BD0E01;
 }
 
 .rating-selector {

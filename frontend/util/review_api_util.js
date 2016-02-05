@@ -43,6 +43,8 @@ var ReviewApiUtil = {
       success: function (data) {
         console.log("success!");
 
+        FlashActions.receiveFlash(data.message);
+
         if (callback) {
           callback(review.restaurant_id);
         }
