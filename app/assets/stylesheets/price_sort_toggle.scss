@@ -1,0 +1,29 @@
+.sort-toggle {
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.sort-toggle:hover {
+  text-decoration: underline;
+}
+
+.sort-toggle:before {
+  position: relative;
+  margin-right: 5px;
+}
+
+.sort-toggle.inactive:before {
+  content:image-url('arrow-toggles.png');
+}
+
+.sort-toggle.ascending:before {
+  content:image-url('arrow-up.png');
+  top: -5px;
+}
+
+.sort-toggle.descending:before {
+  content:image-url('arrow-down.png');
+  bottom: 1px;
+}

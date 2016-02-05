@@ -24,8 +24,12 @@ var PriceSortToggle = React.createClass({
   },
 
   render: function () {
+    var klass = this.state.active ?
+      this.state.ascending ? "ascending" : "descending"
+      : "inactive";
+
     return (
-      <div onClick={this.handleClick}>Click me.</div>
+      <div className={"sort-toggle " + klass} onClick={this.handleClick}>Sort (price)</div>
     );
   }
 });
