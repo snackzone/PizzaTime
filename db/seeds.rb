@@ -149,20 +149,6 @@ zach = User.create!(
   provider: "facebook"
 )
 
-zach.reviews.create!(
-  body: "Come for the pizza, stay for the attitude.",
-  rating: 5,
-  restaurant_id: totonno.id
-)
-
-Restaurant.all.each do |restaurant|
-  joey.reviews.create!(
-    restaurant_id: restaurant.id,
-    rating: Random.new.rand(4..5),
-    body: "My favorite slice is at #{restaurant.name}"
-  )
-end
-
 mike = User.create!(
   firstname: "Mike",
   surname: "Turtle",
@@ -226,6 +212,27 @@ pizza_rat = User.create!(
   email: "pizzarat@mta.gov"
 )
 
+User.all.each do |user|
+  ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
+  5.times do
+    user.reviews.create!(
+      restaurant_id: ids.pop,
+      body: Faker::Hipster.sentences(3).join(" "),
+      rating: Random.new.rand(1..5)
+    )
+  end
+end
+
+dog.reviews.destroy_all
+pizza_rat.reviews.destroy_all
+zach.reviews.destroy_all
+mike.reviews.destroy_all
+
+zach.reviews.create!(
+  body: "Come for the pizza, stay for the attitude.",
+  rating: 5,
+  restaurant_id: totonno.id
+)
 
 ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
 5.times do
@@ -238,10 +245,10 @@ end
 
 ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
 5.times do
-  foodguy.reviews.create!(
+  pizza_rat.reviews.create!(
     restaurant_id: ids.pop,
-    body: Faker::Hipster.sentences(3).join(" "),
-    rating: Random.new.rand(1..3)
+    body: "squeak! squeak! squeak! squeak!",
+    rating: 1,
   )
 end
 
@@ -251,8 +258,6 @@ mike.reviews.create!(
   rating: 3
 )
 
-
-##This method isn't working yet.
 user_ids = User.pluck(:id);
 restaurant_ids = Restaurant.pluck(:id);
 
@@ -265,7 +270,6 @@ restaurant_ids = Restaurant.pluck(:id);
     restaurant_id: id
   )
 end
-
 
 FortuneCookie.create!(
   quote: "There’s no better feeling in the world than a warm pizza box on your lap.",
@@ -316,6 +320,9 @@ FortuneCookie.create!(
   quote: "Pizza makes me think that anything is possible.",
   author: "Henry Rollins"
 )
+
+
+
 
 
 
