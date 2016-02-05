@@ -322,35 +322,36 @@ FortuneCookie.create!(
 
 ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
 
-joey.reviews.create!(
-  restaurant_id: ids.pop,
-  rating: 1,
-  body: "The worst. Will not be going back.",
-)
 
 joey.reviews.create!(
   restaurant_id: ids.pop,
   rating: 2,
-  body: "Meh. Too greasy.",
+  body: "Meh. Too greasy. I am a man of refined tastes and I demand more from my pizza."
+)
+
+joey.reviews.create!(
+restaurant_id: ids.pop,
+rating: 1,
+body: "The worst. Will not be going back."
+)
+
+joey.reviews.create!(
+restaurant_id: ids.pop,
+rating: 4,
+body: "Pretty good pizza!!!!!"
 )
 
 joey.reviews.create!(
   restaurant_id: ids.pop,
   rating: 3,
-  body: "An ok slice.",
-)
-
-joey.reviews.create!(
-  restaurant_id: ids.pop,
-  rating: 4,
-  body: "Pretty good pizza!",
+  body: "An ok slice. Gets the job done."
 )
 
 id = ids.pop
 joey.reviews.create!(
   restaurant_id: ids.pop,
   rating: 5,
-  body: "Amazing! #{Restaurant.find(id).name} is the best.",
+  body: "Amazing! #{Restaurant.find(id).name} is the best."
 )
 
 
@@ -359,98 +360,99 @@ ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
 foodguy.reviews.create!(
   restaurant_id: ids.pop,
   rating: 1,
-  body: "This is some terrible pizza.",
+  body: "This is some terrible pizza."
+)
+
+foodguy.reviews.create!(
+restaurant_id: ids.pop,
+rating: 3,
+body: "Not too shabby. I'd go back if I was in the neighborhood."
 )
 
 foodguy.reviews.create!(
   restaurant_id: ids.pop,
   rating: 2,
-  body: "Ok for killing a hangover or taking care of a squeaky hinge.",
+  body: "Ok for killing a hangover or taking care of a squeaky hinge."
 )
 
 foodguy.reviews.create!(
-  restaurant_id: ids.pop,
-  rating: 3,
-  body: "Not too shabby.",
+restaurant_id: ids.pop,
+rating: 5,
+body: "Truly the best. An institution."
 )
 
 foodguy.reviews.create!(
   restaurant_id: ids.pop,
   rating: 4,
-  body: "I like this pizza!!",
-)
-
-foodguy.reviews.create!(
-  restaurant_id: ids.pop,
-  rating: 5,
-  body: "Truly the best. An institution.",
-)
-
-
-ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
-
-lena.reviews.create!(
-  restaurant_id: ids.pop,
-  rating: 1,
-  body: "Ugh.",
-)
-
-lena.reviews.create!(
-  restaurant_id: ids.pop,
-  rating: 2,
-  body: "It's alright. I won't be going back.",
-)
-
-lena.reviews.create!(
-  restaurant_id: ids.pop,
-  rating: 3,
-  body: "A fine slice.",
-)
-
-lena.reviews.create!(
-  restaurant_id: ids.pop,
-  rating: 4,
-  body: "Good pizza!",
-)
-
-id = ids.pop
-lena.reviews.create!(
-  restaurant_id: id,
-  rating: 5,
-  body: "Does not get better than #{Restaurant.find(id).name}",
+  body: "I like this pizza!!!!!!!"
 )
 
 ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
 
+id = ids.pop
+lena.reviews.create!(
+restaurant_id: id,
+rating: 5,
+body: "Does not get better than #{Restaurant.find(id).name}"
+)
+
+lena.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 1,
+  body: "Ugh. That was disgusting."
+)
+
+lena.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 2,
+  body: "It's alright. I won't be going back."
+)
+
+lena.reviews.create!(
+restaurant_id: ids.pop,
+rating: 4,
+body: "Good pizza! Great sauce-to-crust ratio."
+)
+
+lena.reviews.create!(
+  restaurant_id: ids.pop,
+  rating: 3,
+  body: "A fine slice. Good sauce-to-crust ratio."
+)
+
+
+
+ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
+
 bill.reviews.create!(
   restaurant_id: ids.pop,
   rating: 1,
-  body: "Not. pizza.",
+  body: "I don't know what I just ate, but it wasn't pizza."
+)
+
+bill.reviews.create!(
+restaurant_id: ids.pop,
+rating: 3,
+body: "Have I eaten here? I can't remember."
 )
 
 bill.reviews.create!(
   restaurant_id: ids.pop,
   rating: 2,
-  body: "Not great. Pretty bad, actually!",
+  body: "Not great. Pretty bad, actually!"
 )
 
+id = ids.pop
 bill.reviews.create!(
-  restaurant_id: ids.pop,
-  rating: 3,
-  body: "Have I eaten here? I can't remember.",
+restaurant_id: id,
+rating: 5,
+body: "#{Restaurant.find(id).name} is without a doubt the best pizza you will ever eat."
 )
 
 bill.reviews.create!(
   restaurant_id: ids.pop,
   rating: 4,
-  body: "Oh yeah. That's pizza. I know pizza. This is it.",
-)
-
-id = ids.pop
-bill.reviews.create!(
-  restaurant_id: id,
-  rating: 5,
-  body: "#{Restaurant.find(id).name} is without a doubt the best pizza you will ever eat.",
+  body: "Oh yeah. That's pizza. I know pizza. This is it."
 )
 
 ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
@@ -458,33 +460,35 @@ ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
 snake.reviews.create!(
   restaurant_id: ids.pop,
   rating: 1,
-  body: "Awful. Inedbible. Disgusting. Hyberbolic.",
+  body: "Awful. Inedbible. Disgusting. Hyberbolic."
+)
+
+snake.reviews.create!(
+restaurant_id: ids.pop,
+rating: 4,
+body: "Great pizza! You're gonna really like it!"
 )
 
 snake.reviews.create!(
   restaurant_id: ids.pop,
   rating: 2,
-  body: "I don't like this pizza.",
+  body: "I definitely don't like this pizza."
+)
+
+id = ids.pop
+snake.reviews.create!(
+restaurant_id: id,
+rating: 5,
+body: "Wow! SO GOOD. Maybe the best."
 )
 
 snake.reviews.create!(
   restaurant_id: ids.pop,
   rating: 3,
-  body: "Meh. Good pizza.",
+  body: "Meh. Good pizza. I dunno. Fine, I guess."
 )
 
-snake.reviews.create!(
-  restaurant_id: ids.pop,
-  rating: 4,
-  body: "Great pizza!",
-)
 
-id = ids.pop
-snake.reviews.create!(
-  restaurant_id: id,
-  rating: 5,
-  body: "Wow! SO GOOD.",
-)
 
 
 

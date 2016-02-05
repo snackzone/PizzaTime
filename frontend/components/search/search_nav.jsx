@@ -3,6 +3,7 @@ var PriceFilter = require('./price_filter');
 var FortuneCookieApiUtil = require('../../util/fortune_cookie_api_util');
 var FortuneCookieStore = require('../../stores/fortune_cookie_store');
 var FortuneCookie = require('./fortune_cookie');
+var SortToggles = require('./sort_toggles');
 
 var SearchNav = React.createClass({
   getInitialState: function () {
@@ -39,6 +40,7 @@ var SearchNav = React.createClass({
           {this.state.loaded ? <FortuneCookie cookie={this.state.cookie}/> : null}
           <h3>Filters</h3>
           <PriceFilter/>
+          <SortToggles/>
         </section>
       </nav>
     );
