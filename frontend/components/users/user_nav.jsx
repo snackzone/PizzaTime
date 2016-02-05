@@ -35,7 +35,6 @@ var UserNav = React.createClass({
     if (!user.id) {
       return (
         <nav className="user-nav">
-          loading...
         </nav>
       );
     }

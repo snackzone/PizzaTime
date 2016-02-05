@@ -9,13 +9,15 @@ var UserShow = React.createClass({
     window.scrollTo(0, 0);
     return ({
       user: UserStore.find(this.props.params.id),
-      isCurrentUser: CurrentUserStore.isCurrentUser(this.props.params.id)
+      isCurrentUser: CurrentUserStore.isCurrentUser(this.props.params.id),
+      loaded: true
     });
   },
 
   componentWillMount: function () {
     if (!this.state.user.id) {
       UserApiUtil.fetchById(this.props.params.id);
+      this.setState({loaded: false});
     }
     this.currentUserListener = CurrentUserStore.addListener(this.change);
     this.userListener = UserStore.addListener(this.change);
@@ -24,7 +26,8 @@ var UserShow = React.createClass({
   change: function () {
     this.setState({
       user: UserStore.find(this.props.params.id),
-      isCurrentUser: CurrentUserStore.isCurrentUser(this.props.params.id)
+      isCurrentUser: CurrentUserStore.isCurrentUser(this.props.params.id),
+      loaded: true
     });
   },
 
@@ -37,11 +40,16 @@ var UserShow = React.createClass({
     var id = parseInt(nextProps.params.id);
     this.setState({
       user: UserStore.find(id),
-      isCurrentUser: CurrentUserStore.isCurrentUser(id)
+      isCurrentUser: CurrentUserStore.isCurrentUser(id),
+      loaded: true
     });
   },
 
   render: function () {
+    if (!this.state.loaded) {
+      return <div></div>;
+    }
+
     return (
       <div>
         <UserNav user={this.state.user} isCurrentUser={this.state.isCurrentUser}/>
