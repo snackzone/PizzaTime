@@ -21,6 +21,7 @@ var UserShow = React.createClass({
     }
     this.currentUserListener = CurrentUserStore.addListener(this.change);
     this.userListener = UserStore.addListener(this.change);
+
   },
 
   change: function () {

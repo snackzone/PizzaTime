@@ -51,7 +51,6 @@ var UserNav = React.createClass({
                            type="file"
                            onChange={this.changeFile}
                          />;
-      updateProfile = <Link to={"/users/" + user.id + "/edit"}>Update Profile</Link>;
       reviewLinkText = "Your Reviews";
       photoLinkText = "Your Photos";
     }
@@ -76,7 +75,6 @@ var UserNav = React.createClass({
 
 
           <div className="user-nav-right group">
-            {updateProfile}
             <Link to={"/users/" + user.id + "/reviews"}>{reviewLinkText}</Link>
             <Link to={"/users/" + user.id + "/photos"}>{photoLinkText}</Link>
             <Link to={"/reviews/search"}>Search Restaurants</Link>
