@@ -81,7 +81,7 @@ var ReviewSearch = React.createClass({
         <input
           type="text"
           className="review-search-bar"
-          placeholder="Let's get reviewing..."
+          placeholder={"ex: \"Vinnie's Pizzeria\""}
           onKeyUp={this.search}
         />
         <ul className="review-search-results">
