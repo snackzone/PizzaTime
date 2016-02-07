@@ -10,7 +10,7 @@ json.photos photos do |photo|
 end
 
 reviews = restaurant.reviews.sort do |a, b|
-  b.created_at <=> a.created_at
+  b.updated_at <=> a.updated_at
 end
 
 json.reviews reviews do |review|
