@@ -68,3 +68,20 @@
   padding: 5px 7px;
   font-size: 14px;
 }
+
+.user-photo-link {
+  display: block;
+  text-align: center;
+}
+
+.user-photo-link > a {
+  font-weight: 900;
+  color: #3B65A7;
+}
+
+.photo-plus-description {
+  width: 252px;
+  box-sizing: content-box;
+  float: left;
+  margin: 0 14px 20px 0;
+}

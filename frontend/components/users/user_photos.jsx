@@ -2,6 +2,8 @@ var React = require('react');
 var UserUpload = require('../restaurants/user_upload');
 var UserStore = require('../../stores/user_store');
 var UserApiUtil = require('../../util/user_api_util');
+var Link = require('react-router').Link;
+
 
 var UserPhotos = React.createClass({
   getInitialState: function () {
@@ -46,13 +48,22 @@ var UserPhotos = React.createClass({
         <ul className="user-photo-gallery group">
           {photos.map(function(photo, index) {
             return(
-              <div
-                className="polaroid-wrapper"
-                key={index}>
-                <UserUpload
-                  upload={photo}
-                  linkPath={"/restaurants/" + photo.restaurant_id}
-                />
+              <div className="photo-plus-description group">
+                <div
+                  className="polaroid-wrapper"
+                  key={index}>
+                  <UserUpload
+                    upload={photo}
+                    linkPath={"/restaurants/" + photo.restaurant_id}
+                  />
+                </div>
+                <p className="user-photo-link">
+                  <Link
+                    key={index}
+                    to={"/restaurants/" + photo.restaurant_id}>
+                    {photo.restaurant_name}
+                  </Link> - {photo.date}
+                </p>
               </div>
             );
           })}

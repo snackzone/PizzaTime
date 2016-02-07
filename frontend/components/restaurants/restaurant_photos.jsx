@@ -47,7 +47,7 @@ function getPhotoArray (profilePhoto, userUploads) {
     </li>
   ];
   var uploads = userUploads.map(function(upload, index) {
-    return <UserUpload key={index} upload={upload} linkPath={"/users/" + upload.user_id}/>;
+    return <UserUpload key={index} upload={upload} linkPath={"/users/" + upload.user_id + "/photos"}/>;
   });
   return array.concat(uploads).concat(ad);
 }
