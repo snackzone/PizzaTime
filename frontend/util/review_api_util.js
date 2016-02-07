@@ -28,6 +28,8 @@ var ReviewApiUtil = {
       success: function (data) {
         console.log("success!");
 
+        //should prepend review to store instead of refetching restaurant
+
         if (callback) {
           callback(review.restaurant_id);
         }
