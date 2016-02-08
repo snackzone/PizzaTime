@@ -5,6 +5,10 @@
   cursor: pointer;
 }
 
+.sort-toggle:first-of-type {
+  margin-left: 35px;
+}
+
 .sort-toggle:hover {
   text-decoration: underline;
 }
