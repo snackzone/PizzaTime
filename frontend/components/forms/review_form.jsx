@@ -61,13 +61,31 @@ var ReviewForm = React.createClass({
   },
 
   componentWillReceiveProps: function (nextProps) {
-    this.setState({
-      restaurant: RestaurantApiUtil.fetchRestaurant(nextProps.params.id, this.change),
-      loaded: false,
-      reviewBody: "Write your review here!",
-      rating: null,
-      flash: []
-    });
+    var review = this.review = CurrentUserStore.findReview(nextProps.params.id);
+    var restaurant = RestaurantApiUtil.fetchRestaurant(nextProps.params.id, this.change);
+    this.isUpdate = !!review;
+
+    if (this.isUpdate) {
+      this.setState({
+        restaurant: restaurant,
+        loaded: false,
+        body: review.body,
+        rating: parseInt(review.rating) - 1,
+        ratingSet: true,
+        flash: [],
+        posted: false
+      });
+    } else {
+      this.setState({
+        restaurant: restaurant,
+        loaded: false,
+        body: "",
+        rating: -1,
+        ratingSet: false,
+        flash: [],
+        posted: false
+      });
+    }
   },
 
   change: function () {
