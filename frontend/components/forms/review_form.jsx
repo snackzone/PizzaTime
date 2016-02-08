@@ -34,7 +34,8 @@ var ReviewForm = React.createClass({
         body: review.body,
         rating: parseInt(review.rating) - 1,
         ratingSet: true,
-        flash: []
+        flash: [],
+        posted: false
       });
     } else {
       return ({
@@ -43,7 +44,8 @@ var ReviewForm = React.createClass({
         body: "",
         rating: -1,
         ratingSet: false,
-        flash: []
+        flash: [],
+        posted: false
       });
     }
   },
@@ -92,12 +94,17 @@ var ReviewForm = React.createClass({
       );
 
     } else {
+      var that = this;
+
       ReviewApiUtil.submitReview(
         review, function successCB (id) {
-          this.history.pushState({}, "restaurants/" + id);
-          SessionApiUtil.fetchCurrentUser();
-          this.setState({body: "", rating: -1});
-        }.bind(this)
+          that.setState({posted: true});
+          window.setTimeout(function () {
+            that.history.pushState({}, "restaurants/" + id);
+            SessionApiUtil.fetchCurrentUser();
+            that.setState({body: "", rating: -1});
+          }, 2000);
+        }
       );
     }
   },
@@ -159,6 +166,8 @@ var ReviewForm = React.createClass({
     var restaurant = this.state.restaurant;
     var Link = ReactRouter.Link;
 
+    var counterKlass = this.state.body.length > 300 ? "over" : "";
+
     return (
       <div className="review-form new-review group">
         <h1>{this.isUpdate ? "Update Your Review" : "Write a Review"}</h1>
@@ -191,7 +200,13 @@ var ReviewForm = React.createClass({
                 length={this.state.body.length}
                 rated={this.state.ratingSet}
                 isUpdate={this.isUpdate}
+                posted={this.state.posted}
               />
+
+              <div
+                className={"review-form-length-counter " + counterKlass}>
+                {this.state.body.length}/300
+              </div>
             </div>
           </form>
           {this.isUpdate ? <DeleteReviewButton review={this.review}/> : null}

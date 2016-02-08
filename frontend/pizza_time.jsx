@@ -20,8 +20,6 @@ var RestaurantShow = require('./components/restaurants/show');
 var ReviewForm = require('./components/forms/review_form');
 var UserPhotos = require('./components/users/user_photos');
 
-var ShepherdTour = require('./components/search/shepherd_tour');
-
 var App = React.createClass({
   componentWillMount: function () {
     SessionApiUtil.fetchCurrentUser();
@@ -90,6 +88,4 @@ function _ensureCurrentUser (nextState, replace, callback) {
 
 document.addEventListener("DOMContentLoaded", function () {
   ReactDOM.render(<ReactRouter>{routes}</ReactRouter>, document.getElementById("content"));
-
-  ShepherdTour();
 });

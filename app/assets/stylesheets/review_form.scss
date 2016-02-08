@@ -146,3 +146,14 @@
   font-size: 12px;
   margin-top: 12px;
 }
+
+.review-form-length-counter {
+  font-size: 12px;
+  float: right;
+  color: #aaa;
+}
+
+.review-form-length-counter.over {
+  color: #BD0E01;
+  font-weight: 900;
+}

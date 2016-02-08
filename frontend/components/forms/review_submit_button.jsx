@@ -2,7 +2,7 @@ var React = require('react');
 
 var ReviewSubmitButton = React.createClass({
   render: function () {
-    var disabled = (this.props.length < 20 ||
+    var disabled = (this.props.length === 0 ||
       this.props.length > 300 ||
       !this.props.rated);
 
@@ -15,7 +15,7 @@ var ReviewSubmitButton = React.createClass({
       <button
         disabled={disabled}
         className={klass}>
-        {this.props.isUpdate ? "Post Update" : "Post Review"}
+        {this.props.posted ? "Posted!" : this.props.isUpdate ? "Post Update" : "Post Review"}
       </button>
     );
   }
