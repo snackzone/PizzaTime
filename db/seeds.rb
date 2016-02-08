@@ -129,13 +129,30 @@ totonno = Restaurant.create!(
   photo_url: "https://i.imgur.com/59y65Ip.jpg"
 )
 
-joey = User.create!(
-  firstname: "Joey",
-  surname: "Pepperoni",
-  email: "guest@pizza-time.com",
-  zip: "11222",
-  password: "pizzatime",
-  photo: File.open("app/assets/images/jr.jpeg")
+robertas = Restaurant.create!(
+  name: "Roberta's",
+  address: "261 Moore St, Brooklyn, NY 11206",
+  lat: 40.704938,
+  lng: -73.933565,
+  price_range: 2,
+  url: "https://www.robertaspizza.com",
+  photo: File.open("app/assets/images/restaurant-photos/robertas.jpg")
+)
+
+prince_st = Restaurant.create!(
+  name: "Prince St. Pizza",
+  lat: 40.722897,
+  lng: -73.994557,
+  address: "27 Prince St, New York, NY 10012",
+  photo: File.open("app/assets/images/restaurant-photos/prince-st-pizza.jpg")
+)
+
+di_fara = Restaurant.create!(
+  name: "Di Fara Pizza",
+  lat: 40.625130,
+  lng: -73.961691,
+  address: "1424 Avenue J, Brooklyn, NY 11230"
+  photo: File.open("app/assets/images/restaurant-photos/di-fara.jpg")
 )
 
 zach = User.create!(
@@ -147,6 +164,39 @@ zach = User.create!(
   photo: File.open("app/assets/images/zachary-moroni.jpg"),
   uid: "1066901750039886",
   provider: "facebook"
+)
+
+zach.reviews.create!(
+  body: "Apparently one of the oldest pizza places in the world, old man Totonno pioneered the neapolitan style of baking at extremely high temperatures for a shorter period of time. A trip to Coney Island just doesn't feel complete to me if it doesn't end with this pizza.",
+  rating: 5,
+  restaurant_id: totonno.id
+)
+
+zach.reviews.create!(
+  body: "PizzaTime's creation was fueled by a steady stream of Price St's pepperoni squares. Although usually I don't mess around with the thicker slices, I have to say there is something unique about their take on Sicilian-style pizza, particularly when topped with pepperoni. Great, greasy stuff.",
+  rating: 4,
+  restaurant_id: prince_st.id
+)
+
+zach.reviews.create!(
+  body: "Over-priced? Overrated? Yes, and yes. However, that doesn't mean Roberta's isn't excellent. Their home-grown ingredients really shine here, as they combine them to make pies that are both familiar and original. Great place to take your visiting family who is terrified of Brooklyn.",
+  rating: 4,
+  restaurant_id: robertas.id
+)
+
+zach.reviews.create!(
+  body: "My neighborhood slice, Vinnie's is my kryptonite at least once a week. Some real creativity goes into their specialty slices, which I started ordering once I realized that many of these combinations were around for one day only. Great vegan options, too."
+  rating: 3,
+  restaurant_id: vinnies.id
+)
+
+joey = User.create!(
+  firstname: "Joey",
+  surname: "Pepperoni",
+  email: "guest@pizza-time.com",
+  zip: "11222",
+  password: "pizzatime",
+  photo: File.open("app/assets/images/jr.jpeg")
 )
 
 mike = User.create!(
@@ -210,28 +260,6 @@ pizza_rat = User.create!(
   password: "squeak",
   photo: File.open("app/assets/images/pizza-rat.jpg"),
   email: "pizzarat@mta.gov"
-)
-
-# User.all.each do |user|
-#   ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
-#   5.times do
-#     user.reviews.create!(
-#       restaurant_id: ids.pop,
-#       body: Faker::Hipster.sentences(3).join(" "),
-#       rating: Random.new.rand(1..5)
-#     )
-#   end
-# end
-#
-# dog.reviews.destroy_all
-# pizza_rat.reviews.destroy_all
-# zach.reviews.destroy_all
-# mike.reviews.destroy_all
-
-zach.reviews.create!(
-  body: "Come for the pizza, stay for the attitude.",
-  rating: 5,
-  restaurant_id: totonno.id
 )
 
 ids = Restaurant.all.map { |restaurant| restaurant.id }.shuffle
