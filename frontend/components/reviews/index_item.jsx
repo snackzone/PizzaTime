@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactRouter = require('react-router');
+var ReviewButton = require('./review_button');
 
 
 var ReviewIndexItem = React.createClass({
@@ -11,7 +12,7 @@ var ReviewIndexItem = React.createClass({
     var priceRange = getPriceRangeString(restaurant.price_range);
 
     return (
-      <li className="group">
+      <li className="review-li group">
         <img className="review-thumb" src={restaurant.photo_url}/>
         <div className="review-restaurant-info">
           <Link to={"/restaurants/" + restaurant.id}>
@@ -21,10 +22,17 @@ var ReviewIndexItem = React.createClass({
           <p>{restaurant.address}</p>
         </div>
 
+        {this.props.isCurrentUser ?
+          <div className="update-review-button-container">
+          <ReviewButton isUpdate={true} restaurant={restaurant}/>
+          </div>
+          : null}
+
         <div className="review-rating-container group">
           <img className="stars" src={starsUrl} />
           <p className="review-date">{review.date}</p>
         </div>
+
 
         <p className="review-body">{review.body}</p>
       </li>

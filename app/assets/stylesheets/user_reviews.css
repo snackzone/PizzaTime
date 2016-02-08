@@ -83,3 +83,13 @@
   margin-top: 35px;
   margin-left: 125px;
 }
+
+.review-li {
+  position: relative;
+}
+
+.update-review-button-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
