@@ -7,10 +7,10 @@ $themePrefix: "shepherd"
 $arrowSize: 16px
 $arrowPointerEvents: none
 $backgroundColor: #fff
-$color: #444
+$color: #333333
 $useDropShadow: true
 
-$headerBackgroundColor: #eee
+$headerBackgroundColor: #F5F5F1
 
 +tether($themePrefix: $themePrefix)
 +tether-theme-arrows($themePrefix: $themePrefix, $arrowSize: $arrowSize, $arrowPointerEvents: $arrowPointerEvents, $backgroundColor: $backgroundColor, $color: $color, $useDropShadow: $useDropShadow)
@@ -39,6 +39,8 @@ $headerBackgroundColor: #eee
 
     .#{ $themePrefix }-content
         padding: 0
+        box-shadow: 0 0 5px rgba(0, 0, 0, .3)
+        width: 400px
 
         *
             font-size: inherit
@@ -51,7 +53,8 @@ $headerBackgroundColor: #eee
             h3
                 margin: 0
                 line-height: 1
-                font-weight: normal
+                font-weight: bold
+                font-size: 20px
 
             a.shepherd-cancel-link
                 float: right
@@ -95,7 +98,7 @@ $headerBackgroundColor: #eee
 
                     .shepherd-button
                         +inline-block
-                        border-radius: 3px
+                        border-radius: 7px
                         cursor: pointer
                         border: 0
                         margin: 0 .5em 0 0
@@ -105,8 +108,12 @@ $headerBackgroundColor: #eee
                         font-size: .8em
                         line-height: 1em
                         padding: .75em 2em
-                        background: #3288e6
+                        background: #BD0E01
                         color: #fff
+                        transition: background .25s ease-in-out
+
+                    .shepherd-button:hover
+                        background: #940b01
 
                         &.shepherd-button-secondary
                             background: #eee
