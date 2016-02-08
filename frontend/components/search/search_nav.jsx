@@ -37,7 +37,10 @@ var SearchNav = React.createClass({
       <nav className="search-nav">
         <section className="search-nav-section group">
           {this.state.loaded ? <FortuneCookie cookie={this.state.cookie}/> : null}
-          <h3>Filters</h3>
+          <div className="search-nav-header-container group">
+            <h3>Price Filter</h3>
+            <h3>Sort Results</h3>
+          </div>
           <PriceFilter/>
           <SortToggleIndex/>
         </section>

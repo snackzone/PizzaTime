@@ -262,9 +262,25 @@ ul {
   margin-bottom: 20px;
 }
 
-.search-nav-section > h3 {
+.search-nav-header-container {
+  display: block;
+  width: 500px;
+  height: 30px;
+}
+
+.search-nav-header-container > h3 {
   font-size: 14px;
   font-weight: 900;
+}
+
+.search-nav-header-container > h3:first-of-type {
+  display: block;
+  float: left;
+  width: 222px;
+}
+
+.search-nav-header-container > h3:last-of-type {
+  display: block;
 }
 
 .price-filter {

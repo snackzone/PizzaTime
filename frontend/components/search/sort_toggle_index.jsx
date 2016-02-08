@@ -6,8 +6,8 @@ var SortToggleIndex = React.createClass({
   getInitialState: function () {
     return ({
       toggles: [
-        this.getNewSortToggle("sort_price", "Sort (price)", 0),
-        this.getNewSortToggle("sort_rating", "Sort (rating)", 1)
+        this.getNewSortToggle("sort_price", "Price", 0),
+        this.getNewSortToggle("sort_rating", "Rating", 1)
       ]
     });
   },
@@ -64,8 +64,8 @@ var SortToggleIndex = React.createClass({
 
       this.setState({
         toggles: [
-          this.getNewSortToggle("sort_price", "Sort (price)", 0),
-          this.getNewSortToggle("sort_rating", "Sort (rating)", 1)
+          this.getNewSortToggle("sort_price", "Price", 0),
+          this.getNewSortToggle("sort_rating", "Rating", 1)
         ]
       });
       return;

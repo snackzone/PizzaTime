@@ -17,7 +17,7 @@ var SortToggle = React.createClass({
 
   render: function () {
     var klass = this.props.active ?
-      this.props.ascending ? "ascending" : "descending"
+      this.props.ascending ? "active ascending" : "active descending"
       : "inactive";
 
     return (

@@ -27,3 +27,7 @@
   content:image-url('arrow-down.png');
   bottom: 1px;
 }
+
+.sort-toggle.active {
+  text-decoration: underline;
+}
