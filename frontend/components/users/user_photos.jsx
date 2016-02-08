@@ -23,6 +23,14 @@ var UserPhotos = React.createClass({
     this.userListener.remove();
   },
 
+  componentWillReceiveProps: function(nextProps) {
+    var id = parseInt(nextProps.params.id);
+    this.setState({
+      user: UserStore.find(id),
+      loaded: true
+    });
+  },
+
   _change: function () {
     this.setState({
       user: UserStore.find(this.props.params.id),
