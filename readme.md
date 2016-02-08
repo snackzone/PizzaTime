@@ -40,6 +40,6 @@ Libraries and Technologies
 
 Future Add-ons
 --------------
-[ ] Users can like reviews
-[ ] Users can bookmark restaurants
-[ ] Users can follow other users
+- [ ] Users can like reviews
+- [ ] Users can bookmark restaurants
+- [ ] Users can follow other users
