@@ -13,7 +13,7 @@ var RestaurantReview = React.createClass({
       <li className="group">
         <img className="review-thumb" src={author.photo_url}/>
         <div className="review-restaurant-info">
-          <Link to={"/users/" + author.id}>
+          <Link to={"/users/" + author.id + "/reviews"}>
             {author.firstname} {author.surname.slice(0, 1)}.
           </Link>
         </div>
