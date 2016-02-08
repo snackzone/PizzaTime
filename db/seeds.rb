@@ -134,9 +134,9 @@ robertas = Restaurant.create!(
   address: "261 Moore St, Brooklyn, NY 11206",
   lat: 40.704938,
   lng: -73.933565,
-  price_range: 2,
   url: "https://www.robertaspizza.com",
-  photo: File.open("app/assets/images/restaurant-photos/robertas.jpg")
+  photo_url: "http://i.imgur.com/DwkjB66.jpg",
+  price_range: 3
 )
 
 prince_st = Restaurant.create!(
@@ -144,15 +144,17 @@ prince_st = Restaurant.create!(
   lat: 40.722897,
   lng: -73.994557,
   address: "27 Prince St, New York, NY 10012",
-  photo: File.open("app/assets/images/restaurant-photos/prince-st-pizza.jpg")
+  photo_url: "http://i.imgur.com/FxHiu1A.jpg",
+  price_range: 1
 )
 
 di_fara = Restaurant.create!(
   name: "Di Fara Pizza",
   lat: 40.625130,
   lng: -73.961691,
-  address: "1424 Avenue J, Brooklyn, NY 11230"
-  photo: File.open("app/assets/images/restaurant-photos/di-fara.jpg")
+  address: "1424 Avenue J, Brooklyn, NY 11230",
+  photo_url: "http://i.imgur.com/nIZMkeM.jpg",
+  price_range: 2
 )
 
 zach = User.create!(
@@ -185,7 +187,7 @@ zach.reviews.create!(
 )
 
 zach.reviews.create!(
-  body: "My neighborhood slice, Vinnie's is my kryptonite at least once a week. Some real creativity goes into their specialty slices, which I started ordering once I realized that many of these combinations were around for one day only. Great vegan options, too."
+  body: "My neighborhood slice, Vinnie's is my kryptonite at least once a week. Some real creativity goes into their specialty slices, which I started ordering once I realized that many of these combinations were around for one day only. Great vegan options, too.",
   rating: 3,
   restaurant_id: vinnies.id
 )
