@@ -50,8 +50,19 @@
   color: #3B65A7;
 }
 
+.search-result {
+  position: relative;
+}
+
 .review-search-results > li > .review-button {
   float: right;
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+.review-search-results > .stars {
+  margin-right: 0;
 }
 
 .review-button {
@@ -67,6 +78,10 @@
   transition: background .25s ease-in-out;
   transition: border .25s ease-in-out;
   transition: box-shadow .25s ease-in-out;
+}
+
+.review-search-results > li > .review-button {
+  float: right;
 }
 
 .review-button::before {
@@ -100,6 +115,7 @@
   border-radius: 7px;
   float: left;
   margin-right: 10px;
+  margin-bottom: 40px;
 }
 
 .review-search-loading {
