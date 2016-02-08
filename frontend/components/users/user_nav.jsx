@@ -77,7 +77,7 @@ var UserNav = React.createClass({
           <div className="user-nav-right group">
             <Link to={"/users/" + user.id + "/reviews"} id="reviews" className="user-nav-links">{reviewLinkText}</Link>
             <Link to={"/users/" + user.id + "/photos"} id="photos" className="user-nav-links  ">{photoLinkText}</Link>
-            <Link to={"/reviews/search"} id="search" className="user-nav-links">Search Restaurants</Link>
+            <Link to={"/reviews/search"} id="search" className="user-nav-links">Write a Review</Link>
           </div>
 
         </div>
