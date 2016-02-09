@@ -22,12 +22,13 @@ Languages
 Frameworks
 ----------
 
-React.js
-Rails
+* React.js
+* Rails
 
 Libraries and Technologies
 --------------------------
 
+* BCrypt
 * Flux
 * jQuery
 * Google Maps API

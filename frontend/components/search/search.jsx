@@ -5,8 +5,6 @@ var RestaurantStore = require("../../stores/restaurant_store");
 var FilterStore = require("../../stores/filter_store");
 var RestaurantApiUtil = require('../../util/restaurant_api_util');
 var SearchNav = require('./search_nav');
-var ShepherdTour = require('./shepherd_tour');
-
 
 var Search = React.createClass({
   getInitialState: function () {
@@ -25,8 +23,6 @@ var Search = React.createClass({
       RestaurantStore.addListener(this._changeRestaurants);
     this.filterListenerToken =
       FilterStore.addListener(this._changeFilters);
-
-    ShepherdTour();
   },
 
   componentWillUnmount: function () {

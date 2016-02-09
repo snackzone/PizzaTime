@@ -19,10 +19,18 @@ var ReviewSearch = require('./components/reviews/review_search');
 var RestaurantShow = require('./components/restaurants/show');
 var ReviewForm = require('./components/forms/review_form');
 var UserPhotos = require('./components/users/user_photos');
+var ShepherdTour = require('./components/search/shepherd_tour');
 
 var App = React.createClass({
   componentWillMount: function () {
     SessionApiUtil.fetchCurrentUser();
+  },
+
+  componentDidMount: function () {
+    var hash = window.location.hash;
+    if (hash.slice(0,3) === "#/?") {
+      ShepherdTour();
+    }
   },
 
   render: function () {
