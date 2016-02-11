@@ -37,6 +37,7 @@ Libraries and Technologies
 * PostgreSQL
 * Ominiauth-Facebook
 * ReactRouter
+* Tether/Shepherd 
 * Webpack
 
 Future Add-ons
