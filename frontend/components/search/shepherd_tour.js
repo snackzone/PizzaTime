@@ -48,7 +48,11 @@ var ShepherdTour = function () {
     showCancelLink: true
   });
 
-  tour.start();
+  if (document.cookie.replace(/(?:(?:^|.*;\s*)tourCookie\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
+    tour.start();
+    document.cookie = "tourCookie=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  }
+
 };
 
 module.exports = ShepherdTour;
