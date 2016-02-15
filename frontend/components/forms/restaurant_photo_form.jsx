@@ -39,7 +39,7 @@ var RestaurantPhotoForm = React.createClass({
     formData.append("photo[caption]", this.state.caption);
     formData.append("photo[upload]", this.state.imageFile);
 
-    UserApiUtil.uploadPhoto(this.props.restaurant.id, formData, this.resetForm);
+    UserApiUtil.uploadRestaurantPhoto(this.props.restaurant.id, formData, this.resetForm);
   },
 
   resetForm: function () {

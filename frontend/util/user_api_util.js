@@ -41,7 +41,7 @@ var UserApiUtil = {
     });
   },
 
-  uploadPhoto: function (id, formData, callback) {
+  uploadRestaurantPhoto: function (id, formData, callback) {
     $.ajax({
       method: "POST",
       url: "api/restaurants/" + id + "/photos",
