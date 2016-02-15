@@ -2,7 +2,7 @@ var SessionApiActions = require('../actions/session_api_actions');
 var FlashActions = require('../actions/flash_actions');
 var CurrentUserActions = require('../actions/current_user_actions');
 var UserApiActions = require('../actions/user_api_actions');
-var RestaurantActions = require('../actions/restaurant_actions');
+var RestaurantApiActions = require('../actions/restaurant_api_actions');
 
 var UserApiUtil = {
   createUser: function (user, successCB) {
@@ -19,7 +19,6 @@ var UserApiUtil = {
         }
       },
       error: function (data) {
-        console.log("failure.");
         FlashActions.receiveFlash(data.responseJSON.errors);
       }
     });
@@ -34,10 +33,23 @@ var UserApiUtil = {
       dataType: 'json',
       data: formData,
       success: function (user) {
-        CurrentUserActions.receiveNewInfo(user);
+        CurrentUserActions.receiveNewUser(user);
+      }
+    });
+  },
+
+  updateInfo: function (user) {
+    $.ajax({
+      method: "PATCH",
+      dataType: "json",
+      data: {user: user},
+      url: "api/users/" + user.id,
+      success: function (user) {
+        CurrentUserActions.receiveNewUser(user);
+        FlashActions.receiveFlash(["Profile updated!"]);
       },
-      error: function () {
-        console.log("failed to upload photo.");
+      error: function (data) {
+        FlashActions.receiveFlash(data.responseJSON.errors);
       }
     });
   },
@@ -51,34 +63,11 @@ var UserApiUtil = {
       dataType: 'json',
       data: formData,
       success: function(photo) {
-        console.log("success");
-
-        RestaurantActions.addPhoto(photo);
+        RestaurantApiActions.addPhoto(photo);
 
         if (callback) {
           callback();
         }
-      },
-      error: function() {
-        console.log("failed to upload photo.");
-      }
-    });
-
-  },
-
-  updateInfo: function (user) {
-    $.ajax({
-      method: "PATCH",
-      dataType: "json",
-      data: {user: user},
-      url: "api/users/" + user.id,
-      success: function (user) {
-        CurrentUserActions.receiveNewInfo(user);
-        FlashActions.receiveFlash(["Profile updated!"]);
-      },
-      error: function (data) {
-        console.log("failure.");
-        FlashActions.receiveFlash(data.responseJSON.errors);
       }
     });
   },
@@ -90,13 +79,9 @@ var UserApiUtil = {
       url: "api/users/" + id,
       success: function (user) {
         UserApiActions.receiveUser(user);
-        console.log("success");
         if (callback) {
           callback();
         }
-      },
-      error: function (data) {
-        console.log("failed to fetch user id " + id);
       }
     });
   }

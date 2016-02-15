@@ -59,10 +59,6 @@ var ReviewForm = React.createClass({
     }
   },
 
-  flashSaved: function () {
-    console.log("saved.");
-  },
-
   handleRating: function (rating) {
     this.setState({
       rating: rating,

@@ -13,9 +13,6 @@ var SessionApiUtil = {
         if (callback) {
           callback();
         }
-      },
-      error: function (data) {
-        console.log("failure.");
       }
     });
   },
@@ -26,15 +23,10 @@ var SessionApiUtil = {
       dataType: "json",
       url: "api/session",
       success: function () {
-        //this breaks if callback is called after signOut but I don't know why.
-
         if (callback) {
           callback();
         }
         SessionApiActions.signOut();
-      },
-      error: function () {
-        console.log("failed to sign out.");
       }
     });
   },

@@ -1,7 +1,6 @@
 var React = require('react');
 var ReviewIndexItem = require('./index_item');
 var ReviewApiUtil = require('../../util/review_api_util');
-var ReviewStore = require('../../stores/review_store');
 var CurrentUserStore = require('../../stores/current_user_store');
 
 var ReviewIndex = React.createClass({

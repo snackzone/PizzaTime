@@ -1,24 +1,7 @@
-var ReviewApiActions = require('../actions/review_api_actions');
 var FlashActions = require('../actions/flash_actions');
-var SessionApiUtil = require('./session_api_util');
+var CurrentUserActions = require('../actions/current_user_actions');
 
 var ReviewApiUtil = {
-  //I don't think this is used anywhere.
-  fetchReviewsForUser: function (id) {
-    $.ajax({
-      method: "GET",
-      dataType: "json",
-      url: "api/users/" + id + "/reviews/",
-      success: function (data) {
-        ReviewApiActions.receiveReviewsForUser(id, data);
-        console.log("success.");
-      },
-      error: function () {
-        console.log("failed to fetch reviews for user " + id);
-      }
-    });
-  },
-
   submitReview: function (review, callback) {
     $.ajax({
       method: "POST",
@@ -26,9 +9,7 @@ var ReviewApiUtil = {
       data: {review: review},
       url: "api/reviews/",
       success: function (data) {
-        console.log("success!");
-
-        //should prepend review to store instead of refetching restaurant
+        CurrentUserActions.receiveReview(data);
 
         if (callback) {
           callback(review.restaurant_id);
@@ -44,12 +25,10 @@ var ReviewApiUtil = {
       data: {review: review},
       url: "api/reviews/" + review.id,
       success: function (data) {
-        console.log("success!");
-
         FlashActions.receiveFlash(data.message);
 
         if (callback) {
-          callback(review.restaurant_id);
+          callback();
         }
       }
     });
@@ -61,14 +40,11 @@ var ReviewApiUtil = {
       dataType: "json",
       url: "api/reviews/" + review.id,
       success: function (data) {
-        SessionApiUtil.fetchCurrentUser();
+        CurrentUserActions.deleteReview(review);
 
         if (callback) {
-          callback(review.restaurant.id);
+          callback();
         }
-      },
-      error: function () {
-        console.log("failed to delete review.");
       }
     });
   }

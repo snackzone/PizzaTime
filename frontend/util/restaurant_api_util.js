@@ -9,9 +9,6 @@ var RestaurantApiUtil = {
       url: "api/restaurants",
       success: function (data) {
         RestaurantApiActions.receiveAllRestaurants(data);
-      },
-      error: function () {
-        console.log("failed to fetch restaurants from the db.");
       }
     });
   },
@@ -26,9 +23,6 @@ var RestaurantApiUtil = {
         if (callback) {
           callback();
         }
-      },
-      error: function () {
-        console.log("failed to fetch restaurant id #" + id);
       }
     });
   }

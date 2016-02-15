@@ -56,10 +56,11 @@ var UserPhotos = React.createClass({
         <ul className="user-photo-gallery group">
           {photos.map(function(photo, index) {
             return(
-              <div className="photo-plus-description group">
+              <div
+                className="photo-plus-description group"
+                key={index}>
                 <div
-                  className="polaroid-wrapper"
-                  key={index}>
+                  className="polaroid-wrapper">
                   <UserUpload
                     upload={photo}
                     linkPath={"/restaurants/" + photo.restaurant_id}
@@ -67,7 +68,6 @@ var UserPhotos = React.createClass({
                 </div>
                 <p className="user-photo-link">
                   <Link
-                    key={index}
                     to={"/restaurants/" + photo.restaurant_id}>
                     {photo.restaurant_name}
                   </Link> - {photo.date}

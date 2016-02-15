@@ -14,6 +14,13 @@ var RestaurantApiActions = {
       actionType: RestaurantConstants.RESTAURANT_RECEIVED,
       restaurant: restaurant
     });
+  },
+
+  addPhoto: function (photo) {
+    Dispatcher.dispatch({
+      actionType: RestaurantConstants.ADD_PHOTO,
+      photo: photo
+    });
   }
 };
 

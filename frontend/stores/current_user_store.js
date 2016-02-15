@@ -42,6 +42,17 @@ CurrentUserStore.findReview = function (id) {
   return false;
 };
 
+CurrentUserStore.addReview = function (review) {
+  _currentUser.reviews.unshift(review);
+};
+
+CurrentUserStore.deleteReview = function (review) {
+  var idx = _currentUser.reviews.indexOf(review);
+  if (idx !== -1) {
+    _currentUser.reviews.splice(idx, 1);
+  }
+};
+
 CurrentUserStore.userHasBeenFetched = function () {
   return _currentUserHasBeenFetched;
 };
@@ -62,6 +73,17 @@ CurrentUserStore.__onDispatch = function (payload) {
   case CurrentUserConstants.UPDATE_INFO:
     CurrentUserStore.signIn(payload.user);
     CurrentUserStore.__emitChange();
+    break;
+
+  case CurrentUserConstants.ADD_REVIEW:
+    CurrentUserStore.addReview(payload.review);
+    CurrentUserStore.__emitChange();
+    break;
+
+  case CurrentUserConstants.DELETE_REVIEW:
+    CurrentUserStore.deleteReview(payload.review);
+    CurrentUserStore.__emitChange();
+    break;
   }
 };
 

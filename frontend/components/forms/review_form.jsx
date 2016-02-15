@@ -107,9 +107,7 @@ var ReviewForm = React.createClass({
     if (this.isUpdate) {
       review.id = this.review.id;
 
-      ReviewApiUtil.updateReview(
-        review, this.flashSaved
-      );
+      ReviewApiUtil.updateReview(review);
 
     } else {
       var that = this;
@@ -119,16 +117,11 @@ var ReviewForm = React.createClass({
           that.setState({posted: true});
           window.setTimeout(function () {
             that.history.pushState({}, "restaurants/" + id);
-            SessionApiUtil.fetchCurrentUser();
             that.setState({body: "", rating: -1});
           }, 2000);
         }
       );
     }
-  },
-
-  flashSaved: function () {
-    console.log("saved.");
   },
 
   getPriceRangeString: function () {

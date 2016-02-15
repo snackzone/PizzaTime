@@ -12,7 +12,9 @@ var DeleteReviewButton = React.createClass({
   handleClick: function (e) {
     e.preventDefault();
     if (this.state.confirm) {
-      ReviewApiUtil.deleteReview(this.props.review, successCB.bind(this));
+      ReviewApiUtil.deleteReview(this.props.review, function(){
+        this.history.pushState({}, "restaurants/" + this.props.review.restaurant.id);
+      }.bind(this));
     } else {
       this.setState({confirm: true});
     }
@@ -29,9 +31,5 @@ var DeleteReviewButton = React.createClass({
     );
   }
 });
-
-function successCB (id) {
-  this.history.pushState({}, "restaurants/" + id);
-}
 
 module.exports = DeleteReviewButton;
