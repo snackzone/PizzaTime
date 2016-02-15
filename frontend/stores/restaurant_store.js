@@ -56,6 +56,13 @@ RestaurantStore.loadRestaurant = function(restaurant) {
   _restaurants = [restaurant];
 };
 
+RestaurantStore.loadPhoto = function(photo) {
+  var restaurant = RestaurantStore.findById(photo.restaurant_id);
+  if (restaurant) {
+    restaurant.photos.unshift(photo);
+  }
+};
+
 RestaurantStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
   case RestaurantConstants.RESTAURANTS_RECEIVED:
@@ -77,6 +84,10 @@ RestaurantStore.__onDispatch = function (payload) {
     RestaurantStore.loadRestaurant(payload.restaurant);
     RestaurantStore.__emitChange();
     break;
+
+  case RestaurantConstants.ADD_PHOTO:
+    RestaurantStore.loadPhoto(payload.photo);
+    RestaurantStore.__emitChange();
   }
 };
 

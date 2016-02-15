@@ -3,7 +3,7 @@ class Api::PhotosController < ApplicationController
     @photo = current_user.photos.new(photo_params)
     @photo.restaurant_id = params[:restaurant_id]
     if @photo.save
-      render json: {}
+      render :show
     else
       render json: {}, status: 422
     end

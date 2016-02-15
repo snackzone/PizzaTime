@@ -43,7 +43,6 @@ var RestaurantPhotoForm = React.createClass({
   },
 
   resetForm: function () {
-    RestaurantApiUtil.fetchRestaurant(this.props.restaurant.id);
     this.setState({caption: "", imageFile: null, imageUrl: ""});
     this.props.closeForm();
   },

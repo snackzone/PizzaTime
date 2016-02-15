@@ -2,6 +2,7 @@ var SessionApiActions = require('../actions/session_api_actions');
 var FlashActions = require('../actions/flash_actions');
 var CurrentUserActions = require('../actions/current_user_actions');
 var UserApiActions = require('../actions/user_api_actions');
+var RestaurantActions = require('../actions/restaurant_actions');
 
 var UserApiUtil = {
   createUser: function (user, successCB) {
@@ -49,8 +50,11 @@ var UserApiUtil = {
       contentType: false,
       dataType: 'json',
       data: formData,
-      success: function() {
+      success: function(photo) {
         console.log("success");
+
+        RestaurantActions.addPhoto(photo);
+
         if (callback) {
           callback();
         }

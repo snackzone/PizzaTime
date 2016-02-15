@@ -25,6 +25,13 @@ var RestaurantActions = {
       actionType: RestaurantConstants.FOCUS_RESTAURANT,
       restaurantId: id
     });
+  },
+
+  addPhoto: function (photo) {
+    Dispatcher.dispatch({
+      actionType: RestaurantConstants.ADD_PHOTO,
+      photo: photo
+    });
   }
 };
 
