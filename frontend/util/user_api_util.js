@@ -24,7 +24,7 @@ var UserApiUtil = {
     });
   },
 
-  updateAvatar: function (formData, id) {
+  updateAvatar: function (formData, id, callback) {
     $.ajax({
       method: "PATCH",
       url: "api/users/" + id,
@@ -34,6 +34,9 @@ var UserApiUtil = {
       data: formData,
       success: function (user) {
         CurrentUserActions.receiveNewUser(user);
+        if (callback) {
+          callback();
+        }
       }
     });
   },

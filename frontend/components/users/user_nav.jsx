@@ -3,30 +3,9 @@ var CurrentUserStore = require('../../stores/current_user_store');
 var UserApiUtil = require('../../util/user_api_util');
 var ReactRouter = require('react-router');
 var UserStore = require('../../stores/user_store');
+var UpdateAvatarButton = require('./update_avatar_button');
 
 var UserNav = React.createClass({
-  changeFile: function (e) {
-    var reader = new FileReader();
-    var file = e.currentTarget.files[0];
-
-    reader.onloadend = function () {
-      if (this.props.isCurrentUser) {
-        this.updatePhoto(file);
-      }
-    }.bind(this);
-
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  },
-
-  updatePhoto: function (photo) {
-    var formData = new FormData();
-    formData.append("user[photo]", photo);
-    var id = this.props.user.id;
-    UserApiUtil.updateAvatar(formData, id);
-  },
-
   render: function () {
     var user = this.props.user;
 
@@ -39,20 +18,14 @@ var UserNav = React.createClass({
       );
     }
 
-    var updatePhotoLabel, updatePhotoInput, updateProfile;
+    var updateAvatar;
     var reviewLinkText = user.firstname + "'s Reviews";
     var photoLinkText = user.firstname + "'s Photos";
 
     if (this.props.isCurrentUser) {
-      updatePhotoLabel = <label htmlFor="file" className="change-profile-picture">Update Photo.</label>;
-      updatePhotoInput = <input
-                           id="file"
-                           className="file"
-                           type="file"
-                           onChange={this.changeFile}
-                         />;
       reviewLinkText = "Your Reviews";
       photoLinkText = "Your Photos";
+      UpdateAvatar = <UpdateAvatarButton user={user}/>;
     }
 
     return (
@@ -62,8 +35,7 @@ var UserNav = React.createClass({
           <div className="user-nav-left group">
             <div className="photo-box">
               <img className="profile-photo" src={user.photo_url}/>
-              {updatePhotoLabel}
-              {updatePhotoInput}
+              {UpdateAvatar}
             </div>
           </div>
 
