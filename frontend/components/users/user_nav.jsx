@@ -18,7 +18,7 @@ var UserNav = React.createClass({
       );
     }
 
-    var updateAvatar;
+    var UpdateAvatar;
     var reviewLinkText = user.firstname + "'s Reviews";
     var photoLinkText = user.firstname + "'s Photos";
 

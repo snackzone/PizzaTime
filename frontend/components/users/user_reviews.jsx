@@ -10,15 +10,14 @@ var UserReviews = React.createClass({
   getInitialState: function () {
     var id = this.props.params.id;
     return ({
-      user: UserApiUtil.fetchById(this.props.params.id, this._change),
+      user: UserApiUtil.fetchById(this.props.params.id),
       isCurrentUser: CurrentUserStore.isCurrentUser(id),
       loaded: false
     });
   },
 
   componentDidMount: function () {
-    this.userListener =
-      UserStore.addListener(this._change);
+    this.userListener = UserStore.addListener(this._change);
   },
 
   componentWillUnmount: function () {
@@ -28,9 +27,9 @@ var UserReviews = React.createClass({
   componentWillReceiveProps: function(nextProps) {
     var id = parseInt(nextProps.params.id);
     this.setState({
-      user: UserStore.find(id),
+      user: UserApiUtil.fetchById(id),
       isCurrentUser: CurrentUserStore.isCurrentUser(id),
-      loaded: true
+      loaded: false
     });
   },
 
