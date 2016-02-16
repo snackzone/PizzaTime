@@ -1,4 +1,6 @@
 var React = require('react');
+var CurrentUserStore = require('../../stores/current_user_store');
+var PhotoDeleteButton = require('./photo_delete_button');
 var UserUpload = require('../restaurants/user_upload');
 var UserStore = require('../../stores/user_store');
 var UserApiUtil = require('../../util/user_api_util');
@@ -65,6 +67,8 @@ var UserPhotos = React.createClass({
                     upload={photo}
                     linkPath={"/restaurants/" + photo.restaurant_id}
                   />
+                  {CurrentUserStore.isCurrentUser(photo.user_id) ?
+                    <PhotoDeleteButton photo={photo}/> : null}
                 </div>
                 <p className="user-photo-link">
                   <Link

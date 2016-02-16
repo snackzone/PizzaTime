@@ -34,6 +34,7 @@ Rails.application.config.assets.precompile += %w( search.png )
 Rails.application.config.assets.precompile += %w( arrow-up.png )
 Rails.application.config.assets.precompile += %w( arrow-down.png )
 Rails.application.config.assets.precompile += %w( arrow-toggles.png )
+Rails.application.config.assets.precompile += %w( white-trashcan.png )
 
 
 

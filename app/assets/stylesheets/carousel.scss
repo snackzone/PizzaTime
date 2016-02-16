@@ -33,9 +33,7 @@
   height: 250px;
   border-radius: 5px;
   float: left;
-  // background: white;
   border-radius: 12px;
-  // border: 1px solid #E5E5E1;
 }
 
 .carousel > * {
@@ -53,7 +51,6 @@
   font-size: 36px;
   font-weight: bold;
   top: 0;
-  // color: white;
   width: 50px;
   border-color: red;
 }
@@ -70,10 +67,12 @@
 
 .carousel-arrow.left:hover:before {
   border-color: transparent #333333 transparent transparent;
+  cursor: pointer;
 }
 
 .carousel-arrow.right:hover:before {
   border-color: transparent transparent transparent #333333;
+  cursor: pointer;
 }
 
 .carousel-arrow:before {

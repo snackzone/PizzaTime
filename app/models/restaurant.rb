@@ -16,11 +16,13 @@
 
 class Restaurant < ActiveRecord::Base
   include PgSearch
-  pg_search_scope :name_starts_with,
-                   against: :name,
-                   using: {
-                     tsearch: { prefix: true }
-                   }
+  pg_search_scope(
+    :name_starts_with,
+    against: :name,
+    using: {
+      tsearch: { prefix: true }
+    }
+  )
 
   multisearchable against: [:name]
 

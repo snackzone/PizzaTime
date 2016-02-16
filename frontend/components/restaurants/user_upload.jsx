@@ -6,7 +6,7 @@ var UserUpload = React.createClass({
     var upload = this.props.upload;
 
     return (
-      <Link to={this.props.linkPath}>
+      <Link className="user-upload" to={this.props.linkPath}>
         {upload.caption ? <p className="upload-caption">{"\""+upload.caption+"\""}</p> : null}
         <img src={upload.url} className="restaurant-photo"/>
       </Link>

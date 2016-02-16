@@ -18,6 +18,7 @@
 }
 
 .polaroid-wrapper {
+  position: relative;
   background: #F5F5F1;
   padding: 20px 20px 20px 20px;
   border: 1px solid #E5E5E1;
@@ -72,6 +73,35 @@
 .user-photo-link {
   display: block;
   text-align: center;
+}
+
+.user-photo-delete-button {
+  position: absolute;
+  z-index: 20;
+  top: 21px;
+  right: 19px;
+  background: rgba(0, 0, 0, .3);
+  padding: 10px 15px 10px 20px;
+  border-bottom-left-radius: 30px;
+  opacity: 0;
+}
+
+.polaroid-wrapper:hover .user-photo-delete-button {
+  opacity: 1;
+}
+
+.user-photo-delete-button:before {
+  content:image-url('white-trashcan.png');
+  opacity: .3;
+}
+
+.user-photo-delete-button:hover {
+  background: rgba(0, 0, 0, .7);
+}
+
+.user-photo-delete-button:hover:before {
+  opacity: 1;
+  cursor: pointer;
 }
 
 .user-photo-link > a {
