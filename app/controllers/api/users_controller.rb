@@ -15,8 +15,9 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    #need to include reviews...
-    if @user.update(user_params)
+    if @user.email == "mike@turtlepower.com"
+      render json: {errors: ["Cannot edit the guest account."]}, status: 403
+    elsif @user.update(user_params)
       render :show
     else
       render json: {errors: @user.errors.full_messages}.to_json, status: 422
