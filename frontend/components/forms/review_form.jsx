@@ -9,11 +9,6 @@ var RestaurantApiUtil = require('../../util/restaurant_api_util');
 var RestaurantStore = require('../../stores/restaurant_store');
 var ReviewApiUtil = require('../../util/review_api_util');
 var ReviewIndex = require('../restaurants/restaurant_review_index');
-var SessionApiUtil = require('../../util/session_api_util');
-var FlashStore = require('../../stores/flash_store');
-var FlashActions = require('../../actions/flash_actions');
-
-
 var ReviewSubmitButton = require('./review_submit_button');
 
 
@@ -34,7 +29,7 @@ var ReviewForm = React.createClass({
         body: review.body,
         rating: parseInt(review.rating) - 1,
         ratingSet: true,
-        flash: [],
+        flash: "",
         posted: false
       });
     } else {
@@ -44,7 +39,7 @@ var ReviewForm = React.createClass({
         body: "",
         rating: -1,
         ratingSet: false,
-        flash: [],
+        flash: "",
         posted: false
       });
     }
@@ -52,12 +47,10 @@ var ReviewForm = React.createClass({
 
   componentDidMount: function () {
     this.restaurantListener = RestaurantStore.addListener(this.change);
-    this.flashListener = FlashStore.addListener(this._updateFlash);
   },
 
   componentWillUnmount: function () {
     this.restaurantListener.remove();
-    this.flashListener.remove();
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -72,7 +65,7 @@ var ReviewForm = React.createClass({
         body: review.body,
         rating: parseInt(review.rating) - 1,
         ratingSet: true,
-        flash: [],
+        flash: "",
         posted: false
       });
     } else {
@@ -82,7 +75,7 @@ var ReviewForm = React.createClass({
         body: "",
         rating: -1,
         ratingSet: false,
-        flash: [],
+        flash: "",
         posted: false
       });
     }
@@ -106,8 +99,7 @@ var ReviewForm = React.createClass({
 
     if (this.isUpdate) {
       review.id = this.review.id;
-
-      ReviewApiUtil.updateReview(review);
+      ReviewApiUtil.updateReview(review, this.updateFlash);
 
     } else {
       var that = this;
@@ -140,12 +132,11 @@ var ReviewForm = React.createClass({
     });
   },
 
-  _updateFlash: function () {
-    this.setState({flash: FlashStore.all()});
-    var that = this;
+  updateFlash: function () {
+    this.setState({flash: "Updated!"});
     window.setTimeout(function () {
-      that.setState({flash: []});
-    }, 3000);
+      this.setState({flash: ""});
+    }.bind(this), 3000);
   },
 
   getOtherReviews: function () {
@@ -194,7 +185,7 @@ var ReviewForm = React.createClass({
 
 
             <div className="review-form-body">
-              {this.state.flash ? <h1 className="review-updated">{this.state.flash[0]}</h1> : null}
+              {this.state.flash ? <p className="review-updated">{this.state.flash}</p> : null}
 
               <RatingSelector
                 rating={this.state.rating}

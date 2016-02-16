@@ -25,7 +25,7 @@ var ReviewApiUtil = {
       data: {review: review},
       url: "api/reviews/" + review.id,
       success: function (data) {
-        FlashActions.receiveFlash(data.message);
+        CurrentUserActions.receiveReview(data);
 
         if (callback) {
           callback();

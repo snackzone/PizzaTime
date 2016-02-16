@@ -42,7 +42,8 @@ CurrentUserStore.findReview = function (id) {
   return false;
 };
 
-CurrentUserStore.addReview = function (review) {
+CurrentUserStore.receiveReview = function (review) {
+  CurrentUserStore.deleteReview(review);
   _currentUser.reviews.unshift(review);
 };
 
@@ -75,8 +76,8 @@ CurrentUserStore.__onDispatch = function (payload) {
     CurrentUserStore.__emitChange();
     break;
 
-  case CurrentUserConstants.ADD_REVIEW:
-    CurrentUserStore.addReview(payload.review);
+  case CurrentUserConstants.RECEIVE_REVIEW:
+    CurrentUserStore.receiveReview(payload.review);
     CurrentUserStore.__emitChange();
     break;
 

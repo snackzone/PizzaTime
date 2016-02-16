@@ -11,7 +11,7 @@ var CurrentUserActions = {
 
   receiveReview: function(review) {
     Dispatcher.dispatch({
-      actionType: CurrentUserConstants.ADD_REVIEW,
+      actionType: CurrentUserConstants.RECEIVE_REVIEW,
       review: review
     });
   },
