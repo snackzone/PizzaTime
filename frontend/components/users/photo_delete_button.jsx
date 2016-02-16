@@ -1,9 +1,9 @@
 var React = require('react');
-var UserApiUtil = require('../../util/user_api_util');
+var PhotoApiUtil = require('../../util/photo_api_util');
 
 var PhotoDeleteButton = React.createClass({
   handleClick: function () {
-    console.log("click");
+    PhotoApiUtil.deleteRestaurantPhoto(this.props.photo);
   },
 
   render: function () {

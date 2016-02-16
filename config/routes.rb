@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :restaurants, only: [:index, :show] do
         resources :photos, only: [:create]
       end
+      resources :photos, only: :destroy
       resource :session, only: [:new, :create, :destroy, :show]
       resources :reviews, only: [:new, :create, :update, :show, :destroy]
       resources :users, only: [:new, :create, :update, :show] do

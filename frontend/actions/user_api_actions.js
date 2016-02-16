@@ -7,6 +7,13 @@ var UserApiActions = {
       actionType: UserConstants.RECEIVE_USER,
       user: user
     });
+  },
+
+  deletePhoto: function (photo) {
+    Dispatcher.dispatch({
+      actionType: UserConstants.DELETE_PHOTO,
+      photo: photo
+    });
   }
 };
 

@@ -18,10 +18,26 @@ UserStore.resetUser = function (user) {
   _users[user.id] = user;
 };
 
+UserStore.deletePhoto = function (photo) {
+  var user = _users[photo.user_id];
+
+  for (var i = 0; i < user.photos.length; i++) {
+    if (photo.id == user.photos[i].id) {
+      user.photos.splice(i, 1);
+      break;
+    }
+  }
+};
+
 UserStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
   case UserConstants.RECEIVE_USER:
     UserStore.resetUser(payload.user);
+    UserStore.__emitChange();
+    break;
+
+  case UserConstants.DELETE_PHOTO:
+    UserStore.deletePhoto(payload.photo);
     UserStore.__emitChange();
     break;
 

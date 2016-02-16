@@ -75,6 +75,21 @@ var UserApiUtil = {
     });
   },
 
+  deleteRestaurantPhoto: function (photo, callback) {
+    $.ajax({
+      method: "DELETE",
+      url: "api/photos/" + photo.id,
+      dataType: "json",
+      success: function(photo) {
+        CurrentUserActions.deletePhoto(photo);
+
+        if (callback) {
+          callback();
+        }
+      }
+    });
+  },
+
   fetchById: function (id, callback) {
     $.ajax({
       method: "GET",
