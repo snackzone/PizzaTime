@@ -4,6 +4,8 @@ PizzaTime NYC
 [Check it out][pizzatime]
 [pizzatime]: http://www.pizzatime.nyc
 
+![alt tag](https://raw.githubusercontent.com/snackzone/PizzaTime/master/screens/pizzatime-large.png)
+
 Summary
 -------
 
