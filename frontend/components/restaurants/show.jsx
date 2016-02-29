@@ -97,7 +97,7 @@ var RestaurantShow = React.createClass({
     if (!this.state.loaded) {
       return (
         <div className="restaurant-show-container">
-          ...........LOADING..........
+          <img className="spinner" src={window.PizzaTime.imageUrls.sprites.spinner}/>
         </div>
       );
     }
