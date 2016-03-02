@@ -37,7 +37,7 @@
 
 @media screen and (max-width: 800px) {
   .header-nav {
-    width: 80%;
+    width: 315px;
     padding: 0;
   }
 
@@ -52,6 +52,10 @@
   .search-nav-section {
     width: 380px;
     padding: 10px;
+  }
+
+  .header-guest-login-button {
+    margin-right: 3px;
   }
 
   .search-nav {
@@ -76,10 +80,6 @@
 
   input.header-search-input {
     width: 125px;
-  }
-
-  .header-guest-login-button {
-    margin-right: 5px;
   }
 
   .header-tiny-link-container {
