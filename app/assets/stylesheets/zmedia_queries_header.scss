@@ -7,7 +7,7 @@
     width: 35px;
     overflow: hidden;
   }
-  
+
   .header-search-bar {
     margin: 10px;
   }
@@ -66,6 +66,11 @@
   .user-nav-right {
     border-left: 0;
   }
+
+  .user-photo-gallery-container {
+    width: 80%;
+    margin: auto;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -122,6 +127,11 @@
 }
 
 @media screen and (max-width: 400px) {
+  .polaroid-wrapper, .polaroid-wrapper > a {
+    width: 180px;
+    height: 180px;
+  }
+
   .find {
     display: none;
   }
@@ -135,4 +145,6 @@
     top: 15px;
     right: 50px;
   }
+
+
 }
