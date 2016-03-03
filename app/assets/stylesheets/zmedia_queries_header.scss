@@ -29,6 +29,10 @@
   .map {
     width: calc(100% - 302px);
   }
+
+  .new-review {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 960px) {
@@ -109,6 +113,11 @@
     width: 100%;
     height: 322px;
   }
+
+  .review-search-results {
+    padding: 0;
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 760px) {
@@ -123,6 +132,23 @@
 
   .photo-box {
     position: static;
+  }
+
+  .review-search-results > li > .review-button {
+    float: none;
+    position: static;
+    display: block;
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .new-review {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    margin: 0;
+    padding: 30px 0 0 0;
   }
 }
 
@@ -146,5 +172,7 @@
     right: 50px;
   }
 
-
+  .review-search-bar {
+    width: 80%;
+  }
 }
