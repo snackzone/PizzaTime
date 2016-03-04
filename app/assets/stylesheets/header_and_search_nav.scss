@@ -386,7 +386,7 @@ ul {
 .form-container {
   background: white;
   display: block;
-  width: 1024px;
+  width: 960px;
   border-left: 1px solid #E5E5E1;
   border-right: 1px solid #E5E5E1;
   border-bottom: 1px solid #E5E5E1;
@@ -499,6 +499,7 @@ ul {
 
 .form > button:hover {
   background: #aaa;
+  cursor: pointer;
 }
 
 .guest-login {
@@ -512,7 +513,7 @@ ul {
 }
 
 .user-form {
-  width: 40%;
+  width: 50%;
   margin: auto;
 }
 
