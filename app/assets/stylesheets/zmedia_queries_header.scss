@@ -135,7 +135,7 @@
   }
 
   input.header-search-input {
-    width: 150px;
+    width: auto;
   }
 
   .header-search-results {
@@ -179,6 +179,7 @@
   .user-nav-left, .user-nav-right, .user-nav-middle {
     float: none;
     height: auto;
+    width: 100%;
   }
 
   .user-nav-middle, .user-nav-right {
@@ -286,6 +287,21 @@
 
   .review-form-body {
     width: 90%;
+  }
+
+  .input-container > input, .input-container > label {
+    width: auto;
+    float: none;
+    display: block;
+  }
+
+  .edit-user-form > h2 {
+    text-align: center;
+  }
+
+  .edit-form-container {
+    width: 90%;
+    margin: auto;
   }
 }
 
